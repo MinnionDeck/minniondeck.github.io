@@ -1,0 +1,98 @@
+/* ===== 8. Alive: Minnion the mascot, floating keycaps, numbers, the footer cat, sounds ===== */
+/* Minnion: drawn as 16 x 16 SVG pixels (the logo), with eyes, antenna, arms and legs as parts that move */
+.mn{position:absolute;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mn svg{display:block;width:100%;height:100%;overflow:visible}
+.mn .lean{transform-box:view-box;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.mn .pupil{transition:transform .12s steps(2,end)}
+.mn .lid{opacity:0}
+.mn.blink .lid{opacity:1}
+.mn.blink .eyew,.mn.blink .pupil{opacity:0}
+.mn .ant{transform-box:view-box;transform-origin:7.5px 3px;animation:antBob 2.4s steps(4,end) infinite}
+@keyframes antBob{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.mn .armL,.mn .armR{transform-box:view-box;transition:transform .18s steps(3,end)}
+.mn .armL{transform-origin:1px 9.5px}.mn .armR{transform-origin:15px 9.5px}
+.mn .mouth-o,.mn .mouth-joy,.mn .mouth-zz{display:none}
+.mn.joy .mouth-flat{display:none}.mn.joy .mouth-joy{display:inline}
+.mn.wow .mouth-flat{display:none}.mn.wow .mouth-o{display:inline}
+.mn.joy .armL{transform:rotate(120deg)}.mn.joy .armR{transform:rotate(-120deg)}
+.mn.wow .armL{transform:rotate(60deg)}.mn.wow .armR{transform:rotate(-60deg)}
+.mn.jump .body{animation:mnJump .5s cubic-bezier(.3,1.4,.5,1)}
+@keyframes mnJump{30%{transform:translateY(-3px) scaleY(1.06)}60%{transform:translateY(0) scaleY(.94)}}
+.mn .body{transform-box:view-box;transform-origin:50% 100%}
+.mn.walk .legL{animation:legA .32s steps(2,end) infinite}.mn.walk .legR{animation:legA .32s steps(2,end) -.16s infinite}
+@keyframes legA{50%{transform:translateY(-1px)}}
+.mn.walk .body{animation:bob .32s steps(2,end) infinite}
+@keyframes bob{50%{transform:translateY(-.5px)}}
+.mn.sleep .eyew,.mn.sleep .pupil{opacity:0}.mn.sleep .lid{opacity:1}
+.mn.sleep .ant{animation-duration:6s}
+.mn-say{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) scale(.6);transform-origin:50% 100%;opacity:0;pointer-events:none;white-space:nowrap;
+  font-family:var(--f-pix);font-size:15px;font-weight:600;color:var(--ink);background:var(--tile);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--shadow);padding:4px 10px;transition:transform .3s cubic-bezier(.3,1.6,.5,1),opacity .15s}
+.mn-say::after{content:"";position:absolute;left:50%;top:100%;width:10px;height:10px;margin-left:-5px;background:var(--tile);border:3px solid var(--ink);border-top:0;border-left:0;transform:translateY(-6px) rotate(45deg)}
+.mn-say.on{opacity:1;transform:translateX(-50%) scale(1)}
+.mn-hero{z-index:5;width:132px;height:132px;right:24px;top:-118px}
+.mn-hero:focus-visible{outline:3px dashed var(--focus);outline-offset:4px}
+.stage{margin-top:96px}
+.mn .zz{font-family:var(--f-pix);font-size:3px;fill:var(--ink);opacity:0}
+.mn.sleep .zz{animation:zz 2s steps(4,end) infinite}
+@keyframes zz{0%{opacity:0;transform:translate(0,0)}30%{opacity:1}100%{opacity:0;transform:translate(2px,-4px)}}
+/* the buddy: a small Minnion that walks down the side of the page as you scroll */
+.mn-buddy{position:fixed;left:18px;top:0;width:48px;height:48px;z-index:4;cursor:default;pointer-events:none;will-change:transform}
+.mn-buddy .mn-say{font-size:12px;line-height:1.2;left:-6px;width:max-content;max-width:112px;white-space:normal;transform:scale(.6);transform-origin:0 100%}
+.mn-buddy .mn-say.on{transform:scale(1)}
+.mn-buddy .mn-say::after{left:18px}
+.mn-buddy.flip svg{transform:scaleX(-1)}
+@media (max-width:1419px){.mn-buddy{display:none}}
+/* keycaps drifting behind the hero; they lean away from the mouse */
+.hero{position:relative;isolation:isolate}
+.hero-float{position:absolute;inset:-40px -60px -20px;z-index:-1;pointer-events:none;overflow:hidden}
+.kc{position:absolute;width:var(--s);height:var(--s);transform:translate3d(var(--px,0),var(--py,0),0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.kc i{display:grid;place-items:center;width:100%;height:100%;background:var(--c);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);opacity:.55;animation:kcFloat var(--d) ease-in-out infinite alternate}
+.kc img{width:60%;height:60%;image-rendering:pixelated}
+@keyframes kcFloat{from{transform:translateY(-8px) rotate(-4deg)}to{transform:translateY(10px) rotate(5deg)}}
+@media (max-width:860px){.hero-float{inset:-20px -16px}.kc i{opacity:.28}}
+/* hero deck keys glow when the mouse is near */
+.appwin .key{transition:transform .08s,box-shadow .08s,background .2s,filter .2s}
+.appwin .key.near{filter:brightness(1.08);box-shadow:0 0 0 3px rgba(95,208,168,.65)}
+/* numbers that count up */
+.stats{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.stats li{display:flex;flex-direction:column;gap:4px;padding:18px 20px;background:var(--tile);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--shadow)}
+.stats b{font-family:var(--f-mono);font-size:clamp(40px,5vw,60px);line-height:1;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stats li:nth-child(1) b{color:#22735a}.stats li:nth-child(2) b{color:#2f6fae}.stats li:nth-child(3) b{color:#8a6fe0}.stats li:nth-child(4) b{color:#c93c41}
+.stats span{font-family:var(--f-mono);color:var(--ink);font-size:15px}
+@media (max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* the final call: its keys fly in from all over as you scroll to it */
+.keyrow span{transition:transform .1s linear}
+/* the footer cat, walking along the top of the footer now and then */
+footer{position:relative}
+.cat{position:absolute;left:0;bottom:100%;width:48px;height:32px;margin-bottom:-4px;pointer-events:none;opacity:0;
+  background-repeat:no-repeat;background-size:200% 100%;image-rendering:pixelated}
+.cat.go{opacity:1;animation:catWalk 16s linear forwards,catLegs .4s steps(2,end) infinite}
+@keyframes catWalk{from{transform:translateX(-60px)}to{transform:translateX(calc(100vw + 60px))}}
+@keyframes catLegs{from{background-position:0 0}to{background-position:-96px 0}}
+/* sound toggle */
+.snd-btn{display:grid;place-items:center;width:34px;height:34px;margin-left:0;padding:6px;background:var(--chrome-2);border:3px solid #3a4560;color:var(--chrome-dim);cursor:pointer}
+.snd-btn svg{width:100%;height:100%}
+.snd-btn .snd-on{display:none}
+.snd-btn[aria-pressed="true"]{color:var(--on-accent);background:var(--mint);border-color:var(--chrome-fg)}
+.snd-btn[aria-pressed="true"] .snd-on{display:inline}.snd-btn[aria-pressed="true"] .snd-off{display:none}
+@media (max-width:1100px){.snd-btn{margin-left:0}}
+@media (pointer:coarse){.snd-btn{width:44px;height:44px;padding:10px}}
+@media (max-width:640px){.top .wrap{gap:8px}.menu-btn #menu-label{display:none}.menu-btn{padding:8px 10px;min-height:44px;margin-left:0}}
+@media (prefers-reduced-motion:reduce){.hero-float,.mn-buddy,.cat{display:none}}
+
+/* Section labels: quiet sentence case in the page's own type, not a boxed all-caps tag */
+.label{display:inline-flex;align-items:center;gap:8px;padding:0;border:0;background:none;box-shadow:none;font-family:var(--f-pix);font-size:16px;font-weight:600;letter-spacing:0;text-transform:none;color:#22735a}
+.label::before{width:10px;height:10px;background:var(--mint);box-shadow:2px 2px 0 var(--shadow)}
+.band .label{background:none;border:0;color:var(--mint)}
+
+/* Touch screens: no hover lift that sticks after a tap */
+@media (hover:none){
+  .lift:hover{transform:none;box-shadow:5px 5px 0 var(--shadow)}
+  .btn:hover{transform:none;box-shadow:4px 4px 0 var(--shadow)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv.pre,.rvc.pre{transform:none;opacity:1}
+  ::view-transition-old(root),::view-transition-new(root){animation:none!important}
+}

@@ -1,0 +1,71 @@
+<main class="wrap" id="contribute-view" hidden>
+  <section class="ct-hero" aria-labelledby="ct-title">
+    <span class="label load">Contribute</span>
+    <h1 id="ct-title" class="load d1">Help improve Minniondeck</h1>
+    <p class="lead load d2">Minniondeck is free to use. You don't need to write code to help: streamers, artists, writers and translators all make it better. Pick what you're good at.</p>
+    <div class="skills load d3" role="group" aria-label="What you're good at">
+      <button type="button" data-skill="all" aria-pressed="true">Show everything</button>
+      <button type="button" data-skill="sim" aria-pressed="false">I use it a lot</button>
+      <button type="button" data-skill="rust" aria-pressed="false">I write Rust</button>
+      
+      
+      <button type="button" data-skill="art" aria-pressed="false">I draw pixel art</button>
+      <button type="button" data-skill="words" aria-pressed="false">I write well</button>
+      <button type="button" data-skill="lang" aria-pressed="false">I speak another language</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="ct-ways">
+    <div class="head"><span class="label">Ways to help</span><h2 id="ct-ways">Pick one and start</h2><p id="ct-count" aria-live="polite"></p></div>
+    <div class="ways" id="ct-cards">
+      <article class="way frame lift" data-skills="sim rust js kotlin art words lang"><div class="ic" style="background:var(--coral)"><img class="px" src="icons/lt-problem.png" alt=""></div><h3>Report a bug</h3><p>Something broke or looks wrong? A clear report is one of the most useful things you can send.</p><a class="btn plain" href="#ct-bug" data-jump="ct-bug">Write a bug report</a></article>
+      <article class="way frame lift" data-skills="sim"><div class="ic" style="background:var(--sky)"><img class="px" src="icons/lt-report.png" alt=""></div><h3>Tell us what you need</h3><p>Which buttons do you reach for when you stream, play or work? Ideas from real setups shape what gets built next.</p><span class="chip soon">GitHub Discussions soon</span></article>
+      <article class="way frame lift" data-skills="sim"><div class="ic" style="background:var(--mint)"><img class="px" src="icons/lt-check.png" alt=""></div><h3>Test new versions</h3><p>Try a new build before it's released and say what happened. Testers with different phones, PCs and setups catch the most.</p><span class="chip soon">Beta channel soon</span></article>
+      <article class="way frame lift" data-skills="rust"><div class="ic" style="background:var(--lilac)"><img class="px" src="icons/nav-folder.png" alt=""></div><h3>Make a plugin</h3><p>Add actions for an app with the Rust plugin kit. The template builds, packs and installs itself.</p><a class="btn plain" href="#docs/make-plugin" data-view="docs/make-plugin">Plugin guide</a></article>
+      <article class="way frame lift" data-skills="rust"><div class="ic" style="background:var(--sun)"><img class="px" src="icons/lt-ok.png" alt=""></div><h3>Put a plugin on the marketplace</h3><p>Sign it, add its folder under plugins/, and add your entry to the marketplace list by pull request.</p><a class="btn plain" href="#docs/publish-plugin" data-view="docs/publish-plugin">How to publish</a></article>
+      <article class="way frame lift" data-skills="art"><div class="ic" style="background:var(--lilac)"><img class="px" src="icons/sp-like-on.png" alt=""></div><h3>Draw icons and GIFs</h3><p>Pixel icons for plugins, GIFs for buttons, and button designs people can start from. Make them in MinnionDeck with <b>Edit image</b>.</p><a class="btn plain" href="#docs/images" data-view="docs/images">How to make them</a></article>
+      <article class="way frame lift" data-skills="lang"><div class="ic" style="background:var(--mint)"><img class="px" src="icons/speak.png" alt=""></div><h3>Translate Minniondeck</h3><p>Hindi, German, Spanish and Japanese are already waiting in Settings. Help word the app for people who speak them, or add another.</p><span class="chip soon">Translation files soon</span></article>
+      <article class="way frame lift" data-skills="sim words art"><div class="ic" style="background:var(--coral)"><img class="px" src="icons/camera-view.png" alt=""></div><h3>Spread the word</h3><p>Show your deck in a stream, a forum post or a video. Most people find Minniondeck through someone who already uses it.</p><a class="btn plain" href="#home" data-view="home">Share the home page</a></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="ct-bug-h" id="ct-bug" class="rv">
+    <div class="head"><span class="label">Report a bug</span><h2 id="ct-bug-h">Write a good bug report</h2><p>Fill this in and press Send report: it reaches the developer with your log file. Copy gives you the text instead.</p></div>
+    <div class="bugger">
+      <form class="frame bug-form" id="bug-form" novalidate>
+        <label class="fld">What went wrong, in one line<input type="text" name="title" maxlength="100" placeholder="The phone disconnects when the PC sleeps"></label>
+        <div class="two-f">
+          <label class="fld">Part<select name="area"><option>Desktop app</option><option>Phone page</option><option>A plugin</option><option>Installer</option><option>Website</option></select></label>
+          <label class="fld">Plugin, if any<select name="plugin"><option value="">None</option><option>Spotify</option><option>Timer</option><option>System Monitor</option><option>Soundboard</option><option>Weather</option><option>Another plugin</option></select></label>
+        </div>
+        <label class="fld">Steps to make it happen<textarea name="steps" rows="4" placeholder="1. Pair a phone&#10;2. Let the PC sleep&#10;3. Wake it"></textarea></label>
+        <div class="two-f">
+          <label class="fld">What you expected<textarea name="expected" rows="2"></textarea></label>
+          <label class="fld">What happened<textarea name="actual" rows="2"></textarea></label>
+        </div>
+        <div class="two-f">
+          <label class="fld">Minniondeck version<input type="text" name="version" value="0.1.1"></label>
+          <label class="fld">Windows<select name="os"><option>Windows 11</option><option>Windows 10</option></select></label>
+        </div>
+        <div class="two-f">
+          <label class="fld">Phone and browser<input type="text" name="phone" placeholder="Pixel 8, Chrome"></label>
+          <label class="fld">Other app, if any<input type="text" name="sim" placeholder="OBS Studio"></label>
+        </div>
+        <label class="fld">Log file, optional (up to 2 MB)<input type="file" name="logfile" accept=".log,.txt,.zip,text/plain"><span class="mk-count">It's <code>minniondeck.log</code>: Settings › About › Open logs folder.</span></label>
+        <label class="fld">How to reach you, optional<input type="text" name="contact" maxlength="200" placeholder="Email or Discord name, if you'd like an answer"></label>
+      </form>
+      <div class="frame bug-out">
+        <div class="bar2"><b>Your report</b><span class="grow"></span><button type="button" class="btn plain" id="bug-copy" style="font-size:15px;padding:5px 12px">Copy</button><button type="button" class="btn mint" id="bug-send" style="font-size:15px;padding:5px 12px">Send report</button></div>
+        <pre id="bug-text" aria-live="polite"></pre>
+        <p class="mk-count" id="bug-msg" aria-live="polite">Send report sends it, with the log file, straight to the Minniondeck developer. The version is in Settings › About.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ct-kind" class="rv">
+    <div class="band" style="grid-template-columns:minmax(0,1fr)">
+      <div><span class="label">Be kind</span><h2 id="ct-kind">One rule above the rest</h2>
+      <p>Treat everyone the way you'd want to be treated at your own desk. Be patient with new people, be specific in reviews, and assume good intent. Harassment of any kind isn't welcome here.</p></div>
+    </div>
+  </section>
+</main>

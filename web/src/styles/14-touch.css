@@ -1,0 +1,43 @@
+/* ===== Phones and tablets =====
+   Only for screens up to 1024px wide or touch screens; the desktop layout is untouched.
+   Sizes follow Apple (44pt) and Material (48dp) touch targets, over WCAG 2.2's 24px floor. */
+
+/* The page deck slides down while you scroll down to read, and comes back when you scroll up
+   (06-page-deck.js adds .tuck on screens up to 1024px wide) */
+@media (max-width:1024px){
+  .sdeck.tuck{transform:translate(-50%,160%);opacity:0;pointer-events:none}
+}
+@media (max-width:640px){
+  .sdeck.tuck{transform:translateY(160%)}
+  /* the floating keycaps sat on top of the hero text; the hero has enough going on at this size */
+  .hero-float{display:none}
+  /* phone keyboards zoom the page into any field under 16px; these were smaller */
+  .edt input,.edt select,.dside .search input,.sort select{font-size:16px}
+  /* the docs page keeps more of the width for its text */
+  .dmain{padding:18px 16px}
+  /* the deck's key names were 9px: a little larger, still two lines */
+  .sd-key .t{font-size:10px}
+}
+
+/* Screens you touch: small buttons and links get a finger-sized hit area */
+@media (pointer:coarse){
+  .mini{min-height:36px;padding:8px 12px;font-size:12px}
+  a.mini{display:inline-flex;align-items:center}
+  .back{display:inline-flex;align-items:center;min-height:44px}
+  .chk{min-height:44px}
+  .chk input{width:22px;height:22px}
+  .lib .it button.nm,.layers li button.nm{min-height:44px}
+  .mk-count a{display:inline-block;padding-block:12px}
+  .sw{gap:6px}
+  /* footer links: a taller row each, the same spacing between them */
+  footer ul{gap:0}
+  footer li a{display:inline-block;padding-block:7px}
+  /* sliders: a thumb you can grab */
+  .fld input[type=range]{min-height:32px}
+}
+
+/* How it works: on narrow screens the picture stays pinned and the steps pass under it.
+   Less empty scrolling between the steps. */
+@media (max-width:860px){
+  .sc-steps > li,.sc-steps > li:first-child,.sc-steps > li:last-child{min-height:46vh}
+}

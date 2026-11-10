@@ -1,0 +1,69 @@
+/* ===== Screen sizes =====
+   Phones and tablets get a Menu button instead of nine wrapped links; big screens get more room */
+.menu-btn{display:none;margin-left:auto;align-items:center;gap:8px;font-family:var(--f-pix);font-size:16px;font-weight:600;color:var(--chrome-fg);background:none;border:3px solid var(--chrome-fg);padding:5px 12px;cursor:pointer}
+.menu-btn:hover{background:var(--chrome-2)}
+.mb-ic{display:flex;flex-direction:column;gap:3px;width:16px}
+.mb-ic i{display:block;height:3px;background:currentColor;transition:transform .15s var(--step),opacity .15s}
+.top.open .mb-ic i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.top.open .mb-ic i:nth-child(2){opacity:0}
+.top.open .mb-ic i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:1100px){
+  .menu-btn{display:flex}
+  .top .wrap{flex-wrap:wrap;padding-block:8px}
+  .nav{display:none;width:100%;margin:0;padding:6px 0 4px;flex-direction:column;gap:4px;max-height:calc(100dvh - 80px);overflow-y:auto}
+  .top.open .nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));animation:logIn .2s var(--step)}
+  .nav a{justify-content:flex-start;padding:10px 12px;font-size:17px;color:var(--chrome-fg);border:3px solid #3a4560}
+  .nav a[aria-current="page"]{background:var(--mint);color:var(--on-accent);border-color:var(--chrome-fg)}
+  .nav a[aria-current="page"]::after,.nav-sep{display:none}
+  .nav a.nav-cta{grid-column:1/-1;margin:4px 0 0;justify-content:center}
+  .brand .ver{display:none}
+  .mk-tools{top:calc(env(safe-area-inset-top,0px) + 62px)}
+  .dside{top:calc(env(safe-area-inset-top,0px) + 74px)}
+}
+@media (max-width:640px){
+  .top.open .nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand{font-size:20px}
+  .brand img{width:32px;height:32px}
+}
+@media (max-width:360px){
+  .top.open .nav{grid-template-columns:minmax(0,1fr)}
+  .menu-btn #menu-label{display:none}
+}
+/* Tablets: the makers keep the canvas first and two panels side by side under it */
+@media (max-width:860px){
+  .mkr{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mkr > .stage2{grid-column:1/-1;order:-1}
+  .mkr > .side-r{grid-column:auto}
+  .mkr-top{align-items:flex-start}
+  .tr-app .tr-notes{order:-1}
+  main{padding-block:28px 64px}
+}
+@media (max-width:560px){
+  .mkr{grid-template-columns:minmax(0,1fr)}
+  .cvwrap{padding:8px}
+  .tabs2 button{flex:1 1 auto}
+  .bar2 .btn{padding:5px 10px;font-size:14px}
+  .hero h1{font-size:clamp(32px,10vw,44px)}
+  .head h2,.band h2{font-size:clamp(24px,7.5vw,32px)}
+  .final{padding:32px 16px}
+  .btn{font-size:16px;padding:9px 16px}
+  .cta .btn{flex:1 1 auto;justify-content:center}
+  .faq summary{font-size:17px}
+  .dpage td:first-child{white-space:normal}
+  .conn{padding:16px}
+  .pq{width:150px;height:150px}
+}
+/* Touch screens: no hover lift that sticks after a tap */
+@media (hover:none){
+  .lift:hover{transform:none;box-shadow:4px 4px 0 var(--shadow)}
+}
+/* Big screens: a wider page and slightly larger text */
+@media (min-width:1600px){
+  .wrap{max-width:1320px}
+  body{font-size:18px}
+  .hero h1{font-size:72px}
+}
+@media (min-width:2200px){
+  .wrap{max-width:1500px}
+  body{font-size:19px}
+}

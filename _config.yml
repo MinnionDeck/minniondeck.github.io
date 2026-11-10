@@ -1,0 +1,3 @@
+# GitHub Pages: web/ is the website's source (built into index.html and assets/), not a page to publish
+exclude:
+  - web

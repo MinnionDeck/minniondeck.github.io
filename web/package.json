@@ -1,0 +1,15 @@
+{
+  "name": "minniondeck-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/publish.mjs && node scripts/seo-pages.mjs",
+    "build:editor": "vite build --mode editor && node scripts/editor-name.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "vite": "8.3.5"
+  }
+}

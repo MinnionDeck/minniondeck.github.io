@@ -1,0 +1,41 @@
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" data-view="home"><img class="px" src="icons/icon.png" alt="">Minniondeck<span class="ver" aria-label="version 0.1.1" data-rel="v">0.1.1</span></a>
+    <button type="button" class="cmdk-btn" id="cmdk-btn" aria-haspopup="dialog" aria-label="Search the site (Ctrl+K)"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg><span class="cmdk-lbl">Search</span><kbd>Ctrl K</kbd></button>
+    <button type="button" class="snd-btn" id="snd-btn" aria-pressed="false" aria-label="Sounds: off. Turn on click sounds"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="0" y="3" width="2" height="2"/><rect x="2" y="2" width="1" height="4"/><rect x="3" y="1" width="1" height="6"/><rect class="snd-on" x="5" y="2" width="1" height="1"/><rect class="snd-on" x="5" y="5" width="1" height="1"/><rect class="snd-on" x="6" y="3" width="1" height="2"/><rect class="snd-off" x="5" y="2" width="1" height="1"/><rect class="snd-off" x="7" y="2" width="1" height="1"/><rect class="snd-off" x="6" y="3" width="1" height="2"/><rect class="snd-off" x="5" y="5" width="1" height="1"/><rect class="snd-off" x="7" y="5" width="1" height="1"/></svg></button>
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav"><span class="mb-ic" aria-hidden="true"><i></i><i></i><i></i></span><span id="menu-label">Menu</span></button>
+    <nav class="nav" id="main-nav" aria-label="Main">
+      <a href="#home" data-view="home" aria-current="page">Home</a>
+      <a href="#tour" data-view="tour">Tour</a>
+      <a href="#marketplace" data-view="marketplace">Marketplace</a>
+      <a href="#docs" data-view="docs">Docs</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="#contribute" data-view="contribute">Contribute</a>
+      <a href="#about" data-view="about">About</a>
+      <a class="nav-cta" href="#download" data-view="download">Download</a>
+    </nav>
+  </div>
+  <div class="sprog" aria-hidden="true"><i id="sprog"></i></div>
+</header>
+
+<!-- The page deck: five keys for the page you're on. Like Minniondeck, it switches profile by itself
+     when a different page comes to the front. Keys 1 to 5 on the keyboard press them. -->
+<aside class="sdeck" id="sdeck" aria-label="Page deck">
+  <div class="sd-lcd">
+    <span class="sd-led" aria-hidden="true"></span>
+    <span class="sd-txt"><small id="sd-sub">Profile</small><b id="sd-name" aria-live="polite">Home</b></span>
+  </div>
+  <div class="sd-keys" id="sd-keys" role="group" aria-label="Actions for this page"></div>
+  <button type="button" class="sd-fold" id="sd-fold" aria-expanded="true" aria-controls="sd-keys" aria-label="Hide the page deck and turn off its 1 to 5 keys"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="0" y="2" width="8" height="1"/><rect x="1" y="3" width="6" height="1"/><rect x="2" y="4" width="4" height="1"/><rect x="3" y="5" width="2" height="1"/></svg></button>
+</aside>
+
+<!-- Command menu (Ctrl+K or /): jump to any page, plugin or docs topic -->
+<dialog class="cmdk" id="cmdk" aria-label="Search the site">
+  <div class="cmdk-in">
+    <svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg>
+    <input id="cmdk-q" type="text" placeholder="Search pages, plugins and docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="cmdk-list" id="cmdk-list" role="listbox" aria-label="Results"></ul>
+  <div class="cmdk-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span class="grow"></span><span><kbd>Ctrl K</kbd> opens this anywhere</span></div>
+</dialog>

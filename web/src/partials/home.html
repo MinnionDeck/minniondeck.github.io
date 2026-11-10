@@ -1,0 +1,288 @@
+<div id="home-view">
+<main class="wrap">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-float" id="hero-float" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <div class="facts load">
+        <span class="chip ok">Free</span>
+        <span class="chip">Source-available</span>
+        <span class="chip">Windows + your phone</span>
+      </div>
+      <h1 id="hero-title" class="load d1">Your phone becomes a <span class="swap" id="swap"><span>stream deck</span></span></h1>
+      <p class="lead load d2">Minniondeck puts big square buttons and live screens on your phone. Press a key and your PC does it: play music, start a timer, check your PC or play a sound. Plugins add even more buttons.</p>
+      <div class="cta load d3">
+        <a class="btn mint" href="#download" data-view="download">Download for Windows</a>
+        <a class="btn plain" href="#marketplace" data-view="marketplace">Browse plugins</a>
+      </div>
+      <p class="hero-proof load d4"><span><i></i>Desktop app <span data-rel="v">0.1.1</span></span><span><i></i>No phone app needed</span><span><i></i>No account needed</span></p>
+    </div>
+
+    <div class="stage load d2" id="stage" aria-label="The Deck page of the Minniondeck desktop app, a 5 by 3 page, with each press shown in the PC log">
+      <button type="button" class="mn mn-hero" id="mn-hero" aria-label="Minnion, the Minniondeck mascot. Press to say hi"><span class="mn-say" id="mn-say" aria-live="polite"></span></button>
+      <div class="phone appwin" id="phone">
+        <div class="am-bar"><img class="am-logo" src="icons/icon.png" alt=""><b>Minniondeck</b><span class="am-crumb">My profile / Page 1</span><span class="am-win" aria-hidden="true"><i>_</i><i>□</i><i>✕</i></span></div>
+        <div class="aw-body">
+          <div class="aw-rail" id="aw-rail" aria-hidden="true"></div>
+          <div class="aw-main">
+            <div class="aw-top"><i class="aw-back" aria-hidden="true">‹</i><b>My profile / <span>Page 1</span></b><span class="am-b">5 × 3 grid ▾</span><span class="am-b">Edit layout</span><span class="am-b">Show on phones</span><div class="tabs" id="sizes" hidden></div></div>
+            <div class="deck" id="deck"></div>
+            <div class="aw-insp" aria-live="polite" hidden><div><b id="aw-name">Mute mic</b><div class="am-dim" id="aw-meta">Mute mic · 1 × 1 button</div></div><div class="am-row"><button type="button" class="am-b go" id="aw-edit">Edit button</button><span class="am-b" aria-hidden="true">Press</span><span class="am-b" aria-hidden="true">Duplicate</span><span class="am-b" aria-hidden="true">⋯</span></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="note">The Deck page of the desktop app, with its built-in keys. Your phone shows the same 5 × 3 page. Tap a key to try it, double-click one to edit it.</p>
+
+      <div class="under">
+        <div class="mphone" aria-hidden="true">
+          <div class="mph-cam"></div>
+          <div class="mph-screen"><div class="mph-bar"><span>Minniondeck</span><i></i></div><div class="deck mph-deck" id="mph-deck"></div></div>
+          <div class="mph-btn"></div>
+        </div>
+        <div class="pc frame">
+          <div class="bar"><i></i>Minniondeck on your PC</div>
+          <div class="stat"><span>Phone</span><b>paired</b></div>
+          <div class="stat"><span>Profile</span><b>My profile</b></div>
+          <div class="stat"><span>Grid</span><b id="gridstat">5 × 3</b></div>
+          <ul class="log" id="log" aria-live="polite"></ul>
+        </div>
+      </div>
+
+      <div class="packet" id="packet" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="notice frame load d4" aria-labelledby="home-note">
+    <div class="notice-tag" aria-hidden="true">!</div>
+    <div class="notice-body">
+      <h2 id="home-note">Still being finished</h2>
+      <p>Minniondeck is not finished yet, so you will find bugs. It comes as it is, without any warranty. If you change the code or add plugins from others, problems from those changes are your own responsibility. Found a bug? Please tell us.</p>
+      <div class="cta"><a class="btn mint" href="#contribute" data-view="contribute" data-scroll="ct-bug">Report a bug</a><a class="btn plain" href="#about" data-view="about" data-scroll="ab-notice">Read more</a></div>
+    </div>
+  </section>
+</main>
+
+<div class="ticker rev" aria-label="Apps you can control">
+  <div class="track" id="apptrack"></div>
+</div>
+<div class="wrap tick-row"><span>Control any app through hotkeys, programs and websites.</span><span>Logos are trademarks of their owners.</span></div>
+<div class="wrap">
+  <ul class="stats rv" id="stats" aria-label="Minniondeck in numbers">
+    <li><b data-count="plugins">5</b><span>plugins in the marketplace</span></li>
+    <li><b data-count="keys">26</b><span>keys those plugins add</span></li>
+    <li><b data-count="15">15</b><span>keys on one 5 × 3 page</span></li>
+    <li><b data-count="0">0</b><span>accounts to make</span></li>
+  </ul>
+</div>
+
+<main class="wrap">
+  <section aria-labelledby="sims-title" class="rv">
+    <div class="head">
+      <span class="label">Setup asks one question</span>
+      <h2 id="sims-title">What will you use it for?</h2>
+      <p>Pick one during install and Minniondeck Setup installs the plugins that go with it. Add the others later from the marketplace.</p>
+    </div>
+    <div class="sims">
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--lilac)" data-simart="general"></div>
+        <h3>General</h3>
+        <p>A Stream Deck for your PC.</p>
+        <ul><li>Macros and media keys</li><li>Spotify control</li><li>Timer and system monitor</li><li>Soundboard and weather</li></ul>
+        <span class="chip ok">Available</span>
+      </article>
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--coral)" data-simart="streaming"></div>
+        <h3>Streaming</h3>
+        <p>Go live and run your stream from your phone.</p>
+        <ul><li>Scenes and going live</li><li>Mic and sound</li><li>Chat and alerts</li></ul>
+        <span class="chip soon">Coming soon</span>
+      </article>
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--sky)" data-simart="games"></div>
+        <h3>Games</h3>
+        <p>Keys and live screens for your games.</p>
+        <ul><li>Game macros</li><li>Launch games and apps</li><li>Live stats on keys</li></ul>
+        <span class="chip soon">Coming soon</span>
+      </article>
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--peach)" data-simart="work"></div>
+        <h3>Work</h3>
+        <p>Meetings and focus, a key away.</p>
+        <ul><li>Mute and camera in meetings</li><li>Focus timer</li><li>Office shortcuts</li></ul>
+        <span class="chip soon">Coming soon</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it works, told as you scroll: the picture stays pinned and changes with each step -->
+  <section aria-labelledby="how-title" class="rv">
+    <div class="head">
+      <span class="label">Three steps</span>
+      <h2 id="how-title">How it works</h2>
+      <p>From the installer to your first key press in a few minutes. Scroll through it.</p>
+    </div>
+    <div class="scrolly">
+      <div class="sc-visual" aria-hidden="true">
+        <div class="sc-frame" id="sc-vis" data-step="1">
+          <div class="sc-p sc-p1">
+            <div class="sc-win">
+              <div class="sc-bar"><i></i>Minniondeck Setup<span>Step 3 of 4</span></div>
+              <div class="sc-body">
+                <b>Installing</b>
+                <ul class="sc-parts">
+                  <li><img class="px" src="icons/icon.png" alt="">Minniondeck<small data-rel="v">0.1.1</small></li>
+                  <li><img class="px" src="icons/sp-now.png" alt="">Spotify</li>
+                  <li><img class="px" src="icons/timer-countdown.png" alt="">Timer</li>
+                  <li><img class="px" src="icons/sysmon-cpu.png" alt="">System monitor</li>
+                </ul>
+                <div class="meter all sc-meter"><i></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-p sc-p2">
+            <div class="sc-pc"><span>Phones › Pair a phone</span><div class="sc-qr" id="sc-qr"></div></div>
+            <div class="sc-wire"><i></i></div>
+            <div class="sc-ph"><div class="sc-ph-scr"><div class="sc-scan"></div><b>Scan</b></div></div>
+          </div>
+          <div class="sc-p sc-p3">
+            <div class="sc-ph sc-ph-wide"><div class="sc-keys"><span><img class="px" src="icons/sp-prev.png" alt=""></span><span class="go"><img class="px" src="icons/sp-next.png" alt=""></span><span><img class="px" src="icons/sp-volume.png" alt=""></span></div></div>
+            <div class="sc-wire"><i></i></div>
+            <ul class="sc-log"><li><time>21:04:12</time>Spotify · next song</li><li><time>21:04:07</time>Spotify · play</li></ul>
+          </div>
+          <ol class="sc-dots"><li></li><li></li><li></li></ol>
+        </div>
+      </div>
+      <ol class="sc-steps">
+        <li data-step="1"><div class="frame"><span class="sc-n">1</span><h3>Install on your PC</h3><p>Run the installer and pick what you'll use it for. It fetches the right plugins and anything Windows needs.</p></div></li>
+        <li data-step="2"><div class="frame"><span class="sc-n">2</span><h3>Pair your phone</h3><p>Scan the QR code on the PC with your phone&#39;s camera and press Allow on the PC. Your deck opens in the phone&#39;s browser.</p></div></li>
+        <li data-step="3"><div class="frame"><span class="sc-n">3</span><h3>Press a key</h3><p>The PC runs the action, and live screens update on the phone.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="edt-title" class="rv" id="try-editor">
+    <div class="head">
+      <span class="label">Try it here</span>
+      <h2 id="edt-title">Make any button your own</h2>
+      <p>Every button is made in one window, in four steps: a name, what it does, a picture, and a colour. This is a small working copy of it. Make your changes, then press Save button. Or double-click a key on the deck at the top.</p>
+    </div>
+    <div class="edt" id="edt">
+      <div class="edt-bar"><img src="icons/icon.png" alt=""><b id="edt-head">Edit button</b><span class="edt-x" aria-hidden="true">✕</span></div>
+      <div class="edt-body">
+        <div class="edt-col edt-left">
+          <div class="edt-prev">
+            <button type="button" class="edt-key" id="edt-key" aria-label="Press the preview"></button>
+            <div class="edt-row"><button type="button" class="edt-b" id="edt-press">Try it</button><button type="button" class="edt-b" id="edt-play">Play looks</button></div>
+            <p class="edt-help">This is how the button looks on the deck and on your phone.</p>
+          </div>
+          <div class="edt-f" hidden><label class="edt-cap" for="edt-text">Text on tile</label><input id="edt-text" maxlength="24" placeholder="Same as the button's name" autocomplete="off"></div>
+          <div class="edt-f" hidden><span class="edt-cap" id="edt-cap-show">Show</span><div class="edt-seg" id="edt-show" role="group" aria-labelledby="edt-cap-show"></div></div>
+          <div class="edt-f" hidden><span class="edt-cap" id="edt-cap-pos">Name position</span><div class="edt-seg" id="edt-pos" role="group" aria-labelledby="edt-cap-pos"></div></div>
+        </div>
+        <div class="edt-col edt-right">
+          <div class="edt-f"><label class="edt-q" for="edt-name"><span class="edt-n">1</span>What is it called?</label><input id="edt-name" maxlength="24" autocomplete="off"></div>
+          <span class="edt-q"><span class="edt-n">2</span>What does it do?</span><div class="edt-f" hidden><span class="edt-cap" id="edt-cap-runs">Runs</span><div class="edt-seg" id="edt-runs" role="group" aria-labelledby="edt-cap-runs"></div><span class="edt-help" id="edt-runs-help"></span></div>
+          <div id="edt-steps"></div>
+          <div class="edt-f"><span class="edt-q" id="edt-cap-ic"><span class="edt-n">3</span>Pick a picture</span><div class="edt-icons" id="edt-icons" role="group" aria-labelledby="edt-cap-ic"></div></div>
+          <div class="edt-f"><span class="edt-cap" id="edt-cap-st">Looks: each press shows the next one</span><div class="edt-row" id="edt-states" role="group" aria-labelledby="edt-cap-st"></div><span class="edt-help" id="edt-st-help"></span></div>
+          <div class="edt-f"><span class="edt-q" id="edt-cap-col"><span class="edt-n">4</span>Pick a colour</span><div class="edt-row" id="edt-cols" role="group" aria-labelledby="edt-cap-col"></div></div>
+          <p class="edt-more">The real window also has 1,036 pixel icons and 3,466 app logos with search, up to 8 looks, 15 press effects, and every action your plugins add.</p>
+        </div>
+      </div>
+      <div class="edt-foot"><span id="edt-status" role="status">Nothing changed yet.</span><button type="button" class="edt-b" id="edt-undo">Undo changes</button><button type="button" class="edt-b go" id="edt-save">Save button</button></div>
+    </div>
+    <div class="more"><a class="btn plain" href="#docs/buttons" data-view="docs/buttons">Everything the window can do</a><span>Or see it in the <a href="#tour" data-view="tour" data-scroll="tr-app">tour</a>.</span></div>
+  </section>
+
+  <section aria-labelledby="feat-title" class="rv">
+    <div class="head">
+      <span class="label">What's inside</span>
+      <h2 id="feat-title">Everything runs on your own PC</h2>
+      <p>No cloud service sits between your phone and your PC. Plugins add whole worlds of buttons.</p>
+    </div>
+    <div class="feats bento">
+      <article class="feat frame lift b-big"><div class="ic" data-logo="spotify"></div><h3>Spotify control</h3><p>Play, skip, like and volume, with what's playing on a key.</p><div class="b-np" aria-hidden="true"><img class="px" src="icons/sp-now.png" alt=""><div><b>Now playing</b><span class="b-track"><i></i></span></div><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div><div class="b-keys" aria-hidden="true"><span><img class="px" src="icons/sp-prev.png" alt=""></span><span><img class="px" src="icons/sp-play.png" alt=""></span><span><img class="px" src="icons/sp-next.png" alt=""></span><span><img class="px" src="icons/sp-like-on.png" alt=""></span></div><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/timer-countdown.png" alt=""></div><h3>Timers</h3><p>Countdowns, a stopwatch, a focus timer and a clock, each on a key.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/sysmon-cpu.png" alt=""></div><h3>System monitor</h3><p>CPU, GPU, memory, disk and network, live on your phone.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/soundboard-sound.png" alt=""></div><h3>Soundboard</h3><p>Play your own sound files with one press.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/weather-sun.png" alt=""></div><h3>Weather</h3><p>The weather now, highs and lows, rain and wind.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift b-wide"><div class="ic"><img class="px" src="icons/nav-phases.png" alt=""></div><h3>Profiles that switch</h3><p>A set of pages for each app. Minniondeck can switch to it by itself when that app comes to the front.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true" fill="#ffc93c"><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/></svg></div><h3>Pictures and GIFs</h3><p>Draw pixel pictures and GIFs for a button right from MinnionDeck: <b>Edit image</b> opens the editor and syncs it back.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/nav-folder.png" alt=""></div><h3>Plugin kit</h3><p>A Rust kit and template for writing your own plugins.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift b-full"><div class="ic"><img class="px" src="icons/icon.png" alt=""></div><h3>Built-in keys</h3><p>Press hotkeys, open programs and websites, and change the volume, with no plugin needed.</p><span class="chip ok">Available</span></article>
+    </div>
+  </section>
+
+  <section class="band rv" aria-labelledby="free-title">
+    <div>
+      <span class="label">Free to use</span>
+      <h2 id="free-title">Free for everyone</h2>
+      <p>Minniondeck started as a home project and is shared with everyone. The app, the official plugins and the installer are free to use, and the source is on GitHub to read.</p>
+    </div>
+    <ul class="pledge">
+      <li>No accounts</li>
+      <li>No subscriptions</li>
+      <li>No paid plugins</li>
+      <li>Source code on GitHub</li>
+    </ul>
+    <div class="spec">
+      <span>Tauri + Rust desktop app</span>
+      <span>Plugin API 2</span>
+      <span>Windows</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="market-title" class="rv">
+    <div class="head">
+      <span class="label">Marketplace</span>
+      <h2 id="market-title">Add plugins in one click</h2>
+      <p>The marketplace lists official and community plugins. Install them from this site or from the Marketplace page inside the app.</p>
+    </div>
+    <div class="plugs" id="home-plugs">
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--mint)" data-view="marketplace/minnion_spotify"><img class="deck" src="shots/minnion_spotify.png" alt="Spotify profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/sp-now.png" alt="">Spotify</h3><p>Play, skip, like, volume and now playing.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.1.0</span><span class="chip">7 keys</span></div><div class="acts"><a class="btn plain" href="#marketplace/minnion_spotify" data-view="marketplace/minnion_spotify">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--sun)" data-view="marketplace/minnion_timer"><img class="deck" src="shots/minnion_timer.png" alt="Timer profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/timer-countdown.png" alt="">Timer</h3><p>Countdowns, a stopwatch, a focus timer and a clock.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.1.0</span><span class="chip">4 keys</span></div><div class="acts"><a class="btn plain" href="#marketplace/minnion_timer" data-view="marketplace/minnion_timer">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--peach)" data-view="marketplace/minnion_soundboard"><img class="deck" src="shots/minnion_soundboard.png" alt="Soundboard profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/soundboard-sound.png" alt="">Soundboard</h3><p>Play sound files from your keys.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.1.0</span><span class="chip">2 keys</span></div><div class="acts"><a class="btn plain" href="#marketplace/minnion_soundboard" data-view="marketplace/minnion_soundboard">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--sky)" data-view="marketplace/minnion_sysmon"><img class="deck" src="shots/minnion_sysmon.png" alt="System Monitor profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/sysmon-cpu.png" alt="">System Monitor</h3><p>CPU, GPU, memory, disk, network and the busiest app, live.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.2.0</span><span class="chip">6 keys</span></div><div class="acts"><a class="btn plain" href="#marketplace/minnion_sysmon" data-view="marketplace/minnion_sysmon">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--lilac)" data-view="marketplace/minnion_weather"><img class="deck" src="shots/minnion_weather.png" alt="Weather profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/weather-weather.png" alt="">Weather</h3><p>The weather now, highs and lows, rain, wind, air quality and more.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.2.0</span><span class="chip">2 keys</span></div><div class="acts"><a class="btn plain" href="#marketplace/minnion_weather" data-view="marketplace/minnion_weather">Details</a></div></div>
+      </article>
+    </div>
+    <div class="more"><a class="btn plain" href="#marketplace" data-view="marketplace">Open the marketplace</a><span>Made a plugin? <a href="#marketplace" data-view="marketplace" data-scroll="mk-submit">Submit it here</a>.</span></div>
+  </section>
+
+  <section aria-labelledby="faq-title" class="rv">
+    <div class="head">
+      <span class="label">Questions</span>
+      <h2 id="faq-title">Before you install</h2>
+    </div>
+    <div class="faq">
+      <details class="frame"><summary>Do I need Stream Deck hardware?</summary><p>No. Your phone is the deck. Minniondeck runs on your PC and your phone shows the keys in its web browser.</p></details>
+      <details class="frame"><summary>Does it cost anything?</summary><p>No. Minniondeck and its official plugins are free to use. There are no accounts and no subscriptions.</p></details>
+      <details class="frame"><summary>Which phones work?</summary><p>Android phones, iPhones and tablets, on the same Wi-Fi as your PC. There&#39;s no app to install: the deck opens in the browser.</p></details>
+      <details class="frame"><summary>Where do plugins come from?</summary><p>From the marketplace, which reads the plugin list from GitHub. Official plugins are made by the Minniondeck project. Community plugins are sent in through the Submit a plugin form and checked by hand before they're listed.</p></details>
+    </div>
+  </section>
+
+  <section class="final frame rv" aria-labelledby="final-title">
+    <div class="keyrow" aria-hidden="true">
+      <span><img class="px" src="icons/sp-play.png" alt=""></span><span><img class="px" src="icons/timer-countdown.png" alt=""></span><span><img class="px" src="icons/soundboard-sound.png" alt=""></span><span><img class="px" src="icons/sysmon-cpu.png" alt=""></span><span><img class="px" src="icons/weather-sun.png" alt=""></span><span><img class="px" src="icons/sp-volume.png" alt=""></span>
+    </div>
+    <h2 id="final-title">Build your deck</h2>
+    <p>One installer, your PC, your phone. Download Minniondeck for Windows.</p>
+    <a class="btn mint" href="#download" data-view="download">Get Minniondeck</a>
+  </section>
+</main>
+</div>

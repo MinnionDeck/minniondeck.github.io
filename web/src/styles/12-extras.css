@@ -1,0 +1,213 @@
+/* ===== Ideas from the sites people rate best (Linear, Stripe, Raycast, Apple) ===== */
+
+/* 1. Reading progress: a pixel bar under the header (Stripe's docs, Apple's long pages) */
+.sprog{position:absolute;left:0;right:0;bottom:-4px;height:4px;pointer-events:none}
+.sprog i{display:block;height:100%;width:100%;background:var(--mint);transform-origin:left;transform:scaleX(0)}
+.top{position:sticky}
+
+/* 2. Cursor spotlight on cards (Linear, Vercel): a soft light follows the pointer, the line warms up */
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(95,208,168,.22),transparent 70%)}
+.spot:hover::before{opacity:1}
+@media (hover:none){.spot::before{display:none}}
+@media (pointer:coarse){.sd-fold{width:44px;height:44px;padding:10px}.cmdk-btn{min-height:44px;min-width:44px;justify-content:center}}
+
+/* 3. Bento grid for "What's inside" (Apple, Linear): one big card, wide cards, small ones */
+.feats.bento{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense}
+.bento .b-big{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#ffffff 40%,#e9f8f1)}
+.bento .b-big h3{font-size:28px}
+.bento .b-big p{font-size:17px;max-width:40ch}
+.bento .b-wide{grid-column:span 2;background:linear-gradient(160deg,#ffffff 50%,#eef2ff)}
+.bento .b-full{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:6px 20px;background:linear-gradient(90deg,#ffffff,#fff7e6)}
+.bento .b-full p{grid-column:2}
+.bento .b-full h3{grid-column:2;align-self:end}
+.bento .b-full .ic{grid-row:span 2}
+.bento .b-full .chip{grid-column:3;grid-row:1/span 2;margin:0}
+.b-np{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--chrome);color:var(--chrome-fg);border:4px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);padding:10px 12px;margin-top:8px}
+.b-np img{width:44px;height:44px}
+.b-np b{font-size:14px;display:block}
+.b-track{display:block;height:8px;margin-top:6px;border:2px solid #3a4560;background:#262e43}
+.b-track i{display:block;height:100%;width:0;background:var(--mint);animation:track 9s steps(30,end) infinite}
+@keyframes track{to{width:100%}}
+.b-keys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;max-width:320px}
+.b-keys span{aspect-ratio:1;background:var(--chrome);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--shadow);display:grid;place-items:center;animation:wave 3.2s var(--step) infinite}
+.b-keys span:nth-child(2){animation-delay:.2s}.b-keys span:nth-child(3){animation-delay:.4s}.b-keys span:nth-child(4){animation-delay:.6s}
+.b-keys img{width:62%;height:62%}
+@media (max-width:1000px){.feats.bento{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){
+  .feats.bento{grid-template-columns:minmax(0,1fr)}
+  .bento .b-big,.bento .b-wide{grid-column:auto;grid-row:auto}
+  .bento .b-full{grid-template-columns:auto minmax(0,1fr)}
+  .bento .b-full .chip{grid-column:1/-1;grid-row:auto;justify-self:start}
+}
+
+/* 4. A story told by scrolling (Stripe, Apple): the picture stays pinned, the steps pass by it */
+.scrolly{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:start}
+.sc-visual{position:sticky;top:calc(env(safe-area-inset-top,0px) + 120px)}
+.sc-frame{position:relative;aspect-ratio:5/4;background:var(--chrome);border:4px solid var(--ink);box-shadow:10px 10px 0 var(--shadow);overflow:hidden;
+  background-image:radial-gradient(#2a3248 1.5px,transparent 1.5px);background-size:14px 14px}
+.sc-p{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:18px;padding:28px;opacity:0;transform:translateY(18px) scale(.98);transition:opacity .45s var(--ease),transform .55s var(--ease);pointer-events:none}
+.sc-frame[data-step="1"] .sc-p1,.sc-frame[data-step="2"] .sc-p2,.sc-frame[data-step="3"] .sc-p3{opacity:1;transform:none}
+.sc-dots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;list-style:none;margin:0;padding:0}
+.sc-dots li{width:10px;height:10px;border:2px solid var(--chrome-dim);transition:background-color .3s,width .3s var(--ease)}
+.sc-frame[data-step="1"] .sc-dots li:nth-child(1),.sc-frame[data-step="2"] .sc-dots li:nth-child(2),.sc-frame[data-step="3"] .sc-dots li:nth-child(3){background:var(--mint);border-color:var(--mint);width:26px}
+/* step 1: the installer */
+.sc-win{width:min(100%,380px);background:var(--panel);border:4px solid #000;box-shadow:6px 6px 0 #000;color:var(--ink)}
+.sc-bar{display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--ink);color:var(--chrome-fg);font-size:14px;font-weight:600}
+.sc-bar i{width:10px;height:10px;background:var(--mint);border:2px solid #000}
+.sc-bar span{margin-left:auto;font-family:var(--f-mono);font-size:10px;color:var(--chrome-dim);font-weight:400}
+.sc-body{padding:14px;display:flex;flex-direction:column;gap:10px}
+.sc-parts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.sc-parts li{display:flex;align-items:center;gap:10px;font-size:14px;border:3px solid var(--ink);background:var(--tile);padding:4px 8px}
+.sc-parts li img{width:24px;height:24px}
+.sc-parts li small{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--slate)}
+.sc-parts li::after{content:"";width:16px;height:16px;border:3px solid var(--ink);margin-left:auto;flex:none}
+.sc-frame[data-step="1"] .sc-parts li::after{animation:tick .3s steps(2,end) both}
+.sc-frame[data-step="1"] .sc-parts li:nth-child(1)::after{animation-delay:.5s}
+.sc-frame[data-step="1"] .sc-parts li:nth-child(2)::after{animation-delay:1.1s}
+.sc-frame[data-step="1"] .sc-parts li:nth-child(3)::after{animation-delay:1.7s}
+.sc-frame[data-step="1"] .sc-parts li:nth-child(4)::after{animation-delay:2.3s}
+@keyframes tick{to{background:var(--mint)}}
+.sc-frame[data-step="1"] .sc-meter i{animation:fill 2.6s steps(13,end) .3s both}
+@keyframes fill{from{width:0}to{width:100%}}
+/* step 2: pairing by QR */
+.sc-pc{background:var(--panel);border:4px solid #000;box-shadow:6px 6px 0 #000;padding:10px;display:flex;flex-direction:column;gap:8px;align-items:center;font-size:12px;color:var(--ink)}
+.sc-qr{width:132px;display:grid;grid-template-columns:repeat(21,1fr);background:#fff;border:6px solid #fff;outline:3px solid var(--ink)}
+.sc-qr i{aspect-ratio:1}
+.sc-qr i.k{background:#1e2433}
+.sc-wire{position:relative;width:70px;height:8px;flex:none;background:repeating-linear-gradient(90deg,#56627d 0 6px,transparent 6px 10px)}
+.sc-wire i{position:absolute;top:-4px;left:0;width:14px;height:14px;background:var(--mint);border:3px solid #000;opacity:0}
+.sc-frame[data-step="2"] .sc-p2 .sc-wire i{animation:wireR 1.6s steps(10,end) infinite reverse}
+.sc-frame[data-step="3"] .sc-p3 .sc-wire i{animation:wireR 1.6s steps(10,end) infinite}
+@keyframes wireR{0%{left:0;opacity:1}100%{left:calc(100% - 14px);opacity:1}}
+.sc-ph{width:96px;height:168px;background:#0b0e14;border:4px solid #3b4458;box-shadow:6px 6px 0 #000;padding:10px 6px;flex:none}
+.sc-ph-scr{position:relative;height:100%;background:#131826;border:2px solid #000;display:grid;place-items:end center;padding-bottom:10px;overflow:hidden;color:var(--chrome-fg);font-size:12px}
+.sc-scan{position:absolute;left:8px;right:8px;top:18px;height:3px;background:var(--mint);box-shadow:0 0 0 2px rgba(95,208,168,.25)}
+.sc-frame[data-step="2"] .sc-scan{animation:scan 1.4s steps(12,end) infinite alternate}
+@keyframes scan{to{top:calc(100% - 40px)}}
+/* step 3: a key press reaches the PC */
+.sc-ph-wide{width:200px;height:auto;padding:8px 14px}
+.sc-keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;background:#131826;border:2px solid #000;padding:8px}
+.sc-keys span{aspect-ratio:1;background:#f7fafc;border:3px solid #e4eaf6;box-shadow:3px 3px 0 #000;display:grid;place-items:center}
+.sc-keys span.go{background:var(--mint)}
+.sc-keys img{width:64%;height:64%}
+.sc-frame[data-step="3"] .sc-keys span.go{animation:keyDown 1.6s steps(2,end) infinite}
+@keyframes keyDown{0%,12%{transform:translate(3px,3px);box-shadow:0 0 0 #000}20%,100%{transform:none}}
+.sc-log{list-style:none;margin:0;padding:10px;width:240px;background:#0d111c;border:4px solid #000;box-shadow:6px 6px 0 #000;font-family:var(--f-mono);font-size:11px;color:#bfe9d8;display:flex;flex-direction:column;gap:4px}
+.sc-log time{color:#56627d;margin-right:6px}
+.sc-frame[data-step="3"] .sc-log li:first-child{animation:logIn .4s var(--step) .5s both}
+/* the steps beside it: one is lit at a time */
+.sc-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.sc-steps > li{min-height:62vh;display:flex;align-items:center}
+.sc-steps > li:first-child{min-height:44vh;align-items:flex-start;padding-top:8vh}
+.sc-steps > li:last-child{min-height:56vh}
+.sc-steps .frame{padding:24px;display:flex;flex-direction:column;gap:10px;opacity:.45;transform:scale(.97);transition:opacity .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.sc-steps li.on .frame{opacity:1;transform:none;box-shadow:8px 8px 0 var(--mint-dark)}
+.sc-steps h3{font-size:26px}
+.sc-steps p{color:var(--slate);font-size:17px}
+.sc-n{width:46px;height:46px;display:grid;place-items:center;border:4px solid var(--ink);background:var(--sky);font-size:22px;font-weight:700;box-shadow:3px 3px 0 var(--shadow);color:var(--on-accent)}
+.sc-steps li:nth-child(2) .sc-n{background:var(--mint)}
+.sc-steps li:nth-child(3) .sc-n{background:var(--sun)}
+@media (max-width:860px){
+  .scrolly{grid-template-columns:minmax(0,1fr);gap:20px}
+  .sc-visual{top:calc(env(safe-area-inset-top,0px) + 64px);z-index:2}
+  .sc-frame{aspect-ratio:auto;height:230px;box-shadow:6px 6px 0 var(--shadow)}
+  .sc-p{padding:14px;gap:10px;transform:scale(.78)}
+  .sc-frame[data-step="1"] .sc-p1,.sc-frame[data-step="2"] .sc-p2,.sc-frame[data-step="3"] .sc-p3{transform:scale(.8)}
+  .sc-steps > li,.sc-steps > li:first-child,.sc-steps > li:last-child{min-height:58vh;padding-top:0;align-items:center}
+}
+@media (max-width:400px){
+  .sc-p{transform:scale(.66)}
+  .sc-frame[data-step="1"] .sc-p1,.sc-frame[data-step="2"] .sc-p2,.sc-frame[data-step="3"] .sc-p3{transform:scale(.68)}
+}
+
+/* 5. Command menu (Raycast, Linear, Vercel): Ctrl+K anywhere */
+.cmdk-btn{display:flex;align-items:center;gap:8px;margin-left:18px;font-family:var(--f-pix);font-size:14px;color:var(--chrome-dim);background:var(--chrome-2);border:3px solid #3a4560;padding:4px 8px 4px 10px;cursor:pointer;transition:border-color .15s,color .15s}
+.cmdk-btn:hover{color:var(--chrome-fg);border-color:var(--chrome-dim)}
+.cmdk-btn svg{width:14px;height:14px}
+.cmdk-btn kbd,.cmdk kbd{font-family:var(--f-mono);font-size:10px;border:2px solid currentColor;padding:0 4px;line-height:16px;opacity:.85}
+.cmdk-btn kbd{margin-left:10px}
+/* icon and shortcut only until there is room for the word */
+@media (max-width:1599px){.cmdk-btn .cmdk-lbl,.cmdk-btn kbd{display:none}.cmdk-btn{margin-left:6px;padding:6px 9px}}
+@media (max-width:1100px){.cmdk-btn{margin-left:auto}.menu-btn{margin-left:8px}}
+@media (max-width:640px){.cmdk-btn .cmdk-lbl,.cmdk-btn kbd{display:none}.cmdk-btn{padding:7px 9px}}
+dialog.cmdk{margin:12vh auto auto;padding:0;width:min(620px,calc(100vw - 32px));max-height:min(560px,76vh);border:4px solid var(--ink);box-shadow:10px 10px 0 var(--shadow);background:var(--tile);color:var(--ink);font-family:var(--f-pix);overflow:hidden}
+dialog.cmdk[open]{display:flex;flex-direction:column;animation:cmdkIn .22s var(--ease)}
+@keyframes cmdkIn{from{opacity:0;transform:translateY(-10px) scale(.98)}}
+dialog.cmdk::backdrop{background:rgba(30,36,51,.45);backdrop-filter:blur(4px)}
+.cmdk-in{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:4px solid var(--ink)}
+.cmdk-in svg{width:18px;height:18px;flex:none;color:var(--slate)}
+.cmdk-in input{flex:1;min-width:0;border:0;outline:0;background:none;font-family:var(--f-pix);font-size:19px;color:var(--ink)}
+.cmdk-in kbd{color:var(--slate)}
+.cmdk-list{list-style:none;margin:0;padding:8px;overflow:auto;flex:1;min-height:0}
+.cmdk-list .grp{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);padding:10px 8px 4px}
+.cmdk-list [role=option]{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 8px;border:3px solid transparent;cursor:pointer}
+.cmdk-list [role=option] .ci{width:32px;height:32px;display:grid;place-items:center;background:var(--chrome);border:2px solid var(--ink);color:var(--chrome-fg);font-family:var(--f-mono);font-size:13px}
+.cmdk-list [role=option] .ci img{width:24px;height:24px;image-rendering:pixelated}
+.cmdk-list [role=option] b{display:block;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmdk-list [role=option] small{display:block;font-family:var(--f-mono);font-size:11px;color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmdk-list [role=option] em{font-style:normal;font-family:var(--f-mono);font-size:11px;color:var(--slate)}
+.cmdk-list [role=option][aria-selected="true"]{background:#e3f7ef;border-color:var(--ink);box-shadow:3px 3px 0 var(--shadow)}
+.cmdk-list [role=option][aria-selected="true"] em::after{content:" ↵"}
+.cmdk-list mark{background:var(--sun);color:var(--on-accent)}
+.cmdk-empty{padding:24px 10px;color:var(--slate);text-align:center}
+.cmdk-foot{display:flex;gap:16px;align-items:center;padding:8px 14px;border-top:3px solid var(--ground-dot);background:var(--panel);font-family:var(--f-mono);font-size:11px;color:var(--slate)}
+.cmdk-foot .grow{flex:1}
+.cmdk-foot kbd{margin-right:2px}
+@media (max-width:560px){.cmdk-foot span:last-child,.cmdk-foot .grow{display:none}dialog.cmdk{margin-top:8vh}}
+
+/* 6. The page deck: a small Stream-Deck-style dock that switches profile with the page */
+footer{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+.sdeck{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:6;transform:translateX(-50%);
+  display:flex;align-items:stretch;gap:10px;padding:8px;background:var(--chrome);color:var(--chrome-fg);border:4px solid var(--ink);box-shadow:6px 6px 0 rgba(30,36,51,.35);
+  transition:transform .35s var(--ease),opacity .25s}
+.sdeck::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#2a3248 1.5px,transparent 1.5px);background-size:10px 10px}
+.sdeck > *{position:relative}
+.sdeck.typing,.sdeck.away{transform:translate(-50%,160%);opacity:0;pointer-events:none}
+.sd-lcd{display:flex;align-items:center;gap:10px;min-width:150px;padding:6px 12px 6px 10px;background:#0f1a17;border:3px solid #000;box-shadow:inset 0 0 0 2px #1f3a35;color:#9ff0cf;font-family:var(--f-mono);overflow:hidden}
+.sd-led{width:10px;height:10px;flex:none;background:var(--mint);box-shadow:0 0 0 2px #000,0 0 10px rgba(95,208,168,.8);animation:blink 1.6s var(--step) infinite}
+.sd-txt{display:flex;flex-direction:column;min-width:0;line-height:1.15}
+.sd-txt small{font-size:10px;color:#5d8f7d;white-space:nowrap}
+.sd-txt b{font-family:var(--f-pix);font-size:17px;font-weight:600;white-space:nowrap;color:#c9fbe6}
+.sd-lcd.switch .sd-txt b{animation:lcdIn .5s steps(5,end)}
+@keyframes lcdIn{from{transform:translateY(70%)}}
+.sd-keys{display:flex;gap:8px}
+.sd-key{position:relative;width:68px;height:68px;padding:4px 3px 5px;border:3px solid #e4eaf6;box-shadow:3px 3px 0 #000;color:#1e2433;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:var(--f-pix);transition:transform .08s,box-shadow .08s,filter .15s}
+.sd-key svg,.sd-key img{width:28px;height:28px;flex:none;image-rendering:pixelated}
+.sd-key .t{font-size:10px;font-weight:600;line-height:1.05;text-align:center;max-width:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sd-key kbd{position:absolute;top:-2px;left:-2px;font-family:var(--f-mono);font-size:9px;line-height:13px;min-width:14px;text-align:center;background:#1e2433;color:#e4eaf6;border:1px solid #000}
+.sd-key:hover{filter:brightness(1.06)}
+.sd-key:active,.sd-key.down{transform:translate(3px,3px);box-shadow:0 0 0 #000}
+.sd-key:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.sd-key[aria-disabled="true"]{opacity:.4;cursor:not-allowed;filter:grayscale(.7)}
+.sd-key.flip{animation:keyFlip .42s steps(6,end) both;animation-delay:calc(var(--i) * 55ms)}
+@keyframes keyFlip{0%{transform:rotateX(0)}45%{transform:rotateX(90deg)}55%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+.sd-key.ok::after{content:"";position:absolute;inset:-5px;border:3px solid var(--mint);pointer-events:none;animation:ring .6s var(--ease) forwards}
+.sd-fold{align-self:center;width:30px;height:30px;padding:6px;background:none;border:3px solid #3a4560;color:var(--chrome-dim);cursor:pointer}
+.sd-fold:hover{color:var(--chrome-fg);border-color:var(--chrome-dim)}
+.sd-fold svg{width:100%;height:100%;transition:transform .25s var(--ease)}
+.sdeck.folded .sd-keys{display:none}
+.sdeck.folded .sd-fold svg{transform:rotate(180deg)}
+.sdeck.folded .sd-lcd{min-width:0}
+body.deck-folded footer{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+@media (max-width:640px){
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+  .sdeck{left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));transform:none;gap:6px;padding:6px}
+  .sdeck.typing,.sdeck.away{transform:translateY(160%)}
+  /* the profile name becomes a small tab on top of the deck */
+  .sd-lcd{position:absolute;left:-4px;bottom:100%;min-width:0;padding:2px 10px 2px 8px;gap:6px;border-width:3px 3px 0}
+  .sd-txt small{display:none}
+  .sd-txt b{font-size:13px}
+  .sd-led{width:8px;height:8px}
+  .sd-keys{flex:1;gap:6px}
+  .sd-key{flex:1;width:auto;height:62px;min-width:44px}
+  .sd-key .t{font-size:9px;line-height:1.1}
+  /* smaller picture and padding so two-line names fit on a phone */
+  .sd-key{height:64px;padding:3px 2px 4px;gap:3px}
+  .sd-key svg,.sd-key img{width:22px;height:22px}
+  .sdeck.folded{left:auto;right:8px;padding:4px}
+  .sdeck.folded .sd-lcd{display:none}
+}
+

@@ -1,0 +1,86 @@
+<main class="wrap" id="tour-view" hidden>
+  <section class="tr-hero" aria-labelledby="tr-title">
+    <span class="label load">Tour</span>
+    <h1 id="tr-title" class="load d1">How Minniondeck works</h1>
+    <p class="lead load d2">A quick look around the desktop app, how your phone connects to it, and everything it can do. Click through the app window below.</p>
+  </section>
+
+  <section aria-labelledby="tr-app" class="tr-app-sec">
+    <div class="head"><span class="label">The desktop app</span><h2 id="tr-app">Five pages and the button editor</h2><p>Pick a page in the window's left rail, or Edit button to see where you make and change buttons. The numbers point at the parts explained beside it.</p></div>
+    <div class="tr-app">
+      <div class="appmock" aria-label="A picture of the Minniondeck window">
+        <div class="am-bar"><span class="am-logo"></span><b>Minniondeck</b><span class="am-crumb" id="am-crumb">My profile / Page 1</span><span class="am-win"><i>_</i><i>□</i><i>✕</i></span></div>
+        <div class="am-body">
+          <div class="am-rail" role="tablist" aria-label="App pages" id="am-rail"></div>
+          <div class="am-view" id="am-view"></div>
+        </div>
+      </div>
+      <div class="tr-notes frame" aria-live="polite">
+        <h3 id="tr-note-title"></h3>
+        <p id="tr-note-lead"></p>
+        <ol class="tr-points" id="tr-points"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tr-conn" class="rv">
+    <div class="head"><span class="label">Phones</span><h2 id="tr-conn">How your phone connects</h2><p>Your phone talks straight to Minniondeck on your PC, over your own Wi-Fi. Nothing goes through the internet or a cloud service.</p></div>
+    <div class="conn frame">
+      <div class="conn-node"><div class="conn-ic" style="background:var(--sky)" data-trg="phone"></div><b>Your phone</b><span>Shows your buttons and live screens in its browser</span></div>
+      <div class="conn-wire" aria-hidden="true"><span class="conn-tag">Wi-Fi · encrypted</span><i class="pk a"></i><i class="pk b"></i><i class="pk c"></i></div>
+      <div class="conn-node"><div class="conn-ic" style="background:var(--mint)"><img class="px" src="icons/icon.png" alt=""></div><b>Minniondeck on your PC</b><span>Runs what each button does</span></div>
+      <div class="conn-wire" aria-hidden="true"><span class="conn-tag">On the PC</span><i class="pk a"></i><i class="pk b"></i></div>
+      <div class="conn-node"><div class="conn-ic" style="background:var(--peach)" data-trg="apps"></div><b>Apps and plugins</b><span>Keys, programs, OBS, Spotify…</span></div>
+    </div>
+    <div class="flowsteps">
+      <article class="frame"><span class="fs-n">1</span><h3>You press a key</h3><p>The phone sends the press to the PC at once. It vibrates if you turned that on.</p></article>
+      <article class="frame"><span class="fs-n">2</span><h3>The PC runs it</h3><p>Minniondeck presses keys, opens a program, changes the volume, or asks a plugin to talk to another app.</p></article>
+      <article class="frame"><span class="fs-n">3</span><h3>The phone updates</h3><p>Live keys, like your CPU use or what's playing, change on the phone as things change on the PC.</p></article>
+    </div>
+
+    <h3 class="tr-sub">Pairing a phone, step by step</h3>
+    <div class="pair">
+      <div class="pair-qr frame" aria-hidden="true">
+        <div class="pq" id="tr-qr"></div>
+        <p class="mk-count">Code <b id="tr-code">482 913</b> · expires in 5 minutes</p>
+      </div>
+      <ol class="dsteps pair-steps">
+        <li><div><b>Open Phones on the PC.</b> A QR code shows while that page is open. It holds the PC's address on your network, the port (47800 unless you change it), a one-time 6-digit code, and a fingerprint of the PC's certificate.</div></li>
+        <li><div><b>Scan it with the phone.</b> Point the phone&#39;s camera at the code and open the link. The phone connects and checks the PC's certificate matches the fingerprint, so it can't be fooled by another computer.</div></li>
+        <li><div><b>The code is checked.</b> It lasts 5 minutes and stops working after 5 wrong tries. You can turn on a matching number to compare on both screens.</div></li>
+        <li><div><b>The phone gets its own key.</b> The PC keeps only a scrambled copy of it, so even the saved file can't be used to pose as your phone. Remove a phone and its key stops working at once.</div></li>
+        <li><div><b>From then on it reconnects by itself</b> whenever Minniondeck is running and the phone is on the same network, and gets your latest buttons.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="tr-make" class="rv">
+    <div class="head"><span class="label">Your first button</span><h2 id="tr-make">From empty key to working button</h2></div>
+    <div class="mksteps">
+      <article class="frame"><div class="mk-pic"><span class="mk-slot">+</span></div><h3>1. Click an empty key</h3><p>On the Deck, click any empty spot. The Edit button window opens.</p></article>
+      <article class="frame"><div class="mk-pic"><span class="mk-act" data-trg="act"></span></div><h3>2. Pick what it does</h3><p>Press keys, type text, open a program or website, change the volume, mute the mic, wait, turn the page, or a plugin's action. Add several steps for a macro.</p></article>
+      <article class="frame"><div class="mk-pic"><span class="mk-key" style="background:#191414" data-trg="look"></span></div><h3>3. Make it look right</h3><p>A colour, an icon or app logo, a picture or GIF, a press animation, and states that change its look, like Mic on and Mic muted.</p></article>
+      <article class="frame"><div class="mk-pic"><span class="mk-phone"><span class="mk-key sm" style="background:#191414" data-trg="look2"></span></span></div><h3>4. Save it</h3><p>It's on the PC and on every paired phone straight away. Click it on the PC to test it.</p></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="tr-all" class="rv">
+    <div class="head"><span class="label">Everything inside</span><h2 id="tr-all">What Minniondeck has</h2></div>
+    <div class="allfeat">
+      <div class="frame"><h3>Deck</h3><ul><li>Pages and folders, with a Back button inside folders</li><li>3 × 3, 4 × 3 or 5 × 3 grids</li><li>Square buttons: picture in the middle, name at the bottom</li><li>Move buttons in Edit layout, nudge them with the arrow keys</li></ul></div>
+      <div class="frame"><h3>Buttons</h3><ul><li>10 built-in actions, plus plugin actions</li><li>Several steps on one button, like a macro</li><li>Up to 8 looks on one button</li><li>15 press effects, GIFs and live widgets</li></ul></div>
+      <div class="frame"><h3>Looks</h3><ul><li>3400+ app and game logos, 1000+ pixel icons</li><li>Button designs made of layers</li><li>Your own pictures and GIFs with Import</li><li>Light and dark themes, three animation levels</li></ul></div>
+      <div class="frame"><h3>Profiles</h3><ul><li>A set of pages for each use</li><li>Switch by itself when an app comes to the front</li><li>Open where you left off, or on a page you pick</li><li>Share as .mdprofile files</li></ul></div>
+      <div class="frame"><h3>Phones</h3><ul><li>Pair with a QR code, as many phones as you like</li><li>Phones can follow the page open on the PC</li><li>Keep the screen awake, vibrate on press</li><li>The Phones page shows which need an update</li></ul></div>
+      <div class="frame"><h3>Plugins</h3><ul><li>Install from the marketplace in one click</li><li>Each runs apart, so a crash never takes the app down</li><li>Signed plugins, Developer mode for your own</li><li>Their own settings, kept across updates</li></ul></div>
+      <div class="frame"><h3>Safe and steady</h3><ul><li>Saves by itself, a whole file at a time</li><li>Up to 5 backups, and one before every import</li><li>Export and import all your profiles</li><li>A log for tracking down problems</li></ul></div>
+      <div class="frame"><h3>On your PC</h3><ul><li>Start with Windows, in the tray</li><li>Keep running when you close the window</li><li>Nothing goes to the cloud, no account</li><li>Updates itself from GitHub</li></ul></div>
+    </div>
+  </section>
+
+  <section class="final frame rv" aria-labelledby="tr-end">
+    <h2 id="tr-end">Ready to try it?</h2>
+    <p>Install it, pair your phone, and make your first button in a few minutes.</p>
+    <div class="cta" style="justify-content:center"><a class="btn mint" href="#download" data-view="download">Download</a><a class="btn plain" href="#docs" data-view="docs">Read the docs</a></div>
+  </section>
+</main>

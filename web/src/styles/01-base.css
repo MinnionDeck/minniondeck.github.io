@@ -1,0 +1,91 @@
+/* Layout: the desktop app's pixel language. Square frames, 4px ink borders, hard offset shadows, dotted ground.
+   One orchestrated moment: the phone deck presses its own keys and each press travels to the PC log. */
+:root{
+  /* The desktop app's light theme (minniondeck-rust-ui/src/theme.rs) */
+  --ground:#dfe8f1; --ground-dot:#c6d3e2; --ink:#1e2433; --slate:#56627d;
+  --panel:#f7fafc; --tile:#ffffff; --hover:#eef3f8; --shadow:#1e2433; --rule:#c6d3e2;
+  --deep:#1e2433; --ease:cubic-bezier(.2,.8,.2,1);
+  --on-accent:#1e2433; --chrome:#1e2433; --chrome-2:#262e43; --chrome-fg:#e4eaf6; --chrome-dim:#a4b0c8;
+  --mint:#5fd0a8; --mint-dark:#3aa585; --sky:#7cc4ff; --sky-dark:#4c97d6;
+  --lilac:#b79cff; --peach:#ffb38a; --coral:#ff5a5f; --sun:#ffc93c; --focus:#4c97d6;
+  --f-pix:"Pixelify Sans",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --f-mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --step:steps(4,end);
+}
+/* Light theme only, like the app's default look, whatever the viewer's system setting */
+:root{color-scheme:light}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+html{scroll-behavior:smooth;background:var(--chrome)}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;font-family:var(--f-pix);font-size:17px;line-height:1.45;color:var(--ink);
+  background-color:var(--ground);
+  background-image:radial-gradient(var(--ground-dot) 2px,transparent 2px);
+  background-size:20px 20px;
+  animation:drift 60s linear infinite;
+}
+@keyframes drift{to{background-position:200px 200px}}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--chrome)}
+h1,h2,h3{margin:0;line-height:1.12;text-wrap:balance;font-weight:700}
+p{margin:0}
+a{color:inherit}
+img.px{image-rendering:pixelated;display:block;max-width:100%}
+:focus-visible{outline:3px dashed var(--focus);outline-offset:3px}
+
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar = the app's title bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--chrome) 92%,transparent);backdrop-filter:blur(6px);color:var(--chrome-fg);border-bottom:4px solid var(--shadow)}
+.top .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:22px;font-weight:700}
+.brand img{width:36px;height:36px;border:3px solid var(--chrome-fg);background:var(--chrome-2);box-shadow:3px 3px 0 #000}
+.brand:hover img{animation:jolt .4s var(--step)}
+.brand .ver{align-self:center;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--chrome-dim);border:2px solid #3a4560;padding:0 6px;line-height:18px}
+@keyframes jolt{25%{transform:translate(-2px,-2px)}50%{transform:translate(2px,0)}75%{transform:translate(0,2px)}}
+/* Links are quiet (dim until pointed at); the page you're on is bright with a mint bar under it.
+   A thin rule splits them into: the product, the makers, the project. Download is the one button. */
+.nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap;margin-left:auto}
+.nav a{position:relative;display:flex;align-items:center;gap:6px;color:var(--chrome-dim);text-decoration:none;padding:8px 10px;font-size:15px;transition:color .15s,background-color .15s}
+.nav a:hover{color:var(--chrome-fg);background:var(--chrome-2)}
+.nav a[aria-current="page"]{color:var(--chrome-fg)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:4px;background:var(--mint)}
+.nav-sep{width:3px;height:18px;background:#3a4560;margin:0 8px;flex:none}
+.nav a.nav-cta{margin-left:12px;padding:6px 16px;background:var(--mint);color:var(--on-accent);font-weight:700;border:3px solid var(--chrome-fg);box-shadow:3px 3px 0 #000;transition:transform .08s,box-shadow .08s}
+.nav a.nav-cta:hover{background:#7fe0bd;color:var(--on-accent);transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+.nav a.nav-cta:active{transform:translate(3px,3px);box-shadow:0 0 0 #000}
+.nav a.nav-cta[aria-current="page"]{background:var(--sun)}
+.nav a.nav-cta::after{display:none}
+.nav .soon{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--chrome-dim)}
+.nav a[aria-current="page"] .soon{color:var(--on-accent)}
+
+/* shared pixel parts */
+.frame{border:4px solid var(--ink);background:var(--tile);box-shadow:4px 4px 0 var(--shadow)}
+.lift{transition:transform .18s var(--step),box-shadow .18s var(--step)}
+.lift:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--shadow)}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;font-family:var(--f-pix);font-size:18px;font-weight:600;color:var(--on-accent);background:var(--tile);border:4px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);padding:10px 20px;text-decoration:none;cursor:pointer;transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow)}
+.btn.mint{background:var(--mint)}
+.btn.mint::after{content:"";position:absolute;top:-10px;bottom:-10px;left:-40px;width:18px;background:rgba(255,255,255,.55);transform:skewX(-20deg);animation:shine 4.5s var(--step) infinite}
+@keyframes shine{0%,70%{left:-40px}100%{left:110%}}
+.btn.plain{background:var(--tile);color:var(--ink)}
+.btn img{width:24px;height:24px}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:12px;font-weight:600;border:3px solid var(--ink);padding:0 6px;background:var(--panel);color:var(--ink);white-space:nowrap}
+.chip.ok{background:var(--mint);color:var(--on-accent)}
+.chip.soon{background:var(--sun);color:var(--on-accent)}
+.chip.wip{background:var(--peach);color:var(--on-accent)}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.label::before{content:"▮ ";color:var(--mint-dark)}
+
+main{padding-block:44px 80px;display:flex;flex-direction:column;gap:96px}
+section{display:flex;flex-direction:column;gap:24px}
+.head{display:flex;flex-direction:column;gap:10px;max-width:62ch}
+.head h2{font-size:clamp(28px,3.6vw,40px)}
+.head p{color:var(--slate);font-size:18px}
+
+/* reveal on scroll: only elements below the fold get the start offset, set by script */
+.rv{transition:transform .6s steps(6,end),opacity .6s steps(6,end)}
+.rv.pre{transform:translateY(28px);opacity:.15}
+

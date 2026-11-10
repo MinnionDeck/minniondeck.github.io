@@ -1,0 +1,82 @@
+<main class="wrap" id="download-view" hidden>
+  <section class="dl-hero" aria-labelledby="dl-title">
+    <div class="dl-copy">
+      <span class="label load">Download</span>
+      <h1 id="dl-title" class="load d1">Get Minniondeck</h1>
+      <p class="lead load d2">One installer for your PC. It&#39;s free, with no account to make, and your phone needs no app: the deck opens in its browser.</p>
+      <article class="get frame lift load d3">
+        <div class="ic" style="background:var(--mint)"><svg viewBox="0 0 10 10" aria-hidden="true"><g fill="currentColor"><rect x="0" y="1" width="10" height="1"/><rect x="0" y="2" width="1" height="5"/><rect x="9" y="2" width="1" height="5"/><rect x="0" y="7" width="10" height="1"/><rect x="2" y="3" width="2" height="2"/><rect x="5" y="3" width="3" height="1"/><rect x="5" y="5" width="2" height="1"/><rect x="4" y="8" width="2" height="1"/><rect x="2" y="9" width="6" height="1"/></g></svg></div>
+        <div><h2>Minniondeck for PC</h2><p class="sub">Windows 10 and 11, 64-bit · installer .exe</p></div>
+        <div class="row">
+          <a class="btn mint" href="https://github.com/minnnion/MinnionDeck/releases/latest" data-get="pc" data-rel="get">Download for Windows</a>
+          <span class="chip" data-rel="vv">v0.1.1</span>
+        </div>
+        <p class="pending dl-meta" data-rel="meta">Released 7 Nov 2026 · 12.7 MB · from GitHub Releases</p>
+        <details class="dl-notes" data-rel-wrap hidden><summary>What&#39;s new in <span data-rel="vv">v0.1.1</span></summary><div class="dl-notes-body" data-rel="notes"></div><a class="dl-all" href="https://github.com/minnnion/MinnionDeck/releases/latest" data-rel="page">Release notes on GitHub</a></details>
+        <p class="dl-sha" data-rel-wrap>SHA-256 <code data-rel="sha">9f29ff519b1322fa3f4b5143f7eef20c4905d9ee9047072897d3c45979e0a17d</code></p>
+      </article>
+    </div>
+
+    <div class="load d2">
+      <div class="wiz" id="wiz" aria-label="Preview of the setup">
+        <div class="wiz-bar"><i></i>Minniondeck Setup<span class="now" id="wiz-now">Step 1 of 4</span><b></b></div>
+        <ol class="wiz-side" id="wiz-side">
+          <li><span>1</span>Pick your use</li>
+          <li><span>2</span>Choose parts</li>
+          <li><span>3</span>Install</li>
+          <li><span>4</span>Pair phone</li>
+        </ol>
+        <div class="wiz-main">
+          <h3 id="wiz-title">What will you use it for?</h3>
+          <p id="wiz-intro">Setup downloads the plugins that go with it.</p>
+          <div class="wiz-body" id="wiz-body" aria-live="polite"></div>
+          <div class="wiz-nav">
+            <button type="button" class="btn plain" id="wiz-back">Back</button>
+            <button type="button" class="btn mint" id="wiz-next">Next</button>
+          </div>
+        </div>
+      </div>
+      <p class="wiz-note">A preview of the setup. Click through it, it installs nothing.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="req-title" class="rv">
+    <div class="head">
+      <span class="label">Before you start</span>
+      <h2 id="req-title">What you need</h2>
+    </div>
+    <div class="reqs">
+      <article class="req frame">
+        <h3><img class="px" src="icons/icon.png" alt="">Your PC</h3>
+        <dl><dt>System</dt><dd>Windows 10 or 11, 64-bit</dd><dt>Web view</dt><dd>WebView2, added by setup if it's missing</dd><dt>Network</dt><dd>Wi-Fi or cable, on the same network as the phone</dd></dl>
+      </article>
+      <article class="req frame">
+        <h3><img class="px" src="icons/nav-phases.png" alt="">Your phone</h3>
+        <dl><dt>System</dt><dd>Android or iPhone, phone or tablet. No app to install</dd><dt>Camera</dt><dd>To scan the pairing QR code</dd><dt>Network</dt><dd>The same Wi-Fi as the PC</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="upd-title" class="rv">
+    <div class="head">
+      <span class="label">After install</span>
+      <h2 id="upd-title">Updates look after themselves</h2>
+    </div>
+    <div class="reqs">
+      <article class="req frame lift"><h3><img class="px" src="icons/lt-ok.png" alt="">Updates itself</h3><ul><li>The app checks GitHub Releases for new versions</li><li>Each update is checked against GitHub&#39;s SHA-256, and the app refuses one that doesn't match</li><li>Plugins update from the Marketplace page</li></ul></article>
+      <article class="req frame lift"><h3><img class="px" src="icons/lt-check.png" alt="">Check the file</h3><ul><li>Every release lists a SHA-256 checksum</li><li>In PowerShell, run <code>Get-FileHash .\setup.exe</code> and compare</li></ul></article>
+      <article class="req frame lift"><h3><img class="px" src="icons/nav-folder.png" alt="">Every release</h3><ul><li>Older versions stay on GitHub Releases</li><li>Each one has release notes</li><li>Uninstall from Windows Settings, Apps</li></ul></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="dlfaq-title" class="rv">
+    <div class="head">
+      <span class="label">Questions</span>
+      <h2 id="dlfaq-title">Installing</h2>
+    </div>
+    <div class="faq">
+      <details class="frame"><summary>Can I pick a different use later?</summary><p>Yes. Add the other plugins any time from the Marketplace page in the app.</p></details>
+      <details class="frame"><summary>Does setup need the internet?</summary><p>Yes, it downloads the plugins for the use you pick. After that, the PC and phone talk over your own network.</p></details>
+    </div>
+  </section>
+</main>

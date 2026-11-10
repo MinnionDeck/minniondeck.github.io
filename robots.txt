@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minniondeck.github.io/sitemap.xml

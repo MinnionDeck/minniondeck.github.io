@@ -1,0 +1,84 @@
+<main class="wrap" id="market-view" hidden>
+  <div id="mk-list" class="mk-col">
+    <div class="mk-top">
+      <span class="label load">Marketplace</span>
+      <h1 class="load d1">Plugins for your deck</h1>
+      <p class="lead load d2">Every plugin here is free. Press Install and Minniondeck opens, downloads the plugin from GitHub, checks it and asks before installing.</p>
+    </div>
+    <div class="mk-tools frame load d3">
+      <label class="search"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg><input id="mk-q" type="search" placeholder="Search plugins and keys" aria-label="Search plugins"></label>
+      <div class="cats" id="mk-cats" role="group" aria-label="Category"></div>
+      <label class="sort">Sort<select id="mk-sort"><option value="name">Name</option><option value="keys">Most keys</option><option value="size">Smallest</option></select></label>
+    </div>
+    <p class="mk-count" id="mk-count" aria-live="polite"></p>
+    <div class="plugs" id="mk-grid"></div>
+  </div>
+
+  <div id="mk-detail" class="mk-col" hidden></div>
+
+  <section class="rv" aria-labelledby="sub-title" id="mk-submit">
+    <div class="head" style="max-width:none">
+      <span class="label">Made a plugin?</span>
+      <h2 id="sub-title">Submit a plugin</h2>
+      <p>Send your plugin here and it can go in the marketplace. We review every plugin by hand, usually within 7 days.</p>
+    </div>
+    <div class="bugger">
+      <form class="frame bug-form" id="sub-form" novalidate>
+        <label class="fld">Plugin file (.mdplugin, up to 90 MB)<input type="file" name="plugin" accept=".mdplugin"><span class="mk-count" id="sub-file-msg">Make it with <code>Minniondeck.exe plugin pack</code>. The name, id and version come from its manifest.json.</span></label>
+        <div class="two-f">
+          <label class="fld">Name<input type="text" name="name" readonly placeholder="From the plugin file"></label>
+          <label class="fld">Id<input type="text" name="id" readonly placeholder="From the plugin file"></label>
+        </div>
+        <div class="two-f">
+          <label class="fld">Version<input type="text" name="version" readonly placeholder="From the plugin file"></label>
+          <label class="fld">Category<select name="category"><option value="general">General</option><option value="streaming">Streaming</option><option value="games">Games</option><option value="work">Work</option></select></label>
+        </div>
+        <label class="fld">What it does, in one line<input type="text" name="summary" maxlength="140" placeholder="Shows your stream's chat on a key"></label>
+        <label class="fld">Full description<textarea name="about" rows="4" maxlength="4000" placeholder="What each key does, what you can set, and anything people should know"></textarea></label>
+        <label class="fld">What it needs, optional<textarea name="needs" rows="2" maxlength="1000" placeholder="One thing a line: an internet connection, a Twitch account. Leave it empty if it needs nothing."></textarea></label>
+        <label class="fld">Creator name<input type="text" name="creator" maxlength="40" placeholder="Shown on the marketplace"></label>
+        <label class="fld">Icon, optional (PNG, up to 1 MB)<input type="file" name="icon" accept=".png,image/png"><span class="mk-count">Square, shown on its marketplace card. Without one we use the plugin's first key picture.</span></label>
+        <label class="fld">Screenshot of its profile, optional (PNG, up to 5 MB)<input type="file" name="shot" accept=".png,image/png"></label>
+        <label class="fld">Its profile, optional (.mdprofile, up to 2 MB)<input type="file" name="profile" accept=".mdprofile"><span class="mk-count">A ready-made page of keys people can add when they install it.</span></label>
+        <label class="chk sub-agree"><input type="checkbox" name="agree"><span>I made this plugin or may share it, and it follows the rules here.</span></label>
+        <div class="bar2"><progress id="sub-prog" max="1" value="0" hidden></progress><span class="grow"></span><button type="button" class="btn mint" id="sub-send">Send plugin</button></div>
+        <p class="mk-count" id="sub-msg" aria-live="polite"></p>
+      </form>
+      <div class="frame sub-info">
+        <p class="sub-lead">We review every plugin by hand, within 7 days. If it's approved, it shows up in the marketplace. We don't send emails, so check back here.</p>
+        <h3>What we check</h3>
+        <ul><li>It's safe to run.</li><li>It does what it says.</li><li>It matches its description.</li></ul>
+        <h3>What gets it declined</h3>
+        <ul>
+          <li>A file that's broken, or doesn't match its manifest.json.</li>
+          <li>It does more than its description says, or reaches outside its own settings.</li>
+          <li>It collects personal data, shows ads, or asks for payment details.</li>
+          <li>Copied code, names or artwork that you have no right to use.</li>
+        </ul>
+        <h3>When it's approved</h3>
+        <ul><li>Minniondeck signs it, so it runs without Developer mode.</li><li>It's listed in the marketplace with your name as the creator.</li></ul>
+        <p class="mk-count">Prefer GitHub? You can still open a pull request on the <a href="https://github.com/minnnion/Minnion-Plugins">marketplace repository</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="inst" id="inst" aria-labelledby="inst-title">
+  <div class="inst-bar"><i></i>Install a plugin<button type="button" id="inst-x" aria-label="Close">×</button></div>
+  <div class="inst-body">
+    <div class="inst-head"><img class="px" id="inst-icon" src="icons/icon.png" alt=""><div><h2 id="inst-title">Plugin</h2><p class="mk-count" id="inst-sub"></p></div></div>
+    <div class="opening">
+      <div class="ldr" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div><b>Opening Minniondeck…</b><p>It shows <span id="inst-name2">the plugin</span>, downloads it from GitHub, checks it, and asks before installing.<span id="inst-prof"></span></p></div>
+    </div>
+    <div class="pd-get"><a class="btn mint" id="inst-again" href="#" style="font-size:16px;padding:6px 14px">Open Minniondeck again</a></div>
+    <details class="nope">
+      <summary>Didn't open?</summary>
+      <ol>
+        <li><div><b>Get Minniondeck</b><p>The browser needs Minniondeck installed to open it. <a href="#download" data-view="download">Download it here</a>, then try again.</p></div></li>
+        <li><div><b>Or download the file yourself</b><p id="inst-file"></p><div class="pd-get" style="margin-top:8px"><a class="btn plain" id="inst-dl" href="#" style="font-size:15px;padding:5px 12px">Download .mdplugin</a></div><p class="pending" id="inst-pending" hidden>Not published yet. Plugin files go in the marketplace's plugins folder.</p><p>Double-click it, and Minniondeck asks before installing. In the app you can also open Plugins and choose Install a plugin.</p></div></li>
+        <li id="inst-pli" hidden><div><b>The profile</b><p id="inst-pfile"></p><div class="pd-get" style="margin-top:8px"><a class="btn plain" id="inst-pdl" href="#" style="font-size:15px;padding:5px 12px" download>Download profile</a></div><p>Double-click it, or use Import on the Profiles page, to add its pages.</p></div></li>
+      </ol>
+    </details>
+  </div>
+</dialog>

@@ -1,0 +1,208 @@
+/* =====================================================================================
+   2026-11 redesign layer: the app's light theme, a calmer type scale, and motion.
+   Everything above stays the component base; this layer re-tunes it.
+   ===================================================================================== */
+
+/* Ground: navy with the app's dot grid, two soft colour pools fixed behind everything */
+html{background:var(--ground);overflow-x:clip}
+body{overflow-x:clip}
+body{
+  background-color:transparent;
+  background-image:radial-gradient(var(--ground-dot) 2px,transparent 2px);
+  background-size:22px 22px;
+  color:var(--ink);
+}
+html::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(60% 45% at 78% -8%,rgba(95,208,168,.16),transparent 70%),
+    radial-gradient(45% 40% at -6% 22%,rgba(124,196,255,.10),transparent 70%),
+    radial-gradient(50% 40% at 50% 110%,rgba(183,156,255,.08),transparent 70%)}
+::selection{background:var(--mint);color:var(--on-accent)}
+:focus-visible{outline-color:var(--focus)}
+
+/* Text on an accent fill is always dark, as in the app (on_accent) */
+.cats button[aria-pressed="true"],.skills button[aria-pressed="true"],.tabs2 button[aria-selected="true"],
+.tl[aria-pressed="true"],.segs button[aria-pressed="true"],.sizes button[aria-pressed="true"],
+.dnav a[aria-current="page"],.dres mark,.note::before,.dsteps > li::before,
+.inst-body ol li::before,.tr-points li span.n,.fs-n,.pair-steps > li::before,.notice-tag,
+.opt[aria-checked="true"]::after,.part[aria-checked="true"] .box,.steps li::before,.timeline li::before,
+.ct-panel .dsteps > li::before,.rv > .dsteps > li::before,.mk-act,.hs{color:var(--on-accent)}
+.btn{color:var(--ink)}
+.btn.mint{color:var(--on-accent)}
+.label{color:var(--slate)}
+.label::before{color:var(--mint)}
+.stat b,.prog .ln small.ok{color:var(--mint-dark)}
+.sim li::before,.req ul li::before,.pd-box ul li::before,.allfeat li::before{color:var(--mint-dark)}
+.dpage a,.nope a:not(.btn),.sub-info a:not(.btn),.ct-panel a{color:var(--sky-dark)}
+.stat,.pending,.vers td,.dpage h2,.nope{border-top-color:var(--ground-dot)}
+.dpage th,.dpage td,.ct-table th,.ct-table td{border-bottom-color:var(--rule)}
+.opt[aria-checked="true"],.way.hit,.lib .it[aria-current="true"],.layers li[aria-current="true"]{background:#e3f7ef}
+.qr{border-color:#fff;background:#fff}
+.qr i.k,.pq i.k{background:#1e2433}
+.frames button small{background:#1e2433}
+.tr-points li:hover span.n{background:var(--ink)}
+.req code,.dpage code,.ct-panel code,.rules code,.bug-form code,.hash code{background:var(--panel);border-color:var(--ink)}
+.dpage pre,.ct-panel pre,.bug-out pre,.log{background:var(--deep)}
+.fld input[readonly]{background:var(--panel)}
+.notice.frame{background:linear-gradient(90deg,#fff3c4,#fff8e1 45%,#ffffff);border-color:var(--ink);box-shadow:6px 6px 0 var(--shadow)}
+.notice .notice-tag{border-color:var(--on-accent)}
+dialog.inst{background:var(--panel);color:var(--ink)}
+dialog.inst::backdrop{background:rgba(30,36,51,.55);backdrop-filter:blur(3px)}
+.conn-ic{border-color:var(--ink)}
+
+/* Frames: the app's light ink line, a deeper hard shadow, and a quick smooth lift */
+.frame{background:var(--tile);border-color:var(--ink);box-shadow:5px 5px 0 var(--shadow)}
+.lift{transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s}
+.lift:hover{transform:translate(-4px,-4px) perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));box-shadow:9px 9px 0 var(--mint-dark)}
+.btn{box-shadow:4px 4px 0 var(--shadow);transition:transform .12s var(--ease),box-shadow .12s var(--ease),background-color .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow);transition-duration:.05s}
+.btn.mint:hover{background:#79dcb9}
+.btn.plain:hover{background:var(--hover)}
+
+/* Header: glassy navy that firms up once you scroll */
+.top{background:rgba(30,36,51,.9);backdrop-filter:blur(10px) saturate(1.2);-webkit-backdrop-filter:blur(10px) saturate(1.2);border-bottom:4px solid var(--shadow);transition:background-color .25s,box-shadow .25s}
+.top.scrolled{background:rgba(30,36,51,.97);box-shadow:0 4px 0 rgba(30,36,51,.18)}
+.brand img{border-color:var(--ink);box-shadow:3px 3px 0 var(--shadow)}
+.brand:hover img{animation:jolt .4s var(--step)}
+.nav a{border-radius:0}
+.nav a:not(.nav-cta)::before{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:4px;background:var(--mint);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);opacity:.55}
+.nav a:not(.nav-cta):hover::before{transform:scaleX(1)}
+.nav a[aria-current="page"]::before{display:none}
+.nav a.nav-cta{border-color:var(--ink)}
+@media (max-width:1100px){.nav a:not(.nav-cta)::before{display:none}}
+
+/* Type scale */
+main{gap:120px;padding-block:56px 96px}
+.head{gap:12px}
+.head h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.01em}
+.head p{font-size:18px;max-width:58ch}
+.label{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:3px 10px 3px 8px;border:2px solid var(--ink);background:var(--tile);box-shadow:2px 2px 0 var(--shadow);letter-spacing:.12em}
+.label::before{content:"";width:8px;height:8px;background:var(--mint);box-shadow:2px 2px 0 var(--shadow)}
+.band .label{background:rgba(0,0,0,.25);border-color:#3a4560;box-shadow:none}
+
+/* ===== Home hero ===== */
+.hero{position:relative;gap:56px;min-height:min(760px,calc(100svh - 120px));padding-block:8px}
+.hero h1{font-size:clamp(40px,5.8vw,74px);letter-spacing:-.015em}
+.hero .lead{font-size:20px;color:var(--slate)}
+.swap{box-shadow:6px 6px 0 var(--shadow);border-color:var(--ink);margin-top:6px}
+.hero .cta .btn{font-size:19px;padding:12px 22px}
+.hero-proof{display:flex;gap:22px;flex-wrap:wrap;margin-top:6px;font-family:var(--f-mono);font-size:12px;color:var(--slate)}
+.hero-proof span{display:flex;align-items:center;gap:8px}
+.hero-proof i{width:10px;height:10px;background:var(--mint);box-shadow:2px 2px 0 var(--shadow)}
+.hero-proof span:nth-child(2) i{background:var(--sky)}
+.hero-proof span:nth-child(3) i{background:var(--sun)}
+/* the stage: a glow behind the window, the window, then the phone and the PC log side by side */
+.stage{max-width:600px;gap:16px}
+.stage::before{content:"";position:absolute;left:-12%;right:-12%;top:-10%;bottom:-6%;z-index:0;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(95,208,168,.22),rgba(124,196,255,.08) 55%,transparent);animation:glow 7s ease-in-out infinite}
+@keyframes glow{50%{transform:scale(1.06);opacity:.75}}
+.stage > *{position:relative;z-index:1}
+.stage > .packet{position:absolute;z-index:4;background:var(--mint);border-color:#000;box-shadow:0 0 0 3px rgba(95,208,168,.25)}
+.phone.appwin{max-width:600px;border-color:var(--ink);box-shadow:12px 12px 0 var(--shadow);animation:float 7s ease-in-out infinite}
+.stage > .note{display:block;padding:0 2px;border:0;background:none;box-shadow:none;font-size:12px;color:var(--slate)}
+.stage > .note::before{display:none}
+.under{grid-template-columns:auto minmax(0,1fr);align-items:stretch;gap:16px}
+.pc{background:var(--panel)}
+.pc .bar{color:var(--ink)}
+.log{min-height:96px}
+/* the pixel phone (the phone page), held sideways like the app's Phones preview */
+.mphone{position:relative;width:236px;align-self:center;display:grid;grid-template-columns:14px minmax(0,1fr) 14px;align-items:center;gap:0;
+  background:#0b0e14;border:4px solid #3b4458;box-shadow:inset 0 0 0 2px #2a3140,6px 6px 0 var(--shadow);padding:8px 4px;
+  clip-path:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px));
+  animation:float 7s ease-in-out -2.5s infinite}
+.mph-cam{width:6px;height:6px;justify-self:center;background:#22324e;box-shadow:0 0 0 2px #141a26}
+.mph-btn{width:4px;height:30px;justify-self:center;background:#1c2230}
+.mph-screen{background:#131826;border:2px solid #000;padding:4px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.mph-bar{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-mono);font-size:8px;letter-spacing:.06em;color:var(--chrome-dim);padding:0 1px}
+.mph-bar i{width:10px;height:6px;background:var(--mint)}
+.mph-deck{gap:3px!important;pointer-events:auto}
+.mph-deck .key{border-width:2px;box-shadow:2px 2px 0 #000;padding:2px;border-color:#e4eaf6}
+.mph-deck .key .lbl{display:none}
+.mph-deck .key img,.mph-deck .key svg{width:62%}
+.mph-deck .key.sel{outline:0}
+.mph-deck .key.hit{outline:2px solid var(--mint);outline-offset:1px;transform:translate(2px,2px);box-shadow:0 0 0 #000}
+.mph-deck .slot{border-width:1px}
+/* a pressed key on the window sends a ring out */
+.key.ping::after{content:"";position:absolute;inset:-5px;border:3px solid var(--mint);pointer-events:none;animation:ring .65s var(--ease) forwards}
+@keyframes ring{from{opacity:1;transform:scale(.92)}to{opacity:0;transform:scale(1.28)}}
+
+/* the "still being finished" notice now sits under the hero, not over it */
+#home-view .notice{margin-top:-40px}
+
+/* app ticker */
+.ticker{border-block:4px solid var(--shadow);background:var(--deep)}
+.tick-row{color:var(--slate)}
+
+/* ===== Cards and sections ===== */
+.sim,.feat,.way,.req,.pd-box,.credits > div,.rules > div,.allfeat > div{padding:22px}
+.sim .ic,.feat .ic,.way .ic,.get .ic{border-color:var(--ink);box-shadow:3px 3px 0 var(--shadow)}
+.feat .ic{background:var(--chrome)}
+.sim h3{font-size:24px}
+.steps{counter-reset:s}
+.steps li{padding:24px;position:relative}
+.steps li::before{width:46px;height:46px;font-size:22px;box-shadow:3px 3px 0 var(--shadow)}
+.steps li:nth-child(2)::before{background:var(--mint)}
+.steps li:nth-child(3)::before{background:var(--sun)}
+/* the dotted line between the three steps */
+.steps::after{content:"";position:absolute;left:46px;right:46px;top:46px;height:4px;z-index:-1;background:repeating-linear-gradient(90deg,var(--rule) 0 10px,transparent 10px 18px)}
+@media (max-width:860px){.steps::after{display:none}}
+.plug .shot{background:var(--chrome);border-bottom-color:var(--ink)}
+.plug .body{padding:14px 16px 18px}
+.plug h3 img{border-color:var(--ink);background:var(--chrome)}
+.faq details{transition:box-shadow .2s var(--ease),transform .2s var(--ease)}
+.faq details[open]{box-shadow:6px 6px 0 var(--mint-dark)}
+.faq summary::after{border-color:var(--ink);color:var(--on-accent);transition:transform .25s var(--ease),background-color .2s}
+.faq details[open] summary::after{transform:rotate(180deg)}
+.band{background:linear-gradient(135deg,#1e2433,#1a2030 60%,#1d2a33);border-color:var(--ink);box-shadow:10px 10px 0 var(--shadow);padding:44px}
+.pledge li::before{border-color:var(--on-accent)}
+.final{position:relative;overflow:hidden;padding:64px 24px;background:linear-gradient(180deg,#ffffff,#eaf7f1);box-shadow:10px 10px 0 var(--shadow)}
+.final::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(50% 70% at 50% 0%,rgba(95,208,168,.18),transparent 70%)}
+.final > *{position:relative}
+.final h2{font-size:clamp(34px,5vw,60px)}
+.final .btn{font-size:20px;padding:13px 26px}
+.keyrow span{border-color:var(--ink);background:var(--chrome)}
+.edt{box-shadow:10px 10px 0 var(--shadow);border-color:var(--ink)}
+.mk-tools{background:rgba(255,255,255,.94);backdrop-filter:blur(8px)}
+.wiz,.appmock,.cvwrap,.flow{border-color:var(--ink);box-shadow:10px 10px 0 var(--shadow)}
+.wiz-main{background:var(--panel);border-color:#000}
+.dside,.dmain{background:var(--tile)}
+footer{background:var(--deep);border-top:4px solid var(--shadow)}
+
+/* ===== Motion ===== */
+/* page load: rise and fade in, once */
+/* movement only, so a paused or throttled animation never leaves the hero invisible */
+.load{animation:riseIn .8s var(--ease) both}
+@keyframes riseIn{from{transform:translateY(24px)}}
+/* sections below the fold: set to .pre by script, eased up into place when scrolled to */
+.rv{transition:transform .8s var(--ease),opacity .8s var(--ease)}
+.rv.pre{transform:translateY(40px);opacity:0}
+/* cards inside a section's grid: one after another */
+.rvc.pre{opacity:0;transform:translateY(28px)}
+.rvc.pop{animation:cardIn .7s var(--ease) both;animation-delay:calc(var(--i,0) * 70ms)}
+@keyframes cardIn{from{opacity:0;transform:translateY(28px)}}
+/* page changes: View Transitions, with a short entrance where the browser has none */
+::view-transition-old(root){animation:vtOut .22s ease-in both}
+::view-transition-new(root){animation:vtIn .38s var(--ease) both}
+@keyframes vtOut{to{opacity:0;transform:translateY(-10px)}}
+@keyframes vtIn{from{opacity:0;transform:translateY(14px)}}
+.top{view-transition-name:topbar}
+::view-transition-old(topbar),::view-transition-new(topbar){animation:none}
+.v-in{animation:vtIn .38s var(--ease) both}
+
+@media (max-width:860px){
+  .hero{min-height:0}
+  .stage{max-width:600px;margin-inline:auto}
+}
+@media (max-width:560px){
+  main{gap:84px;padding-block:32px 72px}
+  .hero{gap:36px}
+  .hero h1{font-size:clamp(34px,10.5vw,46px)}
+  .swap{white-space:normal}
+  .under{grid-template-columns:minmax(0,1fr)}
+  .mphone{justify-self:center;width:min(260px,100%)}
+  .band{padding:24px}
+  .final{padding:44px 16px}
+  #home-view .notice{margin-top:-24px}
+}
+
