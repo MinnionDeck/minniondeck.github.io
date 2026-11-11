@@ -807,7 +807,7 @@
         var name = fileName(d.name, ".png");
         toBlob(function(bl){ download(bl, name); q("out").textContent = name + " · " + Math.max(1, Math.round(bl.size / 1024)) + " KB. Import it in a button's Image section, on a " + d.w + " × " + d.h + " button."; });
       }
-      if (a === "sync") toBlob(function(bl){ deskSync(bl, root.querySelector("[data-sync-msg]")); });
+      if (a === "sync") toBlob(function(bl){ deskSync(bl, root.querySelector("[data-sync-msg]"), !!DESK && d.desk === DESK.token, d); });
     });
     q("name").addEventListener("input", function(){ d.name = q("name").value.slice(0, 24); persist(); });
     q("c1").addEventListener("input", function(){ d.bg.c1 = q("c1").value; redraw(); persist(); });
@@ -867,6 +867,7 @@
     function loadLayers(layers, size, name){
       var it = make(); it.name = String(name || "From MinnionDeck").slice(0, 24); it.layers = [];
       it.bg = { type: "colour", c1: "#1e2433", c2: "#262e43" };
+      it.desk = DESK ? DESK.token : "";   // this Edit image's button, in layers (see deskSync)
       var left = layers.length, done = function(){
         if (--left > 0) return;
         it.layers = it.layers.filter(Boolean);   // MinnionDeck's order, without the gap the background leaves
@@ -904,11 +905,23 @@
       });
     }
 
+    // a design MinnionDeck kept with the button's picture: it opens as it was left, and takes the
+    // place of this browser's copy of it
+    function loadDesign(saved, name){
+      var it = Object.assign(make(), saved);
+      it.name = String(name || it.name || "From MinnionDeck").slice(0, 24);
+      it.desk = DESK ? DESK.token : "";
+      var at = lib.map(function(x){ return x.id; }).indexOf(it.id);
+      if (at >= 0) lib[at] = it; else lib.push(it);
+      open(it); persist();
+      q("out").textContent = "Brought in from MinnionDeck as you left it. Move, resize or swap any part, then press Sync.";
+    }
+
     if (!lib.length) lib.push(make());
     var want = STORE.get(KEY + ":cur", null);
     open(lib.filter(function(it){ return it.id === want; })[0] || lib[0]);
     if (document.fonts && document.fonts.load) document.fonts.load('700 20px "Pixelify Sans"').then(redraw, function(){});
-    return { loadImage: loadImage, loadLayers: loadLayers };
+    return { loadImage: loadImage, loadLayers: loadLayers, loadDesign: loadDesign };
   }
 
   // Built the first time each page opens

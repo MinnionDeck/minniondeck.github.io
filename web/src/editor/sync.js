@@ -7,7 +7,7 @@
   var DESK = null;
   var DESK_TOKEN = (new URLSearchParams(location.search).get("token") || "").toLowerCase();
   if (!/^[0-9a-f]{32}$/.test(DESK_TOKEN)) DESK_TOKEN = "";
-  function deskFetch(path, opts){ return fetch(path + "?token=" + DESK.token, Object.assign({ cache: "no-store" }, opts || {})); }
+  function deskFetch(path, opts, more){ return fetch(path + "?token=" + DESK.token + (more || ""), Object.assign({ cache: "no-store" }, opts || {})); }
   function deskJson(r){ return r.json().catch(function(){ return { ok: false, error: "MinnionDeck sent an answer this page can't read (" + r.status + ")." }; }); }
   var DESK_OFFLINE = "MinnionDeck isn't answering. Is it still open? Press Edit image in it again.";
 
@@ -45,19 +45,30 @@
       // the button's picture, once per Edit image (a reload doesn't bring it in again)
       var seen = ""; try { seen = sessionStorage.getItem("md.editor.loaded") || ""; } catch (e) {}
       if (seen === DESK.token) return;
-      // a picture look comes as layers (the button, then its icon) when the app has them
-      if (DESK.kind === "image" && j.layers > 0){
-        deskFetch("/v1/layers").then(function(r3){ return r3.ok ? r3.json() : null; }).then(function(lj){
-          if (!lj || !lj.ok || !lj.layers || !lj.layers.length) return deskPicture(j);
+      // a picture made here before opens as it was left, every layer still separate
+      if (DESK.kind === "image" && j.design){
+        deskFetch("/v1/design").then(function(r4){ return r4.ok ? r4.json() : null; }).then(function(dj){
+          if (!dj || !Array.isArray(dj.layers)) return deskLayers(j);
           try { sessionStorage.setItem("md.editor.loaded", DESK.token); } catch (e) {}
-          DESK.note = "It's open below as layers: the button at the bottom, the icon on top. Change them, then press Sync.";
+          DESK.note = "It's open below as you left it, with its layers. Change them, then press Sync.";
           deskRefresh();
-          show("images"); imgTab("design"); MAKERS.design.loadLayers(lj.layers, lj.size, DESK.name || "From MinnionDeck");
-        }, function(){ deskPicture(j); });
+          show("images"); imgTab("design"); MAKERS.design.loadDesign(dj, DESK.name || "From MinnionDeck");
+        }, function(){ deskLayers(j); });
         return;
       }
-      deskPicture(j);
+      deskLayers(j);
     }, function(){ DESK.state = "offline"; deskRefresh(); });
+  }
+  // a picture look comes as layers (the button, then its icon) when the app has them
+  function deskLayers(j){
+    if (!(DESK.kind === "image" && j.layers > 0)) return deskPicture(j);
+    deskFetch("/v1/layers").then(function(r3){ return r3.ok ? r3.json() : null; }).then(function(lj){
+      if (!lj || !lj.ok || !lj.layers || !lj.layers.length) return deskPicture(j);
+      try { sessionStorage.setItem("md.editor.loaded", DESK.token); } catch (e) {}
+      DESK.note = "It's open below as layers: the button at the bottom, the icon on top. Change them, then press Sync.";
+      deskRefresh();
+      show("images"); imgTab("design"); MAKERS.design.loadLayers(lj.layers, lj.size, DESK.name || "From MinnionDeck");
+    }, function(){ deskPicture(j); });
   }
   // the flattened picture, for GIFs and for an app without layers
   function deskPicture(j){
@@ -75,17 +86,25 @@
     if (DESK.kind === "gif"){ show("gifs"); MAKERS.gif.loadImage(blob, name); }
     else { show("images"); imgTab("pixel"); MAKERS.pixel.loadImage(blob, name); }
   }
-  function deskSync(blob, el){
+  // whole: this picture is the button's own layers, so its icon is in the picture (or was taken out
+  // here). The app then stops drawing its icon; for any other picture it keeps it.
+  // design: the layers this picture was made from, kept with it so it can be edited in layers again
+  function deskSync(blob, el, whole, design){
     if (!DESK || DESK.state !== "linked"){ deskSay(el, "Sync works while the Edit button window is open in MinnionDeck.", false); return; }
     if (!blob){ deskSay(el, "Nothing to send yet.", false); return; }
     if (blob.size > 25 * 1024 * 1024){ deskSay(el, "That's over 25 MB. Try a smaller scale.", false); return; }
     deskSay(el, "Syncing…");
-    deskFetch("/v1/image", { method: "POST", headers: { "Content-Type": blob.type || "image/png" }, body: blob }).then(function(r){
-      return deskJson(r).then(function(j){
-        if (r.status === 401){ DESK.state = "expired"; DESK.error = j.error; deskRefresh({ el: el }); }
-        deskSay(el, j.ok ? (j.message || "Synced to MinnionDeck") : (j.error || "MinnionDeck didn't take it."), !!j.ok);
-      });
-    }, function(){ DESK.state = "offline"; deskRefresh({ el: el }); deskSay(el, DESK_OFFLINE, false); });
+    var send = function(){
+      deskFetch("/v1/image", { method: "POST", headers: { "Content-Type": blob.type || "image/png" }, body: blob }, whole ? "&icon=inside" : "").then(function(r){
+        return deskJson(r).then(function(j){
+          if (r.status === 401){ DESK.state = "expired"; DESK.error = j.error; deskRefresh({ el: el }); }
+          deskSay(el, j.ok ? (j.message || "Synced to MinnionDeck") : (j.error || "MinnionDeck didn't take it."), !!j.ok);
+        });
+      }, function(){ DESK.state = "offline"; deskRefresh({ el: el }); deskSay(el, DESK_OFFLINE, false); });
+    };
+    // the picture goes either way: without its design it just opens flat next time
+    if (design) deskFetch("/v1/design", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(design) }).then(send, send);
+    else send();
   }
   document.addEventListener("click", function(e){ if (e.target.closest("[data-desk-retry]")) deskStart(); });
   function syncHtml(){ return '<div class="sync" data-sync><button type="button" class="btn mint" data-a="sync" disabled>Sync to MinnionDeck</button><p class="empty2" data-sync-msg aria-live="polite"></p></div>'; }
