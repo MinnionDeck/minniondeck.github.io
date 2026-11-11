@@ -1,4 +1,4 @@
-  /* marketplace: the plugin list comes from index.json, the same file the app's Plugins page will read */
+  /* marketplace: the plugin list comes from the live index.json (01-plugins.js), the same file the app's Plugins page reads */
   var MK = {data:null, cat:"all", q:"", sort:"name"};
   // The same four uses as Minniondeck Setup's first page
   var CATS = [["all","All"],["general","General"],["streaming","Streaming"],["games","Games"],["work","Work"]];
@@ -26,8 +26,7 @@
   function mkLoad(then){
     if (MK.data) return then();
     mkGrid.innerHTML = '<div class="mk-msg frame" style="grid-column:1/-1"><div class="ldr"><i></i><i></i><i></i></div><p>Reading the plugin list…</p></div>';
-    fetch("index.json", {cache:"no-cache"})
-      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+    pluginList()
       .then(function(d){ MK.data = d; then(); })
       .catch(function(){
         mkList.hidden = false; mkDetail.hidden = true;
@@ -87,7 +86,7 @@
   }
   // Home page: the same cards for a few official plugins, read from the same list
   var homePlugs = document.getElementById("home-plugs"), HOME_PICKS = ["minnion_spotify", "minnion_timer", "minnion_sysmon", "minnion_soundboard", "minnion_weather"];
-  fetch("index.json", {cache:"no-cache"}).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+  pluginList().then(function(d){
     if (!MK.data) MK.data = d;
     var picks = HOME_PICKS.map(byId).filter(Boolean);
     if (picks.length) homePlugs.innerHTML = picks.map(plugCard).join("");

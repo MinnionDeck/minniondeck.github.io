@@ -13,7 +13,7 @@
     {n:"Minniondeck", v:REL.v, img:"icons/icon.png", lock:true}
   ];
   relHooks.push(function(){ BASE[0].v = REL.v; });
-  // The marketplace's General plugins, read from index.json when the preview starts (these until then)
+  // The marketplace's General plugins, read from the plugin list when the preview starts (these until then)
   var PARTS = {
     general:[{n:"Spotify", v:"0.1.0", img:"icons/sp-now.png"},{n:"Timer", v:"0.1.0", img:"icons/timer-countdown.png"},{n:"System Monitor", v:"0.2.0", img:"icons/sysmon-cpu.png"},{n:"Soundboard", v:"0.1.0", img:"icons/soundboard-sound.png"},{n:"Weather", v:"0.2.0", img:"icons/weather-weather.png"}]
   };
@@ -109,7 +109,7 @@
     if (wiz.timer) return;
     resetPicked(); wizDraw();
     // The plugins Choose parts lists are the marketplace's General ones, as in the real setup
-    fetch("index.json", {cache:"no-cache"}).then(function(r){ return r.json(); }).then(function(d){
+    pluginList().then(function(d){
       var list = (d.plugins || []).filter(function(p){ return p.category === "general"; });
       if (!list.length) return;
       PARTS.general = list.map(function(p){ return {n:p.name, v:p.version, img:p.icon}; });

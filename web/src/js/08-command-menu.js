@@ -23,7 +23,7 @@
       return out;
     }
     function plugins(){
-      fetch("index.json", {cache:"no-cache"}).then(function(r){ return r.json(); }).then(function(d){
+      pluginList().then(function(d){
         (d.plugins || []).forEach(function(p){
           ITEMS.push({g:"Plugins", t:p.name, s:p.summary || "", v:"marketplace/" + p.id, img:p.icon, k:(p.actions || []).join(" ") + " " + (p.category || "")});
         });

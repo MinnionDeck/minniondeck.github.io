@@ -167,7 +167,7 @@
     if (stats){
       var targets = {};
       stats.querySelectorAll("b[data-count]").forEach(function(b){ var v = b.getAttribute("data-count"); targets[v] = isNaN(+v) ? +b.textContent : +v; });
-      fetch("index.json", {cache:"no-cache"}).then(function(r){ return r.json(); }).then(function(d){
+      pluginList().then(function(d){
         var ps = d.plugins || [];
         targets.plugins = ps.length;
         targets.keys = ps.reduce(function(a, p){ return a + (p.actions || []).length; }, 0);

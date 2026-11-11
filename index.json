@@ -1,8 +1,51 @@
 {
   "schema": 1,
-  "updated": "2026-10-31",
+  "updated": "2026-11-11",
   "release_base": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins",
   "plugins": [
+    {
+      "id": "minnion_soundboard",
+      "name": "Soundboard",
+      "version": "0.1.0",
+      "api": 2,
+      "category": "general",
+      "official": true,
+      "author": "Minniondeck",
+      "color": "peach",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_soundboard/icon.png",
+      "summary": "Play sound files from your keys.",
+      "about": "Each key plays an MP3, WAV, WMA or M4A file at its own volume. Press again to stop it or start it over, and one key stops everything. Uses Windows' own player, so nothing else is needed.",
+      "shots": [
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_soundboard/icons/sound.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_soundboard/icons/stop.png"
+      ],
+      "actions": [
+        "Play a sound",
+        "Stop all sounds"
+      ],
+      "settings": [],
+      "needs": [
+        "Your own sound files"
+      ],
+      "file": "minnion_soundboard-0.1.0.mdplugin",
+      "size": 169564,
+      "sha256": "390fb08ba10bba1ca3484b297b6add1afd2e88ebb1494a01a8de41d829badf25",
+      "versions": [
+        {
+          "v": "0.1.0",
+          "size": 169564,
+          "sha256": "390fb08ba10bba1ca3484b297b6add1afd2e88ebb1494a01a8de41d829badf25"
+        }
+      ],
+      "profile": {
+        "name": "Soundboard",
+        "file": "Soundboard.mdprofile",
+        "pages": 1,
+        "size": 4272,
+        "sha256": "b6783ad729a650faf7b97136291d92dd9363b1a532042a726f750767bba7ea3f"
+      },
+      "preview": "shots/minnion_soundboard.png"
+    },
     {
       "id": "minnion_spotify",
       "name": "Spotify",
@@ -12,21 +55,21 @@
       "official": true,
       "author": "Minniondeck",
       "color": "mint",
-      "icon": "icons/sp-now.png",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icon.png",
       "summary": "Play, skip, like, volume and now playing.",
-      "about": "Controls Spotify from your deck and shows what's playing on a key. You sign in once in your browser and Minniondeck keeps you signed in.",
+      "about": "Controls Spotify from your deck and shows what's playing on a key. You sign in once in your browser and MinnionDeck keeps you signed in.",
       "shots": [
-        "icons/sp-now.png",
-        "icons/sp-prev.png",
-        "icons/sp-play.png",
-        "icons/sp-pause.png",
-        "icons/sp-next.png",
-        "icons/sp-like-off.png",
-        "icons/sp-like-on.png",
-        "icons/sp-volume.png",
-        "icons/sp-knob.png",
-        "icons/sp-library.png",
-        "icons/sp-list.png"
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-now.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-prev.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-next.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-play.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-pause.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-like-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-like-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-volume.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-knob.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-library.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_spotify/icons/sp-list.png"
       ],
       "actions": [
         "Now playing",
@@ -60,10 +103,59 @@
         "name": "Spotify",
         "file": "Spotify.mdprofile",
         "pages": 2,
-        "size": 3755,
-        "sha256": "3b1f53894d1474544829c97427e1b0382b253a63eddd7b0ec27119ba39b4f9a3"
+        "size": 3754,
+        "sha256": "41e3bfede689bff3e12295e0795f398d83e8f58d2ff3604c04c7ec1d961f67fe"
       },
       "preview": "shots/minnion_spotify.png"
+    },
+    {
+      "id": "minnion_sysmon",
+      "name": "System Monitor",
+      "version": "0.2.0",
+      "api": 2,
+      "category": "general",
+      "official": true,
+      "author": "Minniondeck",
+      "color": "sky",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icon.png",
+      "summary": "CPU, GPU, memory, disk, network and the busiest app, live.",
+      "about": "Shows how busy your PC is, right on your keys, read straight from Windows: CPU, GPU and memory use, free disk space, network speed, and the app using the most CPU, memory or GPU right now. Press a key to open Task Manager, or a disk key to open that drive.",
+      "shots": [
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icons/cpu.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icons/ram.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icons/disk.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icons/net.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icons/gpu.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_sysmon/icons/top.png"
+      ],
+      "actions": [
+        "CPU use",
+        "Memory use",
+        "Disk space",
+        "Network speed",
+        "GPU use",
+        "Top app"
+      ],
+      "settings": [],
+      "needs": [],
+      "file": "minnion_sysmon-0.2.0.mdplugin",
+      "size": 176545,
+      "sha256": "ab7979210a9a946681c4bc51b4d90fd65e418ca414e4e8726a48084cbbe7e19d",
+      "versions": [
+        {
+          "v": "0.2.0",
+          "size": 176545,
+          "sha256": "ab7979210a9a946681c4bc51b4d90fd65e418ca414e4e8726a48084cbbe7e19d"
+        }
+      ],
+      "profile": {
+        "name": "System Monitor",
+        "file": "System-Monitor.mdprofile",
+        "pages": 1,
+        "size": 2750,
+        "sha256": "1206637a0caf98c969a8d954ca0f3692540aaaacb95da837c98897495dfd6645"
+      },
+      "preview": "shots/minnion_sysmon.png"
     },
     {
       "id": "minnion_timer",
@@ -74,14 +166,14 @@
       "official": true,
       "author": "Minniondeck",
       "color": "sun",
-      "icon": "icons/timer-countdown.png",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_timer/icon.png",
       "summary": "Countdowns, a stopwatch, a focus timer and a clock.",
       "about": "Live timers on your keys. Press to start or pause, hold to reset. The focus timer (Pomodoro) switches between focus and breaks by itself, and a finished timer beeps and pops up a message.",
       "shots": [
-        "icons/timer-countdown.png",
-        "icons/timer-stopwatch.png",
-        "icons/timer-focus.png",
-        "icons/timer-clock.png"
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_timer/icons/countdown.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_timer/icons/stopwatch.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_timer/icons/focus.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_timer/icons/clock.png"
       ],
       "actions": [
         "Countdown",
@@ -103,90 +195,179 @@
           "sha256": "6ade48e72cffdb6f6dabfa8b716b478681fb732492a5e260d0fdcf91204ece91"
         }
       ],
+      "profile": {
+        "name": "Timer",
+        "file": "Timer.mdprofile",
+        "pages": 1,
+        "size": 3392,
+        "sha256": "058c89021edc09fcb724db0aa4290210c0597113a38f8c86a7af26b23ac7ed06"
+      },
       "preview": "shots/minnion_timer.png"
     },
     {
-      "id": "minnion_sysmon",
-      "name": "System Monitor",
-      "version": "0.2.0",
-      "api": 2,
-      "category": "general",
-      "official": true,
-      "author": "Minniondeck",
-      "color": "sky",
-      "icon": "icons/sysmon-cpu.png",
-      "summary": "CPU, GPU, memory, disk, network and the busiest app, live.",
-      "about": "Shows how busy your PC is, right on your keys, read straight from Windows: CPU, GPU and memory use, free disk space, network speed, and the app using the most CPU, memory or GPU right now. Press a key to open Task Manager, or a disk key to open that drive.",
-      "shots": [
-        "icons/sysmon-cpu.png",
-        "icons/sysmon-ram.png",
-        "icons/sysmon-disk.png",
-        "icons/sysmon-net.png",
-        "icons/sysmon-gpu.png",
-        "icons/sysmon-top.png"
-      ],
-      "actions": [
-        "CPU use",
-        "Memory use",
-        "Disk space",
-        "Network speed",
-        "GPU use",
-        "Top app"
-      ],
-      "settings": [],
-      "needs": [],
-      "file": "minnion_sysmon-0.2.0.mdplugin",
-      "size": 176545,
-      "sha256": "ab7979210a9a946681c4bc51b4d90fd65e418ca414e4e8726a48084cbbe7e19d",
-      "versions": [
-        {
-          "v": "0.2.0",
-          "size": 176545,
-          "sha256": "ab7979210a9a946681c4bc51b4d90fd65e418ca414e4e8726a48084cbbe7e19d"
-        },
-        {
-          "v": "0.1.0",
-          "size": 157678,
-          "sha256": "9430f86967d05a4d1e6b8e04921c7bd35c2fc112c16a113bffd4359e43edb932"
-        }
-      ],
-      "preview": "shots/minnion_sysmon.png"
-    },
-    {
-      "id": "minnion_soundboard",
-      "name": "Soundboard",
+      "id": "minnion_discord",
+      "name": "Discord",
       "version": "0.1.0",
       "api": 2,
-      "category": "general",
+      "category": "streaming",
       "official": true,
       "author": "Minniondeck",
-      "color": "peach",
-      "icon": "icons/soundboard-sound.png",
-      "summary": "Play sound files from your keys.",
-      "about": "Each key plays an MP3, WAV, WMA or M4A file at its own volume. Press again to stop it or start it over, and one key stops everything. Uses Windows' own player, so nothing else is needed.",
+      "color": "lilac",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icon.png",
+      "summary": "Mute, deafen, camera, screen share, push to talk and leave call, live.",
+      "about": "Controls Discord's voice from your deck, and each key shows Discord's live state: mute your mic, deafen, turn your camera on or off, share your screen, switch push to talk and voice activity, and leave the call. Keep Discord open; the first time, Discord asks you to Authorize MinnionDeck, and after that it connects by itself.",
       "shots": [
-        "icons/soundboard-sound.png",
-        "icons/soundboard-stop.png"
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-cam-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-cam-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-head-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-head-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-leave.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-mic-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-mic-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-ptt.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-screen-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-screen-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_discord/icons/dc-va.png"
       ],
       "actions": [
-        "Play a sound",
-        "Stop all sounds"
+        "Mute mic",
+        "Deafen",
+        "Camera",
+        "Screen share",
+        "Leave call",
+        "Push to talk"
       ],
-      "settings": [],
+      "settings": [
+        "Connect",
+        "Disconnect"
+      ],
       "needs": [
-        "Your own sound files"
+        "The Discord app, open on this PC"
       ],
-      "file": "minnion_soundboard-0.1.0.mdplugin",
-      "size": 169564,
-      "sha256": "390fb08ba10bba1ca3484b297b6add1afd2e88ebb1494a01a8de41d829badf25",
+      "file": "minnion_discord-0.1.0.mdplugin",
+      "size": 1033861,
+      "sha256": "c5041beca8592ab9ad8213c2174fb3df5da7a6ec03bd4f7f9654ac781a09b7fc",
       "versions": [
         {
           "v": "0.1.0",
-          "size": 169564,
-          "sha256": "390fb08ba10bba1ca3484b297b6add1afd2e88ebb1494a01a8de41d829badf25"
+          "size": 1033861,
+          "sha256": "c5041beca8592ab9ad8213c2174fb3df5da7a6ec03bd4f7f9654ac781a09b7fc"
         }
       ],
-      "preview": "shots/minnion_soundboard.png"
+      "profile": {
+        "name": "Discord",
+        "file": "Discord.mdprofile",
+        "pages": 1,
+        "size": 3433,
+        "sha256": "1a3a40cb126bf22214424eae4303789362e0f5d3048e497e7b0b86cf82906da3"
+      }
+    },
+    {
+      "id": "minnion_streaming",
+      "name": "Streaming",
+      "version": "0.1.0",
+      "api": 2,
+      "category": "streaming",
+      "official": true,
+      "author": "Minniondeck",
+      "color": "lilac",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icon.png",
+      "summary": "OBS Studio, Twitch and YouTube chat on your keys, live.",
+      "about": "Go live, record, switch scenes, mute sources and save replays in OBS, with each key showing OBS's live state. With OBS on this PC there's nothing to type: tick Enable WebSocket server in OBS and it connects by itself. Sign in to Twitch once for viewers, followers, chat, clips, markers, ads and chat modes. Type your YouTube @handle to read your live chat, with no sign-in. Set up only the ones you use.",
+      "shots": [
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-ad.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-chat.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-clip.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-emote.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-eye-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-eye-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-heart.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-live-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-live-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-marker.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-mic-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-mic-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-pause.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-rec-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-rec-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-replay-off.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-replay-on.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-save.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-say.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-scene.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-slow.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-title.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-viewers.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_streaming/icons/st-yt-chat.png"
+      ],
+      "actions": [
+        "Go live",
+        "Record",
+        "Pause recording",
+        "Switch scene",
+        "Mute a source",
+        "Show or hide a source",
+        "Replay buffer",
+        "Save replay",
+        "Viewers",
+        "Followers",
+        "Live chat",
+        "Make a clip",
+        "Stream marker",
+        "Run an ad",
+        "Slow mode",
+        "Emote-only chat",
+        "Send a chat message",
+        "Set stream title",
+        "Live chat"
+      ],
+      "settings": [
+        "Check OBS",
+        "Sign in to Twitch",
+        "Check YouTube chat",
+        "Sign out of Twitch",
+        "YouTube channel",
+        "Twitch chat to show",
+        "OBS computer (only if OBS is on another PC)",
+        "OBS password (only if OBS is on another PC)",
+        "OBS port (only if OBS is on another PC)"
+      ],
+      "needs": [
+        "OBS Studio 28 or newer, for the OBS keys",
+        "A Twitch account, for the Twitch keys"
+      ],
+      "file": "minnion_streaming-0.1.0.mdplugin",
+      "size": 1507271,
+      "sha256": "2bfbfa4a55921c845ca82298ad1e91427b6a9f892f3bdf9a6924ffda6d1c779e",
+      "versions": [
+        {
+          "v": "0.1.0",
+          "size": 1507271,
+          "sha256": "2bfbfa4a55921c845ca82298ad1e91427b6a9f892f3bdf9a6924ffda6d1c779e"
+        }
+      ],
+      "profile": {
+        "name": "Streaming",
+        "file": "Streaming.mdprofile",
+        "pages": 3,
+        "size": 6935,
+        "sha256": "cafc431914c8eb74175aedafbe2f21dc19ad530c95edd209e40d925a28396ea0",
+        "choices": [
+          {
+            "id": "obs",
+            "label": "OBS Studio"
+          },
+          {
+            "id": "twitch",
+            "label": "Twitch"
+          },
+          {
+            "id": "youtube",
+            "label": "YouTube"
+          }
+        ],
+        "choose": "What do you stream with?"
+      }
     },
     {
       "id": "minnion_weather",
@@ -197,24 +378,24 @@
       "official": true,
       "author": "Minniondeck",
       "color": "lilac",
-      "icon": "icons/weather-weather.png",
+      "icon": "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icon.png",
       "summary": "The weather now, highs and lows, rain, wind, air quality and more.",
       "about": "The weather for your home town (or any town) on your keys: now with a matching picture, today's high and low, feels like, chance of rain, humidity, wind, air quality, tomorrow, and the next sunrise or sunset. Updated every 15 minutes; press a key to hear it in full. Weather data by Open-Meteo.com, free and with no account.",
       "shots": [
-        "icons/weather-weather.png",
-        "icons/weather-sun.png",
-        "icons/weather-cloud.png",
-        "icons/weather-rain.png",
-        "icons/weather-snow.png",
-        "icons/weather-storm.png",
-        "icons/weather-fog.png",
-        "icons/weather-thermo.png",
-        "icons/weather-umbrella.png",
-        "icons/weather-drop.png",
-        "icons/weather-wind.png",
-        "icons/weather-leaf.png",
-        "icons/weather-sunrise.png",
-        "icons/weather-sunset.png"
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/weather.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/sun.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/cloud.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/rain.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/snow.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/storm.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/fog.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/thermo.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/umbrella.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/drop.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/wind.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/leaf.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/sunrise.png",
+        "https://raw.githubusercontent.com/minnnion/Minnion-Plugins/main/plugins/minnion_weather/icons/sunset.png"
       ],
       "actions": [
         "Current weather",
@@ -235,13 +416,15 @@
           "v": "0.2.0",
           "size": 1036845,
           "sha256": "dfc21fd8e2ca236d4749c7b5ab55d39fdd0610f458376a72e0011d05be8c2e73"
-        },
-        {
-          "v": "0.1.0",
-          "size": 1024164,
-          "sha256": "ee30a93f315be2e90a19b81d9e8274ecff87b4c797e9ce5fd654a8f7fad460b0"
         }
       ],
+      "profile": {
+        "name": "Weather",
+        "file": "Weather.mdprofile",
+        "pages": 1,
+        "size": 3012,
+        "sha256": "4d34283cea790b1b648fb76818ee1d33946bface8cf4c260ed3ef4d71387a296"
+      },
       "preview": "shots/minnion_weather.png"
     }
   ]

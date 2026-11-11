@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en" data-base="/" data-route="marketplace/minnion_streaming">
+<head>
+<base href="/">
+  <link rel="preload" href="./assets/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="preload" href="./assets/pixelify-sans-latin-wght-normal-Cbhn5ptY.woff2" as="font" type="font/woff2" crossorigin="">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="OBS Studio, Twitch and YouTube chat on your keys, live. A free plugin for MinnionDeck, the Stream Deck alternative for Windows.">
+<meta name="theme-color" content="#1e2433">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="icons/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon.png">
+<script>window.MD_TITLES={"download":"Download MinnionDeck for Windows: free Stream Deck alternative","tour":"How MinnionDeck works: a tour of the app and the phone deck","marketplace":"MinnionDeck plugins: Spotify, Soundboard, Timer, Weather and more","docs":"MinnionDeck Docs: guides for buttons, phones and plugins","about":"About MinnionDeck: a free deck for your PC","contribute":"Help improve MinnionDeck: bug reports, plugins and more","privacy":"Privacy Policy · MinnionDeck","terms":"Terms of Service · MinnionDeck","marketplace/minnion_soundboard":"Soundboard plugin for MinnionDeck","marketplace/minnion_spotify":"Spotify plugin for MinnionDeck","marketplace/minnion_sysmon":"System Monitor plugin for MinnionDeck","marketplace/minnion_timer":"Timer plugin for MinnionDeck","marketplace/minnion_discord":"Discord plugin for MinnionDeck","marketplace/minnion_streaming":"Streaming plugin for MinnionDeck","marketplace/minnion_weather":"Weather plugin for MinnionDeck","docs/install":"Install and pair your phone · MinnionDeck Docs","docs/deck":"The Deck, pages and folders · MinnionDeck Docs","docs/buttons":"Make a button · MinnionDeck Docs","docs/profiles":"Profiles and auto-switching · MinnionDeck Docs","docs/images":"Make images and GIFs · MinnionDeck Docs","docs/files":"Where your files are · MinnionDeck Docs","docs/plugins":"How plugins work · MinnionDeck Docs","docs/install-plugins":"Install and update plugins · MinnionDeck Docs","docs/make-plugin":"Make a plugin · MinnionDeck Docs","docs/publish-plugin":"Sign and publish a plugin · MinnionDeck Docs","docs/update-app":"Update Minniondeck · MinnionDeck Docs","docs/help":"Fix a problem · MinnionDeck Docs"}</script>
+<title>Streaming plugin for MinnionDeck</title>
+<link rel="canonical" href="https://minniondeck.github.io/marketplace/minnion_streaming/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MinnionDeck">
+<meta property="og:title" content="Streaming plugin for MinnionDeck">
+<meta property="og:description" content="OBS Studio, Twitch and YouTube chat on your keys, live. A free plugin for MinnionDeck, the Stream Deck alternative for Windows.">
+<meta property="og:url" content="https://minniondeck.github.io/marketplace/minnion_streaming/">
+<meta property="og:image" content="https://minniondeck.github.io/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MinnionDeck: a free Stream Deck alternative for Windows, showing a deck of weather buttons">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Streaming plugin for MinnionDeck">
+<meta name="twitter:description" content="OBS Studio, Twitch and YouTube chat on your keys, live. A free plugin for MinnionDeck, the Stream Deck alternative for Windows.">
+<meta name="twitter:image" content="https://minniondeck.github.io/social-preview.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MinnionDeck","item":"https://minniondeck.github.io/"},{"@type":"ListItem","position":2,"name":"MinnionDeck plugins","item":"https://minniondeck.github.io/marketplace/"},{"@type":"ListItem","position":3,"name":"Streaming plugin for MinnionDeck","item":"https://minniondeck.github.io/marketplace/minnion_streaming/"}]}
+</script>
+  <script type="module" crossorigin src="./assets/index-BipasCPP.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/style-CRFIuBtK.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/" data-view="home"><img class="px" src="icons/icon.png" alt="">Minniondeck<span class="ver" aria-label="version 0.1.1" data-rel="v">0.1.1</span></a>
+    <button type="button" class="cmdk-btn" id="cmdk-btn" aria-haspopup="dialog" aria-label="Search the site (Ctrl+K)"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg><span class="cmdk-lbl">Search</span><kbd>Ctrl K</kbd></button>
+    <button type="button" class="snd-btn" id="snd-btn" aria-pressed="false" aria-label="Sounds: off. Turn on click sounds"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="0" y="3" width="2" height="2"/><rect x="2" y="2" width="1" height="4"/><rect x="3" y="1" width="1" height="6"/><rect class="snd-on" x="5" y="2" width="1" height="1"/><rect class="snd-on" x="5" y="5" width="1" height="1"/><rect class="snd-on" x="6" y="3" width="1" height="2"/><rect class="snd-off" x="5" y="2" width="1" height="1"/><rect class="snd-off" x="7" y="2" width="1" height="1"/><rect class="snd-off" x="6" y="3" width="1" height="2"/><rect class="snd-off" x="5" y="5" width="1" height="1"/><rect class="snd-off" x="7" y="5" width="1" height="1"/></svg></button>
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav"><span class="mb-ic" aria-hidden="true"><i></i><i></i><i></i></span><span id="menu-label">Menu</span></button>
+    <nav class="nav" id="main-nav" aria-label="Main">
+      <a href="/" data-view="home" aria-current="page">Home</a>
+      <a href="/tour/" data-view="tour">Tour</a>
+      <a href="/marketplace/" data-view="marketplace">Marketplace</a>
+      <a href="/docs/" data-view="docs">Docs</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="/contribute/" data-view="contribute">Contribute</a>
+      <a href="/about/" data-view="about">About</a>
+      <a class="nav-cta" href="/download/" data-view="download">Download</a>
+    </nav>
+  </div>
+  <div class="sprog" aria-hidden="true"><i id="sprog"></i></div>
+</header>
+
+<!-- The page deck: five keys for the page you're on. Like Minniondeck, it switches profile by itself
+     when a different page comes to the front. Keys 1 to 5 on the keyboard press them. -->
+<aside class="sdeck" id="sdeck" aria-label="Page deck">
+  <div class="sd-lcd">
+    <span class="sd-led" aria-hidden="true"></span>
+    <span class="sd-txt"><small id="sd-sub">Profile</small><b id="sd-name" aria-live="polite">Home</b></span>
+  </div>
+  <div class="sd-keys" id="sd-keys" role="group" aria-label="Actions for this page"></div>
+  <button type="button" class="sd-fold" id="sd-fold" aria-expanded="true" aria-controls="sd-keys" aria-label="Hide the page deck and turn off its 1 to 5 keys"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="0" y="2" width="8" height="1"/><rect x="1" y="3" width="6" height="1"/><rect x="2" y="4" width="4" height="1"/><rect x="3" y="5" width="2" height="1"/></svg></button>
+</aside>
+
+<!-- Command menu (Ctrl+K or /): jump to any page, plugin or docs topic -->
+<dialog class="cmdk" id="cmdk" aria-label="Search the site">
+  <div class="cmdk-in">
+    <svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor" shape-rendering="crispEdges"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg>
+    <input id="cmdk-q" type="text" placeholder="Search pages, plugins and docs" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list">
+    <kbd>Esc</kbd>
+  </div>
+  <ul class="cmdk-list" id="cmdk-list" role="listbox" aria-label="Results"></ul>
+  <div class="cmdk-foot"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span class="grow"></span><span><kbd>Ctrl K</kbd> opens this anywhere</span></div>
+</dialog>
+
+<div id="home-view">
+<main class="wrap">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-float" id="hero-float" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <div class="facts load">
+        <span class="chip ok">Free</span>
+        <span class="chip">Source-available</span>
+        <span class="chip">Windows + your phone</span>
+      </div>
+      <h1 id="hero-title" class="load d1">Your phone becomes a <span class="swap" id="swap"><span>stream deck</span></span></h1>
+      <p class="lead load d2">Minniondeck puts big square buttons and live screens on your phone. Press a key and your PC does it: play music, start a timer, check your PC or play a sound. Plugins add even more buttons.</p>
+      <div class="cta load d3">
+        <a class="btn mint" href="/download/" data-view="download">Download for Windows</a>
+        <a class="btn plain" href="/marketplace/" data-view="marketplace">Browse plugins</a>
+      </div>
+      <p class="hero-proof load d4"><span><i></i>Desktop app <span data-rel="v">0.1.1</span></span><span><i></i>No phone app needed</span><span><i></i>No account needed</span></p>
+    </div>
+
+    <div class="stage load d2" id="stage" aria-label="The Deck page of the Minniondeck desktop app, a 5 by 3 page, with each press shown in the PC log">
+      <button type="button" class="mn mn-hero" id="mn-hero" aria-label="Minnion, the Minniondeck mascot. Press to say hi"><span class="mn-say" id="mn-say" aria-live="polite"></span></button>
+      <div class="phone appwin" id="phone">
+        <div class="am-bar"><img class="am-logo" src="icons/icon.png" alt=""><b>Minniondeck</b><span class="am-crumb">My profile / Page 1</span><span class="am-win" aria-hidden="true"><i>_</i><i>□</i><i>✕</i></span></div>
+        <div class="aw-body">
+          <div class="aw-rail" id="aw-rail" aria-hidden="true"></div>
+          <div class="aw-main">
+            <div class="aw-top"><i class="aw-back" aria-hidden="true">‹</i><b>My profile / <span>Page 1</span></b><span class="am-b">5 × 3 grid ▾</span><span class="am-b">Edit layout</span><span class="am-b">Show on phones</span><div class="tabs" id="sizes" hidden></div></div>
+            <div class="deck" id="deck"></div>
+            <div class="aw-insp" aria-live="polite" hidden><div><b id="aw-name">Mute mic</b><div class="am-dim" id="aw-meta">Mute mic · 1 × 1 button</div></div><div class="am-row"><button type="button" class="am-b go" id="aw-edit">Edit button</button><span class="am-b" aria-hidden="true">Press</span><span class="am-b" aria-hidden="true">Duplicate</span><span class="am-b" aria-hidden="true">⋯</span></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="note">The Deck page of the desktop app, with its built-in keys. Your phone shows the same 5 × 3 page. Tap a key to try it, double-click one to edit it.</p>
+
+      <div class="under">
+        <div class="mphone" aria-hidden="true">
+          <div class="mph-cam"></div>
+          <div class="mph-screen"><div class="mph-bar"><span>Minniondeck</span><i></i></div><div class="deck mph-deck" id="mph-deck"></div></div>
+          <div class="mph-btn"></div>
+        </div>
+        <div class="pc frame">
+          <div class="bar"><i></i>Minniondeck on your PC</div>
+          <div class="stat"><span>Phone</span><b>paired</b></div>
+          <div class="stat"><span>Profile</span><b>My profile</b></div>
+          <div class="stat"><span>Grid</span><b id="gridstat">5 × 3</b></div>
+          <ul class="log" id="log" aria-live="polite"></ul>
+        </div>
+      </div>
+
+      <div class="packet" id="packet" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="notice frame load d4" aria-labelledby="home-note">
+    <div class="notice-tag" aria-hidden="true">!</div>
+    <div class="notice-body">
+      <h2 id="home-note">Still being finished</h2>
+      <p>Minniondeck is not finished yet, so you will find bugs. It comes as it is, without any warranty. If you change the code or add plugins from others, problems from those changes are your own responsibility. Found a bug? Please tell us.</p>
+      <div class="cta"><a class="btn mint" href="/contribute/" data-view="contribute" data-scroll="ct-bug">Report a bug</a><a class="btn plain" href="/about/" data-view="about" data-scroll="ab-notice">Read more</a></div>
+    </div>
+  </section>
+</main>
+
+<div class="ticker rev" aria-label="Apps you can control">
+  <div class="track" id="apptrack"></div>
+</div>
+<div class="wrap tick-row"><span>Control any app through hotkeys, programs and websites.</span><span>Logos are trademarks of their owners.</span></div>
+<div class="wrap">
+  <ul class="stats rv" id="stats" aria-label="Minniondeck in numbers">
+    <li><b data-count="plugins">7</b><span>plugins in the marketplace</span></li>
+    <li><b data-count="keys">46</b><span>keys those plugins add</span></li>
+    <li><b data-count="15">15</b><span>keys on one 5 × 3 page</span></li>
+    <li><b data-count="0">0</b><span>accounts to make</span></li>
+  </ul>
+</div>
+
+<main class="wrap">
+  <section aria-labelledby="sims-title" class="rv">
+    <div class="head">
+      <span class="label">Setup asks one question</span>
+      <h2 id="sims-title">What will you use it for?</h2>
+      <p>Pick one during install and Minniondeck Setup installs the plugins that go with it. Add the others later from the marketplace.</p>
+    </div>
+    <div class="sims">
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--lilac)" data-simart="general"></div>
+        <h3>General</h3>
+        <p>A Stream Deck for your PC.</p>
+        <ul><li>Macros and media keys</li><li>Spotify control</li><li>Timer and system monitor</li><li>Soundboard and weather</li></ul>
+        <span class="chip ok">Available</span>
+      </article>
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--coral)" data-simart="streaming"></div>
+        <h3>Streaming</h3>
+        <p>Go live and run your stream from your phone.</p>
+        <ul><li>Scenes and going live</li><li>Mic and sound</li><li>Chat and alerts</li></ul>
+        <span class="chip soon">Coming soon</span>
+      </article>
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--sky)" data-simart="games"></div>
+        <h3>Games</h3>
+        <p>Keys and live screens for your games.</p>
+        <ul><li>Game macros</li><li>Launch games and apps</li><li>Live stats on keys</li></ul>
+        <span class="chip soon">Coming soon</span>
+      </article>
+      <article class="sim frame lift">
+        <div class="ic" style="background:var(--peach)" data-simart="work"></div>
+        <h3>Work</h3>
+        <p>Meetings and focus, a key away.</p>
+        <ul><li>Mute and camera in meetings</li><li>Focus timer</li><li>Office shortcuts</li></ul>
+        <span class="chip soon">Coming soon</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it works, told as you scroll: the picture stays pinned and changes with each step -->
+  <section aria-labelledby="how-title" class="rv">
+    <div class="head">
+      <span class="label">Three steps</span>
+      <h2 id="how-title">How it works</h2>
+      <p>From the installer to your first key press in a few minutes. Scroll through it.</p>
+    </div>
+    <div class="scrolly">
+      <div class="sc-visual" aria-hidden="true">
+        <div class="sc-frame" id="sc-vis" data-step="1">
+          <div class="sc-p sc-p1">
+            <div class="sc-win">
+              <div class="sc-bar"><i></i>Minniondeck Setup<span>Step 3 of 4</span></div>
+              <div class="sc-body">
+                <b>Installing</b>
+                <ul class="sc-parts">
+                  <li><img class="px" src="icons/icon.png" alt="">Minniondeck<small data-rel="v">0.1.1</small></li>
+                  <li><img class="px" src="icons/sp-now.png" alt="">Spotify</li>
+                  <li><img class="px" src="icons/timer-countdown.png" alt="">Timer</li>
+                  <li><img class="px" src="icons/sysmon-cpu.png" alt="">System monitor</li>
+                </ul>
+                <div class="meter all sc-meter"><i></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-p sc-p2">
+            <div class="sc-pc"><span>Phones › Pair a phone</span><div class="sc-qr" id="sc-qr"></div></div>
+            <div class="sc-wire"><i></i></div>
+            <div class="sc-ph"><div class="sc-ph-scr"><div class="sc-scan"></div><b>Scan</b></div></div>
+          </div>
+          <div class="sc-p sc-p3">
+            <div class="sc-ph sc-ph-wide"><div class="sc-keys"><span><img class="px" src="icons/sp-prev.png" alt=""></span><span class="go"><img class="px" src="icons/sp-next.png" alt=""></span><span><img class="px" src="icons/sp-volume.png" alt=""></span></div></div>
+            <div class="sc-wire"><i></i></div>
+            <ul class="sc-log"><li><time>21:04:12</time>Spotify · next song</li><li><time>21:04:07</time>Spotify · play</li></ul>
+          </div>
+          <ol class="sc-dots"><li></li><li></li><li></li></ol>
+        </div>
+      </div>
+      <ol class="sc-steps">
+        <li data-step="1"><div class="frame"><span class="sc-n">1</span><h3>Install on your PC</h3><p>Run the installer and pick what you'll use it for. It fetches the right plugins and anything Windows needs.</p></div></li>
+        <li data-step="2"><div class="frame"><span class="sc-n">2</span><h3>Pair your phone</h3><p>Scan the QR code on the PC with your phone&#39;s camera and press Allow on the PC. Your deck opens in the phone&#39;s browser.</p></div></li>
+        <li data-step="3"><div class="frame"><span class="sc-n">3</span><h3>Press a key</h3><p>The PC runs the action, and live screens update on the phone.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="edt-title" class="rv" id="try-editor">
+    <div class="head">
+      <span class="label">Try it here</span>
+      <h2 id="edt-title">Make any button your own</h2>
+      <p>Every button is made in one window, in four steps: a name, what it does, a picture, and a colour. This is a small working copy of it. Make your changes, then press Save button. Or double-click a key on the deck at the top.</p>
+    </div>
+    <div class="edt" id="edt">
+      <div class="edt-bar"><img src="icons/icon.png" alt=""><b id="edt-head">Edit button</b><span class="edt-x" aria-hidden="true">✕</span></div>
+      <div class="edt-body">
+        <div class="edt-col edt-left">
+          <div class="edt-prev">
+            <button type="button" class="edt-key" id="edt-key" aria-label="Press the preview"></button>
+            <div class="edt-row"><button type="button" class="edt-b" id="edt-press">Try it</button><button type="button" class="edt-b" id="edt-play">Play looks</button></div>
+            <p class="edt-help">This is how the button looks on the deck and on your phone.</p>
+          </div>
+          <div class="edt-f" hidden><label class="edt-cap" for="edt-text">Text on tile</label><input id="edt-text" maxlength="24" placeholder="Same as the button's name" autocomplete="off"></div>
+          <div class="edt-f" hidden><span class="edt-cap" id="edt-cap-show">Show</span><div class="edt-seg" id="edt-show" role="group" aria-labelledby="edt-cap-show"></div></div>
+          <div class="edt-f" hidden><span class="edt-cap" id="edt-cap-pos">Name position</span><div class="edt-seg" id="edt-pos" role="group" aria-labelledby="edt-cap-pos"></div></div>
+        </div>
+        <div class="edt-col edt-right">
+          <div class="edt-f"><label class="edt-q" for="edt-name"><span class="edt-n">1</span>What is it called?</label><input id="edt-name" maxlength="24" autocomplete="off"></div>
+          <span class="edt-q"><span class="edt-n">2</span>What does it do?</span><div class="edt-f" hidden><span class="edt-cap" id="edt-cap-runs">Runs</span><div class="edt-seg" id="edt-runs" role="group" aria-labelledby="edt-cap-runs"></div><span class="edt-help" id="edt-runs-help"></span></div>
+          <div id="edt-steps"></div>
+          <div class="edt-f"><span class="edt-q" id="edt-cap-ic"><span class="edt-n">3</span>Pick a picture</span><div class="edt-icons" id="edt-icons" role="group" aria-labelledby="edt-cap-ic"></div></div>
+          <div class="edt-f"><span class="edt-cap" id="edt-cap-st">Looks: each press shows the next one</span><div class="edt-row" id="edt-states" role="group" aria-labelledby="edt-cap-st"></div><span class="edt-help" id="edt-st-help"></span></div>
+          <div class="edt-f"><span class="edt-q" id="edt-cap-col"><span class="edt-n">4</span>Pick a colour</span><div class="edt-row" id="edt-cols" role="group" aria-labelledby="edt-cap-col"></div></div>
+          <p class="edt-more">The real window also has 1,036 pixel icons and 3,466 app logos with search, up to 8 looks, 15 press effects, and every action your plugins add.</p>
+        </div>
+      </div>
+      <div class="edt-foot"><span id="edt-status" role="status">Nothing changed yet.</span><button type="button" class="edt-b" id="edt-undo">Undo changes</button><button type="button" class="edt-b go" id="edt-save">Save button</button></div>
+    </div>
+    <div class="more"><a class="btn plain" href="/docs/buttons/" data-view="docs/buttons">Everything the window can do</a><span>Or see it in the <a href="/tour/" data-view="tour" data-scroll="tr-app">tour</a>.</span></div>
+  </section>
+
+  <section aria-labelledby="feat-title" class="rv">
+    <div class="head">
+      <span class="label">What's inside</span>
+      <h2 id="feat-title">Everything runs on your own PC</h2>
+      <p>No cloud service sits between your phone and your PC. Plugins add whole worlds of buttons.</p>
+    </div>
+    <div class="feats bento">
+      <article class="feat frame lift b-big"><div class="ic" data-logo="spotify"></div><h3>Spotify control</h3><p>Play, skip, like and volume, with what's playing on a key.</p><div class="b-np" aria-hidden="true"><img class="px" src="icons/sp-now.png" alt=""><div><b>Now playing</b><span class="b-track"><i></i></span></div><span class="bars"><i></i><i></i><i></i><i></i><i></i></span></div><div class="b-keys" aria-hidden="true"><span><img class="px" src="icons/sp-prev.png" alt=""></span><span><img class="px" src="icons/sp-play.png" alt=""></span><span><img class="px" src="icons/sp-next.png" alt=""></span><span><img class="px" src="icons/sp-like-on.png" alt=""></span></div><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/timer-countdown.png" alt=""></div><h3>Timers</h3><p>Countdowns, a stopwatch, a focus timer and a clock, each on a key.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/sysmon-cpu.png" alt=""></div><h3>System monitor</h3><p>CPU, GPU, memory, disk and network, live on your phone.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/soundboard-sound.png" alt=""></div><h3>Soundboard</h3><p>Play your own sound files with one press.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/weather-sun.png" alt=""></div><h3>Weather</h3><p>The weather now, highs and lows, rain and wind.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift b-wide"><div class="ic"><img class="px" src="icons/nav-phases.png" alt=""></div><h3>Profiles that switch</h3><p>A set of pages for each app. Minniondeck can switch to it by itself when that app comes to the front.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true" fill="#ffc93c"><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/></svg></div><h3>Pictures and GIFs</h3><p>Draw pixel pictures and GIFs for a button right from MinnionDeck: <b>Edit image</b> opens the editor and syncs it back.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift"><div class="ic"><img class="px" src="icons/nav-folder.png" alt=""></div><h3>Plugin kit</h3><p>A Rust kit and template for writing your own plugins.</p><span class="chip ok">Available</span></article>
+      <article class="feat frame lift b-full"><div class="ic"><img class="px" src="icons/icon.png" alt=""></div><h3>Built-in keys</h3><p>Press hotkeys, open programs and websites, and change the volume, with no plugin needed.</p><span class="chip ok">Available</span></article>
+    </div>
+  </section>
+
+  <section class="band rv" aria-labelledby="free-title">
+    <div>
+      <span class="label">Free to use</span>
+      <h2 id="free-title">Free for everyone</h2>
+      <p>Minniondeck started as a home project and is shared with everyone. The app, the official plugins and the installer are free to use, and the source is on GitHub to read.</p>
+    </div>
+    <ul class="pledge">
+      <li>No accounts</li>
+      <li>No subscriptions</li>
+      <li>No paid plugins</li>
+      <li>Source code on GitHub</li>
+    </ul>
+    <div class="spec">
+      <span>Tauri + Rust desktop app</span>
+      <span>Plugin API 2</span>
+      <span>Windows</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="market-title" class="rv">
+    <div class="head">
+      <span class="label">Marketplace</span>
+      <h2 id="market-title">Add plugins in one click</h2>
+      <p>The marketplace lists official and community plugins. Install them from this site or from the Marketplace page inside the app.</p>
+    </div>
+    <div class="plugs" id="home-plugs">
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--mint)" data-view="marketplace/minnion_spotify"><img class="deck" src="shots/minnion_spotify.png" alt="Spotify profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/sp-now.png" alt="">Spotify</h3><p>Play, skip, like, volume and now playing.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.1.0</span><span class="chip">7 keys</span></div><div class="acts"><a class="btn plain" href="/marketplace/minnion_spotify/" data-view="marketplace/minnion_spotify">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--sun)" data-view="marketplace/minnion_timer"><img class="deck" src="shots/minnion_timer.png" alt="Timer profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/timer-countdown.png" alt="">Timer</h3><p>Countdowns, a stopwatch, a focus timer and a clock.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.1.0</span><span class="chip">4 keys</span></div><div class="acts"><a class="btn plain" href="/marketplace/minnion_timer/" data-view="marketplace/minnion_timer">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--peach)" data-view="marketplace/minnion_soundboard"><img class="deck" src="shots/minnion_soundboard.png" alt="Soundboard profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/soundboard-sound.png" alt="">Soundboard</h3><p>Play sound files from your keys.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.1.0</span><span class="chip">2 keys</span></div><div class="acts"><a class="btn plain" href="/marketplace/minnion_soundboard/" data-view="marketplace/minnion_soundboard">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--sky)" data-view="marketplace/minnion_sysmon"><img class="deck" src="shots/minnion_sysmon.png" alt="System Monitor profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/sysmon-cpu.png" alt="">System Monitor</h3><p>CPU, GPU, memory, disk, network and the busiest app, live.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.2.0</span><span class="chip">6 keys</span></div><div class="acts"><a class="btn plain" href="/marketplace/minnion_sysmon/" data-view="marketplace/minnion_sysmon">Details</a></div></div>
+      </article>
+      <article class="plug frame lift">
+        <div class="shot prev" style="--c:var(--lilac)" data-view="marketplace/minnion_weather"><img class="deck" src="shots/minnion_weather.png" alt="Weather profile in Minniondeck" loading="lazy"></div>
+        <div class="body"><h3><img class="px" src="icons/weather-weather.png" alt="">Weather</h3><p>The weather now, highs and lows, rain, wind, air quality and more.</p><div class="meta"><span class="chip ok">Official</span><span class="chip">General</span><span class="chip">v0.2.0</span><span class="chip">2 keys</span></div><div class="acts"><a class="btn plain" href="/marketplace/minnion_weather/" data-view="marketplace/minnion_weather">Details</a></div></div>
+      </article>
+    </div>
+    <div class="more"><a class="btn plain" href="/marketplace/" data-view="marketplace">Open the marketplace</a><span>Made a plugin? <a href="/marketplace/" data-view="marketplace" data-scroll="mk-submit">Submit it here</a>.</span></div>
+  </section>
+
+  <section aria-labelledby="faq-title" class="rv">
+    <div class="head">
+      <span class="label">Questions</span>
+      <h2 id="faq-title">Before you install</h2>
+    </div>
+    <div class="faq">
+      <details class="frame"><summary>Do I need Stream Deck hardware?</summary><p>No. Your phone is the deck. Minniondeck runs on your PC and your phone shows the keys in its web browser.</p></details>
+      <details class="frame"><summary>Does it cost anything?</summary><p>No. Minniondeck and its official plugins are free to use. There are no accounts and no subscriptions.</p></details>
+      <details class="frame"><summary>Which phones work?</summary><p>Android phones, iPhones and tablets, on the same Wi-Fi as your PC. There&#39;s no app to install: the deck opens in the browser.</p></details>
+      <details class="frame"><summary>Where do plugins come from?</summary><p>From the marketplace, which reads the plugin list from GitHub. Official plugins are made by the Minniondeck project. Community plugins are sent in through the Submit a plugin form and checked by hand before they're listed.</p></details>
+    </div>
+  </section>
+
+  <section class="final frame rv" aria-labelledby="final-title">
+    <div class="keyrow" aria-hidden="true">
+      <span><img class="px" src="icons/sp-play.png" alt=""></span><span><img class="px" src="icons/timer-countdown.png" alt=""></span><span><img class="px" src="icons/soundboard-sound.png" alt=""></span><span><img class="px" src="icons/sysmon-cpu.png" alt=""></span><span><img class="px" src="icons/weather-sun.png" alt=""></span><span><img class="px" src="icons/sp-volume.png" alt=""></span>
+    </div>
+    <h2 id="final-title">Build your deck</h2>
+    <p>One installer, your PC, your phone. Download Minniondeck for Windows.</p>
+    <a class="btn mint" href="/download/" data-view="download">Get Minniondeck</a>
+  </section>
+</main>
+</div>
+
+<main class="wrap" id="download-view" hidden>
+  <section class="dl-hero" aria-labelledby="dl-title">
+    <div class="dl-copy">
+      <span class="label load">Download</span>
+      <h1 id="dl-title" class="load d1">Get Minniondeck</h1>
+      <p class="lead load d2">One installer for your PC. It&#39;s free, with no account to make, and your phone needs no app: the deck opens in its browser.</p>
+      <article class="get frame lift load d3">
+        <div class="ic" style="background:var(--mint)"><svg viewBox="0 0 10 10" aria-hidden="true"><g fill="currentColor"><rect x="0" y="1" width="10" height="1"/><rect x="0" y="2" width="1" height="5"/><rect x="9" y="2" width="1" height="5"/><rect x="0" y="7" width="10" height="1"/><rect x="2" y="3" width="2" height="2"/><rect x="5" y="3" width="3" height="1"/><rect x="5" y="5" width="2" height="1"/><rect x="4" y="8" width="2" height="1"/><rect x="2" y="9" width="6" height="1"/></g></svg></div>
+        <div><h2>Minniondeck for PC</h2><p class="sub">Windows 10 and 11, 64-bit · installer .exe</p></div>
+        <div class="row">
+          <a class="btn mint" href="https://github.com/minnnion/MinnionDeck/releases/latest" data-get="pc" data-rel="get">Download for Windows</a>
+          <span class="chip" data-rel="vv">v0.1.1</span>
+        </div>
+        <p class="pending dl-meta" data-rel="meta">Released 7 Nov 2026 · 12.7 MB · from GitHub Releases</p>
+        <details class="dl-notes" data-rel-wrap hidden><summary>What&#39;s new in <span data-rel="vv">v0.1.1</span></summary><div class="dl-notes-body" data-rel="notes"></div><a class="dl-all" href="https://github.com/minnnion/MinnionDeck/releases/latest" data-rel="page">Release notes on GitHub</a></details>
+        <p class="dl-sha" data-rel-wrap>SHA-256 <code data-rel="sha">9f29ff519b1322fa3f4b5143f7eef20c4905d9ee9047072897d3c45979e0a17d</code></p>
+      </article>
+    </div>
+
+    <div class="load d2">
+      <div class="wiz" id="wiz" aria-label="Preview of the setup">
+        <div class="wiz-bar"><i></i>Minniondeck Setup<span class="now" id="wiz-now">Step 1 of 4</span><b></b></div>
+        <ol class="wiz-side" id="wiz-side">
+          <li><span>1</span>Pick your use</li>
+          <li><span>2</span>Choose parts</li>
+          <li><span>3</span>Install</li>
+          <li><span>4</span>Pair phone</li>
+        </ol>
+        <div class="wiz-main">
+          <h3 id="wiz-title">What will you use it for?</h3>
+          <p id="wiz-intro">Setup downloads the plugins that go with it.</p>
+          <div class="wiz-body" id="wiz-body" aria-live="polite"></div>
+          <div class="wiz-nav">
+            <button type="button" class="btn plain" id="wiz-back">Back</button>
+            <button type="button" class="btn mint" id="wiz-next">Next</button>
+          </div>
+        </div>
+      </div>
+      <p class="wiz-note">A preview of the setup. Click through it, it installs nothing.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="req-title" class="rv">
+    <div class="head">
+      <span class="label">Before you start</span>
+      <h2 id="req-title">What you need</h2>
+    </div>
+    <div class="reqs">
+      <article class="req frame">
+        <h3><img class="px" src="icons/icon.png" alt="">Your PC</h3>
+        <dl><dt>System</dt><dd>Windows 10 or 11, 64-bit</dd><dt>Web view</dt><dd>WebView2, added by setup if it's missing</dd><dt>Network</dt><dd>Wi-Fi or cable, on the same network as the phone</dd></dl>
+      </article>
+      <article class="req frame">
+        <h3><img class="px" src="icons/nav-phases.png" alt="">Your phone</h3>
+        <dl><dt>System</dt><dd>Android or iPhone, phone or tablet. No app to install</dd><dt>Camera</dt><dd>To scan the pairing QR code</dd><dt>Network</dt><dd>The same Wi-Fi as the PC</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="upd-title" class="rv">
+    <div class="head">
+      <span class="label">After install</span>
+      <h2 id="upd-title">Updates look after themselves</h2>
+    </div>
+    <div class="reqs">
+      <article class="req frame lift"><h3><img class="px" src="icons/lt-ok.png" alt="">Updates itself</h3><ul><li>The app checks GitHub Releases for new versions</li><li>Each update is checked against GitHub&#39;s SHA-256, and the app refuses one that doesn't match</li><li>Plugins update from the Marketplace page</li></ul></article>
+      <article class="req frame lift"><h3><img class="px" src="icons/lt-check.png" alt="">Check the file</h3><ul><li>Every release lists a SHA-256 checksum</li><li>In PowerShell, run <code>Get-FileHash .\setup.exe</code> and compare</li></ul></article>
+      <article class="req frame lift"><h3><img class="px" src="icons/nav-folder.png" alt="">Every release</h3><ul><li>Older versions stay on GitHub Releases</li><li>Each one has release notes</li><li>Uninstall from Windows Settings, Apps</li></ul></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="dlfaq-title" class="rv">
+    <div class="head">
+      <span class="label">Questions</span>
+      <h2 id="dlfaq-title">Installing</h2>
+    </div>
+    <div class="faq">
+      <details class="frame"><summary>Can I pick a different use later?</summary><p>Yes. Add the other plugins any time from the Marketplace page in the app.</p></details>
+      <details class="frame"><summary>Does setup need the internet?</summary><p>Yes, it downloads the plugins for the use you pick. After that, the PC and phone talk over your own network.</p></details>
+    </div>
+  </section>
+</main>
+
+<main class="wrap" id="market-view" hidden>
+  <div id="mk-list" class="mk-col">
+    <div class="mk-top">
+      <span class="label load">Marketplace</span>
+      <h1 class="load d1">Plugins for your deck</h1>
+      <p class="lead load d2">Every plugin here is free. Press Install and Minniondeck opens, downloads the plugin from GitHub, checks it and asks before installing.</p>
+    </div>
+    <div class="mk-tools frame load d3">
+      <label class="search"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg><input id="mk-q" type="search" placeholder="Search plugins and keys" aria-label="Search plugins"></label>
+      <div class="cats" id="mk-cats" role="group" aria-label="Category"></div>
+      <label class="sort">Sort<select id="mk-sort"><option value="name">Name</option><option value="keys">Most keys</option><option value="size">Smallest</option></select></label>
+    </div>
+    <p class="mk-count" id="mk-count" aria-live="polite"></p>
+    <div class="plugs" id="mk-grid"></div>
+  </div>
+
+  <div id="mk-detail" class="mk-col" hidden></div>
+
+  <section class="rv" aria-labelledby="sub-title" id="mk-submit">
+    <div class="head" style="max-width:none">
+      <span class="label">Made a plugin?</span>
+      <h2 id="sub-title">Submit a plugin</h2>
+      <p>Send your plugin here and it can go in the marketplace. We review every plugin by hand, usually within 7 days.</p>
+    </div>
+    <div class="bugger">
+      <form class="frame bug-form" id="sub-form" novalidate>
+        <label class="fld">Plugin file (.mdplugin, up to 90 MB)<input type="file" name="plugin" accept=".mdplugin"><span class="mk-count" id="sub-file-msg">Make it with <code>Minniondeck.exe plugin pack</code>. The name, id and version come from its manifest.json.</span></label>
+        <div class="two-f">
+          <label class="fld">Name<input type="text" name="name" readonly placeholder="From the plugin file"></label>
+          <label class="fld">Id<input type="text" name="id" readonly placeholder="From the plugin file"></label>
+        </div>
+        <div class="two-f">
+          <label class="fld">Version<input type="text" name="version" readonly placeholder="From the plugin file"></label>
+          <label class="fld">Category<select name="category"><option value="general">General</option><option value="streaming">Streaming</option><option value="games">Games</option><option value="work">Work</option></select></label>
+        </div>
+        <label class="fld">What it does, in one line<input type="text" name="summary" maxlength="140" placeholder="Shows your stream's chat on a key"></label>
+        <label class="fld">Full description<textarea name="about" rows="4" maxlength="4000" placeholder="What each key does, what you can set, and anything people should know"></textarea></label>
+        <label class="fld">What it needs, optional<textarea name="needs" rows="2" maxlength="1000" placeholder="One thing a line: an internet connection, a Twitch account. Leave it empty if it needs nothing."></textarea></label>
+        <label class="fld">Creator name<input type="text" name="creator" maxlength="40" placeholder="Shown on the marketplace"></label>
+        <label class="fld">Icon, optional (PNG, up to 1 MB)<input type="file" name="icon" accept=".png,image/png"><span class="mk-count">Square, shown on its marketplace card. Without one we use the plugin's first key picture.</span></label>
+        <label class="fld">Screenshot of its profile, optional (PNG, up to 5 MB)<input type="file" name="shot" accept=".png,image/png"></label>
+        <label class="fld">Its profile, optional (.mdprofile, up to 2 MB)<input type="file" name="profile" accept=".mdprofile"><span class="mk-count">A ready-made page of keys people can add when they install it.</span></label>
+        <label class="chk sub-agree"><input type="checkbox" name="agree"><span>I made this plugin or may share it, and it follows the rules here.</span></label>
+        <div class="bar2"><progress id="sub-prog" max="1" value="0" hidden></progress><span class="grow"></span><button type="button" class="btn mint" id="sub-send">Send plugin</button></div>
+        <p class="mk-count" id="sub-msg" aria-live="polite"></p>
+      </form>
+      <div class="frame sub-info">
+        <p class="sub-lead">We review every plugin by hand, within 7 days. If it's approved, it shows up in the marketplace. We don't send emails, so check back here.</p>
+        <h3>What we check</h3>
+        <ul><li>It's safe to run.</li><li>It does what it says.</li><li>It matches its description.</li></ul>
+        <h3>What gets it declined</h3>
+        <ul>
+          <li>A file that's broken, or doesn't match its manifest.json.</li>
+          <li>It does more than its description says, or reaches outside its own settings.</li>
+          <li>It collects personal data, shows ads, or asks for payment details.</li>
+          <li>Copied code, names or artwork that you have no right to use.</li>
+        </ul>
+        <h3>When it's approved</h3>
+        <ul><li>Minniondeck signs it, so it runs without Developer mode.</li><li>It's listed in the marketplace with your name as the creator.</li></ul>
+        <p class="mk-count">Prefer GitHub? You can still open a pull request on the <a href="https://github.com/minnnion/Minnion-Plugins">marketplace repository</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="inst" id="inst" aria-labelledby="inst-title">
+  <div class="inst-bar"><i></i>Install a plugin<button type="button" id="inst-x" aria-label="Close">×</button></div>
+  <div class="inst-body">
+    <div class="inst-head"><img class="px" id="inst-icon" src="icons/icon.png" alt=""><div><h2 id="inst-title">Plugin</h2><p class="mk-count" id="inst-sub"></p></div></div>
+    <div class="opening">
+      <div class="ldr" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div><b>Opening Minniondeck…</b><p>It shows <span id="inst-name2">the plugin</span>, downloads it from GitHub, checks it, and asks before installing.<span id="inst-prof"></span></p></div>
+    </div>
+    <div class="pd-get"><a class="btn mint" id="inst-again" href="#" style="font-size:16px;padding:6px 14px">Open Minniondeck again</a></div>
+    <details class="nope">
+      <summary>Didn't open?</summary>
+      <ol>
+        <li><div><b>Get Minniondeck</b><p>The browser needs Minniondeck installed to open it. <a href="/download/" data-view="download">Download it here</a>, then try again.</p></div></li>
+        <li><div><b>Or download the file yourself</b><p id="inst-file"></p><div class="pd-get" style="margin-top:8px"><a class="btn plain" id="inst-dl" href="#" style="font-size:15px;padding:5px 12px">Download .mdplugin</a></div><p class="pending" id="inst-pending" hidden>Not published yet. Plugin files go in the marketplace's plugins folder.</p><p>Double-click it, and Minniondeck asks before installing. In the app you can also open Plugins and choose Install a plugin.</p></div></li>
+        <li id="inst-pli" hidden><div><b>The profile</b><p id="inst-pfile"></p><div class="pd-get" style="margin-top:8px"><a class="btn plain" id="inst-pdl" href="#" style="font-size:15px;padding:5px 12px" download>Download profile</a></div><p>Double-click it, or use Import on the Profiles page, to add its pages.</p></div></li>
+      </ol>
+    </details>
+  </div>
+</dialog>
+
+<main class="wrap" id="docs-view" hidden>
+ <div class="docs">
+  <aside class="dside frame" id="dside" aria-label="Docs">
+    <label class="search"><svg viewBox="0 0 8 8" aria-hidden="true" fill="currentColor"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="3"/><rect x="4" y="1" width="1" height="3"/><rect x="1" y="4" width="3" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="6" y="6" width="2" height="2"/></svg><input id="d-q" type="search" placeholder="Search the docs" aria-label="Search the docs"></label>
+    <button type="button" class="btn plain dmenu" id="d-menu" aria-expanded="false" style="font-size:15px;padding:5px 12px">All topics</button>
+    <ul class="dres" id="d-res" hidden aria-live="polite"></ul>
+    <nav class="dnav" id="d-nav" aria-label="Docs topics"></nav>
+  </aside>
+
+  <div class="dmain frame" id="d-main">
+
+<article class="dpage" data-slug="start" data-group="Getting started" data-title="Welcome">
+  <span class="label">Docs</span>
+  <h1>Welcome to Minniondeck</h1>
+  <p class="lead">Minniondeck turns your phone into a deck of buttons for your PC. These pages explain how it works, how to make buttons, pictures and plugins, and where everything is kept.</p>
+  <div class="cards2">
+    <div><h3><a href="/docs/install/" data-view="docs/install">Install and pair</a></h3><p>Set up the PC app and connect your phone.</p></div>
+    <div><h3><a href="/docs/buttons/" data-view="docs/buttons">Make a button</a></h3><p>Pick an action, an icon and a look.</p></div>
+    <div><h3><a href="/docs/images/" data-view="docs/images">Images and GIFs</a></h3><p>Edit image: pictures and pixel animations for a button.</p></div>
+    <div><h3><a href="/docs/make-plugin/" data-view="docs/make-plugin">Make a plugin</a></h3><p>Add your own actions in Rust.</p></div>
+  </div>
+  <h2>How it fits together</h2>
+  <div class="flow" aria-label="Phone, then Wi-Fi, then Minniondeck on the PC, then your apps and plugins">
+    <span><img class="px" src="icons/nav-phases.png" alt="">Phone</span><i>→ Wi-Fi →</i>
+    <span><img class="px" src="icons/icon.png" alt="">Minniondeck on your PC</span><i>→</i>
+    <span><img class="px" src="icons/nav-folder.png" alt="">Apps and plugins</span>
+    <small>Your phone shows the buttons. The PC does the work. Nothing goes through the internet.</small>
+  </div>
+  <p>You press a key on the phone. The phone tells Minniondeck on your PC, and Minniondeck runs what the button does: it presses keys, opens a program, changes the volume, or asks a plugin to talk to another app. Live buttons, like your CPU use or what Spotify is playing, update on the phone as things change.</p>
+  <div class="note tip"><p>You can also click any button in the Deck on the PC. That's handy for testing a button before you reach for the phone.</p></div>
+</article>
+
+<article class="dpage" data-slug="install" data-group="Getting started" data-title="Install and pair your phone" hidden>
+  <span class="label">Getting started</span>
+  <h1>Install and pair your phone</h1>
+  <h2>1. Install on your PC</h2>
+  <ol class="dsteps">
+    <li><div>Download the installer from the <a href="/download/" data-view="download">Download page</a>. It needs Windows 10 or 11, 64-bit.</div></li>
+    <li><div>Run it.</div></li>
+    <li><div>Pick what you will use it for. Setup downloads the plugins that go with it. You can add more later from the <a href="/marketplace/" data-view="marketplace">marketplace</a>.</div></li>
+  </ol>
+  <h2>2. Pair your phone</h2>
+  <p>There&#39;s no phone app to install. Your deck opens in the phone&#39;s web browser.</p>
+  <ol class="dsteps">
+    <li><div>Put the phone on the same Wi-Fi as the PC.</div></li>
+    <li><div>On the PC, open <b>Phones</b> in the left rail. A pairing QR code shows while that page is open.</div></li>
+    <li><div>Scan the code with the phone&#39;s camera and open the link. It works on Android and iPhone.</div></li>
+    <li><div>Press <b>Allow</b> on the PC. Your deck opens in the phone&#39;s browser. Add it to the home screen and it opens full screen, like an app.</div></li>
+    <li><div>If <b>Show a matching number when a new phone pairs</b> is on (Settings › Phones), check that both screens show the same number.</div></li>
+  </ol>
+  <div class="note"><p>The pairing code only works while the Phones page is open. Leave the page and it stops, so nobody else can pair later.</p></div>
+  <h2>Phone settings</h2>
+  <div class="tw"><table><thead><tr><th>Setting</th><th>What it does</th></tr></thead><tbody>
+    <tr><td>Port</td><td>Change it only if another app uses it. Connected phones move with it; phones that are off need pairing again.</td></tr>
+    <tr><td>Phones follow the page</td><td>When you turn the page on the PC, phones turn too.</td></tr>
+    <tr><td>Keep screens awake</td><td>The phone screen stays on while the deck is open.</td></tr>
+    <tr><td>Vibrate on press</td><td>A short buzz for each press.</td></tr>
+  </tbody></table></div>
+</article>
+
+<article class="dpage" data-slug="deck" data-group="Using the app" data-title="The Deck, pages and folders" hidden>
+  <span class="label">Using the app</span>
+  <h1>The Deck, pages and folders</h1>
+  <p class="lead">The Deck is where your buttons live. It looks the same on the PC and on your phone.</p>
+  <h2>The left rail</h2>
+  <p>The rail shows one icon per page. Point at an icon to see its name.</p>
+  <div class="tw"><table><thead><tr><th>Page</th><th>What it's for</th></tr></thead><tbody>
+    <tr><td>Deck</td><td>Your pages and buttons. Make and edit buttons here.</td></tr>
+    <tr><td>Profiles</td><td>Sets of pages, and switching between them.</td></tr>
+    <tr><td>Phones</td><td>Pair phones and see which are connected.</td></tr>
+    <tr><td>Marketplace</td><td>Browse plugins and install them, read live from GitHub.</td></tr>
+    <tr><td>Settings</td><td>Start-up, look, phones, plugins, backups and updates.</td></tr>
+  </tbody></table></div>
+  <h2>Pages and folders</h2>
+  <ul>
+    <li>A profile holds pages. Pages can sit inside folders, and a folder opens its first page.</li>
+    <li>Use <b>+ Page</b> and <b>+ Folder</b> in the pages panel. Double-click a name, or press <kbd>F2</kbd>, to rename it.</li>
+    <li>The arrow at the left of the page bar, or <kbd>Ctrl</kbd>+<kbd>B</kbd>, closes the pages panel to give the buttons more room. Do it again to open it.</li>
+    <li>With <b>Show a Back button inside folders</b> on (Settings › Profiles and pages), pages in a folder get a Back button in their first free spot.</li>
+    <li>A page is a grid: 3 × 3, 4 × 3 or 5 × 3 keys. The phone shows it on its side.</li>
+  </ul>
+  <h2>Buttons</h2>
+  <p>Every button is one square key: its picture in the middle and its name small at the bottom. Click an empty key (<b>+</b>) to make one, double-click a button to edit it, and right-click it for everything else.</p>
+  <div class="note tip"><p>Settings › Appearance changes how big buttons are drawn on the PC and whether their names show. Hiding names hides them on phones too.</p></div>
+</article>
+
+<article class="dpage" data-slug="buttons" data-group="Using the app" data-title="Make a button" hidden>
+  <span class="label">Using the app</span>
+  <h1>Make a button</h1>
+  <ol class="dsteps">
+    <li><div>On the Deck, click an empty key (<b>+</b>). The <b>New button</b> window opens.</div></li>
+    <li><div>Go through its four steps: a name, what it does, a picture, and a colour. The preview shows it live.</div></li>
+    <li><div>Press <b>Add button</b>. The button is on the PC and on your phone at once.</div></li>
+  </ol>
+  <h2>The Edit button window</h2>
+  <p>This is where you make a button and change it later. To open it for a button you already have, double-click the button, or right-click it and pick <b>Edit button</b>. The preview is on the left, the four steps on the right.</p>
+  <div class="tw"><table><thead><tr><th>Part</th><th>What you can do</th></tr></thead><tbody>
+    <tr><td>Preview</td><td>The button as it looks on the deck and on your phone. <b>Try it</b> plays its press effect.</td></tr>
+    <tr><td>1. What is it called?</td><td>The button's name, shown small at the bottom of the key.</td></tr>
+    <tr><td>2. What does it do?</td><td>Search every action, or filter by <b>Built in</b> or by a plugin, then fill in its boxes. The actions are in the table below.</td></tr>
+    <tr><td>3. Picture</td><td>35 simple pictures, 1,036 pixel icons and 3,466 app logos, with search. Make your own pictures on this website, then Import them.</td></tr>
+    <tr><td>Looks</td><td>Up to 8 looks. Each press shows the next one, then back to the first. Each look has its own name, text, picture and colour. Use <b>+ Add look</b> in step 3.</td></tr>
+    <tr><td>4. Colour</td><td>The button's colour and its press effect: how it moves when you press it.</td></tr>
+    <tr><td>Add button, Cancel</td><td><b>Add button</b> (or <b>Save</b> on a button you already have) keeps it. <b>Cancel</b>, ✕ or <kbd>Esc</kbd> leave everything as it was.</td></tr>
+  </tbody></table></div>
+  <div class="note tip"><p>If a step is missing, like an empty name, the bar at the bottom says which one before it adds the button.</p></div>
+  <h2>Other things you can do with a button</h2>
+  <p>Right-click a button for its menu:</p>
+  <ul>
+    <li><b>Edit button</b> opens the window above.</li>
+    <li><b>Duplicate</b> makes a copy on the same page.</li>
+    <li><b>Copy</b> and <b>Paste</b> put a copy on any page.</li>
+    <li><b>Move to page</b> sends it to another page.</li>
+    <li><b>Delete</b> removes it.</li>
+  </ul>
+  <p>To test a button, click it on the Deck: it runs, just like a press on your phone.</p>
+  <h2>Built-in actions</h2>
+  <div class="tw"><table><thead><tr><th>Action</th><th>Group</th><th>What you set</th></tr></thead><tbody>
+    <tr><td>Press keys</td><td>Keyboard and mouse</td><td>Click the box, then press the keys together, like <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>.</td></tr>
+    <tr><td>Type text</td><td>Keyboard and mouse</td><td>Up to 500 characters.</td></tr>
+    <tr><td>Mouse click</td><td>Keyboard and mouse</td><td>Left, right or middle.</td></tr>
+    <tr><td>Open a program</td><td>Apps and web</td><td>Its path, or drag the program or a shortcut onto the box. Arguments are optional.</td></tr>
+    <tr><td>Open a website</td><td>Apps and web</td><td>The address.</td></tr>
+    <tr><td>Change volume</td><td>Sound</td><td>Up or down, by 1 to 100%.</td></tr>
+    <tr><td>Mute microphone</td><td>Sound</td><td>Nothing. It has two states: Mic on and Mic muted.</td></tr>
+    <tr><td>Wait</td><td>Timing</td><td>Up to 60 000 ms, between other steps.</td></tr>
+    <tr><td>Go to page</td><td>Pages</td><td>A page or folder of the profile.</td></tr>
+    <tr><td>Back</td><td>Pages</td><td>Nothing. Goes to the page before.</td></tr>
+  </tbody></table></div>
+  <p>Plugins add their own actions, listed under the plugin's name, such as <b>Timer countdown</b> or <b>Spotify volume</b>.</p>
+  <h2>Several steps on one button</h2>
+  <p>A button can run steps one after another, like a macro: open a website, wait 3 seconds, type some text. Add steps in the Edit button window and put a <b>Wait</b> between them where an app needs time.</p>
+  <h2>Looks</h2>
+  <p>Some buttons have more than one look, such as <b>Mic on</b> and <b>Mic muted</b>, or a plugin's <b>Off</b>, <b>Recording</b> and <b>Paused</b>. Each look can have its own picture, colour and name, so the key shows what's going on. Small dots in its corner show which look is on.</p>
+</article>
+
+<article class="dpage" data-slug="profiles" data-group="Using the app" data-title="Profiles and auto-switching" hidden>
+  <span class="label">Using the app</span>
+  <h1>Profiles and auto-switching</h1>
+  <p class="lead">A profile is a set of pages and folders: one for streaming, one for games, one for everyday use.</p>
+  <h2>Switch automatically</h2>
+  <ol class="dsteps">
+    <li><div>Turn on <b>Switch profiles automatically</b> in Settings › Profiles and pages.</div></li>
+    <li><div>On the Profiles page, choose the app for a profile, for example OBS Studio for Streaming.</div></li>
+    <li><div>When that app comes to the front, Minniondeck switches to the profile. Using Minniondeck itself never switches.</div></li>
+  </ol>
+  <h2>Open on start</h2>
+  <p>Settings › Profiles and pages › <b>Open on start</b> picks where Minniondeck opens: where you left off, or a page you choose.</p>
+  <h2>Share a profile</h2>
+  <ul>
+    <li><b>Export</b> a profile on the Profiles page to get a <code>.mdprofile</code> file. It's sealed, so it can only be read by Minniondeck.</li>
+    <li>Double-click a <code>.mdprofile</code> file, or use <b>Import</b>, to add it. A backup is made first.</li>
+    <li>If the profile uses plugins you don't have, Minniondeck lists them as <i>not installed</i>.</li>
+  </ul>
+</article>
+
+<article class="dpage" data-slug="images" data-group="Using the app" data-title="Make images and GIFs" hidden>
+  <span class="label">Using the app</span>
+  <h1>Make images and GIFs</h1>
+  <p class="lead">Pictures and GIFs for a button are made in the editor that comes with MinnionDeck. It opens in your browser and syncs straight back to the button.</p>
+  <h2>Edit a button's picture</h2>
+  <ol class="dsteps">
+    <li><div>In MinnionDeck, open the button's Edit window and press <b>Edit image</b>.</div></li>
+    <li><div>The editor opens in your browser with that button's picture: <b>Images</b> for a picture, <b>GIF maker</b> for a GIF.</div></li>
+    <li><div>Change it, then press <b>Sync to MinnionDeck</b>. The Edit window shows it at once; press <b>Save</b> there to keep it.</div></li>
+  </ol>
+  <div class="note tip"><p>Press <b>Edit image</b> on another button while the editor is open, and the same browser tab opens that button.</p></div>
+  <div class="note"><p>You can also bring in a file you made elsewhere: in the Edit window, <b>Image</b> or <b>GIF</b>, then <b>Import…</b>.</p></div>
+  <h2>Button designer</h2>
+  <ul>
+    <li>Pick the button size first: 1 × 1, 2 × 1, 1 × 2 or 2 × 2. The download fits that size exactly.</li>
+    <li>Background: one colour, two colours, a gradient or a picture, with rounded corners if you like.</li>
+    <li>Parts on top: text, icons, shapes (box, circle, badge) and your own pictures, each with an outline and a drop shadow. Click a part to pick it, then drag it or use the arrow keys.</li>
+    <li>Parts are drawn in list order; <b>↑</b> and <b>↓</b> move one in front or behind.</li>
+  </ul>
+  <h2>Pixel picture and GIF maker</h2>
+  <div class="tw"><table><thead><tr><th>Tool</th><th>What it does</th></tr></thead><tbody>
+    <tr><td>Pencil <kbd>B</kbd></td><td>Draws pixels. Drag to draw lines.</td></tr>
+    <tr><td>Eraser <kbd>E</kbd></td><td>Makes pixels see-through.</td></tr>
+    <tr><td>Fill <kbd>F</kbd></td><td>Fills an area of one colour.</td></tr>
+    <tr><td>Pick <kbd>I</kbd></td><td>Takes a colour from the drawing.</td></tr>
+    <tr><td>Line <kbd>L</kbd>, Box <kbd>R</kbd>, Circle <kbd>C</kbd></td><td>Drag to draw. Tick <b>Filled shapes</b> for solid boxes and circles.</td></tr>
+    <tr><td>Move <kbd>M</kbd></td><td>Drag to shift the whole frame.</td></tr>
+    <tr><td>Text <kbd>T</kbd></td><td>Click to stamp a few letters in a small pixel font.</td></tr>
+    <tr><td>Flip, Turn</td><td>Flip the frame either way or turn it a quarter.</td></tr>
+    <tr><td>Mirror drawing</td><td>Draws on both sides at once.</td></tr>
+    <tr><td>Onion skin</td><td>Shows a faint copy of the previous frame (GIFs).</td></tr>
+    <tr><td>Timeline</td><td>Add, copy, delete and move frames, set the speed, or give one frame its own time (GIFs).</td></tr>
+    <tr><td>Start from an animation</td><td>Pulse, loading spin, loading bar, recording, blink, ping and heartbeat, ready to change (GIFs).</td></tr>
+    <tr><td>Undo <kbd>Ctrl</kbd>+<kbd>Z</kbd></td><td>Redo is <kbd>Ctrl</kbd>+<kbd>Y</kbd>.</td></tr>
+  </tbody></table></div>
+  <p><b>Start from a picture</b> shrinks any picture down to pixels, to trace or tidy up.</p>
+  <h2>Where they're kept</h2>
+  <ul>
+    <li>In the editor: work you haven't synced is kept in your browser, under <b>Saved in this browser</b>.</li>
+    <li>In Minniondeck: imported files go in <code>library\media</code>. See <a href="/docs/files/" data-view="docs/files">Where your files are</a>.</li>
+    <li>GIFs and designs made in older versions of the app keep working on their buttons, and <b>Adjust</b> still changes a design's colours, sizes and places.</li>
+  </ul>
+</article>
+
+<article class="dpage" data-slug="files" data-group="Using the app" data-title="Where your files are" hidden>
+  <span class="label">Using the app</span>
+  <h1>Where your files are</h1>
+  <p class="lead">Everything Minniondeck saves is on your own PC, in one folder:</p>
+  <pre><code>%APPDATA%\com.minnion.deck\</code></pre>
+  <p>Settings › About shows the exact path, with a button to open the logs folder.</p>
+  <div class="tw"><table><thead><tr><th>In that folder</th><th>What's in it</th></tr></thead><tbody>
+    <tr><td><code>library\library.json</code></td><td>Profiles, folders, pages and buttons</td></tr>
+    <tr><td><code>library\media\</code></td><td>Pictures and GIF files you imported, one file each</td></tr>
+    <tr><td><code>settings.json</code></td><td>Everything on the Settings page</td></tr>
+    <tr><td><code>devices.json</code></td><td>Paired phones</td></tr>
+    <tr><td><code>backups\</code></td><td>Up to 5 encrypted backups of your library</td></tr>
+    <tr><td><code>plugins\&lt;id&gt;\</code></td><td>Each installed plugin's own folder</td></tr>
+    <tr><td><code>plugin-data\&lt;id&gt;\</code></td><td>Each plugin's settings, kept apart so they survive updates</td></tr>
+    <tr><td><code>logs\minniondeck.log</code></td><td>What the app did, for fixing problems. The older log is <code>minniondeck.old.log</code></td></tr>
+    <tr><td><code>tiles\</code></td><td>Street map tiles the live map has loaded, kept for 14 days</td></tr>
+  </tbody></table></div>
+  <div class="note warn"><p>Don't edit these files while Minniondeck is running. It writes them safely, a whole file at a time, and may write over your change.</p></div>
+  <h2>Backups</h2>
+  <ul>
+    <li><b>Back up when Minniondeck starts</b> (Settings › Backup) makes one only when something changed.</li>
+    <li>A backup is also made before every import and every restore.</li>
+    <li>Keep 1, 3 or 5. Restore one from Settings › Backup; Minniondeck restarts with it.</li>
+    <li><b>Export all profiles…</b> saves every profile as files you can copy to another PC.</li>
+  </ul>
+</article>
+
+<article class="dpage" data-slug="plugins" data-group="Plugins" data-title="How plugins work" hidden>
+  <span class="label">Plugins</span>
+  <h1>How plugins work</h1>
+  <p class="lead">A plugin adds actions, icons, GIFs and settings to Minniondeck: Spotify, Timer, Soundboard and Weather are all plugins.</p>
+  <h2>What a plugin is</h2>
+  <ul>
+    <li>A folder in <code>plugins\&lt;id&gt;\</code> with <code>manifest.json</code>, <code>actions.json</code>, a DLL, and <code>icons\</code> and <code>gifs\</code>.</li>
+    <li>It's shared as one <code>.mdplugin</code> file, which is that folder zipped.</li>
+  </ul>
+  <h2>How they run</h2>
+  <ul>
+    <li>Plugins run in a helper copy of Minniondeck, not in the app itself. If a plugin crashes, the helper restarts and your app keeps going.</li>
+    <li>After 3 crashes in a minute, plugins stay stopped until you press reload in Settings › Plugins.</li>
+    <li>When a press fails, the error shows on the button.</li>
+  </ul>
+  <h2>Signed plugins and Developer mode</h2>
+  <ul>
+    <li>A plugin runs straight away when it's signed by an author your PC trusts. Official plugins are signed by Minniondeck.</li>
+    <li>A damaged or changed plugin is refused.</li>
+    <li>An unsigned plugin installs, but only runs with <b>Developer mode</b> on (Settings › Plugins).</li>
+    <li>To trust another author, add their <code>.mdkey</code> under <b>Trusted authors</b>.</li>
+  </ul>
+  <div class="note warn"><p>Plugins run with the same rights as Minniondeck. Install only plugins from people you trust, and turn Developer mode on only for plugins you know.</p></div>
+  <h2>Plugin settings</h2>
+  <p>A plugin with settings has a <b>Settings</b> button in Settings › Plugins, for things like your Spotify Client ID. Passwords are encrypted by Windows and never shown again.</p>
+</article>
+
+<article class="dpage" data-slug="install-plugins" data-group="Plugins" data-title="Install and update plugins" hidden>
+  <span class="label">Plugins</span>
+  <h1>Install and update plugins</h1>
+  <h2>From the marketplace</h2>
+  <ol class="dsteps">
+    <li><div>On the <a href="/marketplace/" data-view="marketplace">marketplace</a>, press <b>Install</b> on a plugin.</div></li>
+    <li><div>Your browser asks to open Minniondeck. Allow it.</div></li>
+    <li><div>Minniondeck shows the plugin, downloads it from GitHub and checks it matches the marketplace's checksum.</div></li>
+    <li><div>It shows who signed it. Press <b>Install</b>. The plugin starts at once, no restart.</div></li>
+  </ol>
+  <h2>From a file</h2>
+  <p>Double-click a <code>.mdplugin</code> file, or open Settings › Plugins and choose <b>Install a plugin…</b>. Minniondeck shows what it is and asks before installing.</p>
+  <h2>Updating a plugin</h2>
+  <ul>
+    <li>Install the newer version the same way. It replaces the old one, and the popup says which version you have now.</li>
+    <li>Your plugin settings are kept, because they live in <code>plugin-data\</code>, apart from the plugin.</li>
+    <li>Need an older version back? Each plugin's page on the marketplace lists every version with its own Install button.</li>
+  </ul>
+  <div class="note"><p>Minniondeck checks your plugins for updates once a day (Settings › Plugins). A plugin with a newer version gets an Update button and a badge on the Marketplace page.</p></div>
+  <h2>Turn off or remove</h2>
+  <p>In Settings › Plugins, <b>Turn off</b> stops a plugin without removing it. <b>Remove</b> deletes it. Buttons that use it stay on your pages but won't run until it's back.</p>
+</article>
+
+<article class="dpage" data-slug="make-plugin" data-group="Plugins" data-title="Make a plugin" hidden>
+  <span class="label">Plugins</span>
+  <h1>Make a plugin</h1>
+  <p class="lead">Plugins are written in Rust with the plugin kit. The template builds, packs and installs itself, so you can see your first action on the deck in a few minutes.</p>
+  <h2>1. Start a project</h2>
+  <p>In a terminal, from the folder Minniondeck is installed in:</p>
+  <pre><code>Minniondeck.exe plugin new my_plugin --dir C:\code</code></pre>
+  <p>The id uses lower-case letters, digits and <code>_</code>.</p>
+  <h2>2. Build and try it</h2>
+  <p>Double-click <code>build.cmd</code> in the new folder. It:</p>
+  <ol>
+    <li>installs Rust the first time, if this PC doesn't have it (about 300 MB, once),</li>
+    <li>builds the plugin,</li>
+    <li>packs it as <code>dist\my_plugin-&lt;version&gt;.mdplugin</code>,</li>
+    <li>installs it into Minniondeck, which loads it straight away.</li>
+  </ol>
+  <p>Then open a button's Edit window: <b>What it does › Action › My plugin</b>. <code>build.ps1 -NoInstall</code> only builds and packs.</p>
+  <h2>3. The files</h2>
+  <div class="tw"><table><thead><tr><th>File</th><th>What it is</th></tr></thead><tbody>
+    <tr><td><code>src\lib.rs</code></td><td>What each action does when pressed</td></tr>
+    <tr><td><code>actions.json</code></td><td>Your actions: id, label, group, icon, fields, states</td></tr>
+    <tr><td><code>manifest.json</code></td><td>Id, name, version, DLL, icons, GIFs and settings. Change <code>version</code> for each release</td></tr>
+    <tr><td><code>icons\</code></td><td>PNG, GIF, SVG, JPG or WEBP, up to 512 KB each</td></tr>
+    <tr><td><code>gifs\</code></td><td>GIFs that come with the plugin, up to 2 MB each</td></tr>
+    <tr><td><code>kit\</code></td><td>The plugin kit. Everything it can do is documented in <code>kit\src\lib.rs</code></td></tr>
+  </tbody></table></div>
+  <h2>4. Describe your actions</h2>
+<pre><code>[
+  {
+    <span class="k">"id"</span>: "say_hello",        <span class="c">// what e.action is in press()</span>
+    <span class="k">"label"</span>: "Say hello",     <span class="c">// shown in the Action list</span>
+    <span class="k">"group"</span>: "My plugin",
+    <span class="k">"icon"</span>: "icons/icon.png",
+    <span class="k">"states"</span>: ["Off", "On"],  <span class="c">// optional, switched with set_state</span>
+    <span class="k">"fields"</span>: [
+      { "key": "name", "label": "Who to greet", "kind": "text", "def": "world" },
+      { "key": "size", "label": "Size", "kind": "select", "options": ["Small", "Big"] },
+      { "key": "scene", "label": "Scene", "kind": "select", "dynamic": true }
+    ]
+  }
+]</code></pre>
+  <p>A <code>"dynamic": true</code> list is filled by your plugin's <code>options()</code>. Call <code>host.refresh_options("action")</code> when the choices change.</p>
+  <h2>5. Write what it does</h2>
+<pre><code><span class="k">use</span> minniondeck_plugin::{ButtonEvent, Host, Outcome, Plugin, export};
+
+<span class="k">struct</span> MyPlugin { host: Host }
+
+<span class="k">impl</span> Plugin <span class="k">for</span> MyPlugin {
+    <span class="k">fn</span> start(host: Host) -> Self {
+        host.log("My plugin started");
+        MyPlugin { host }
+    }
+
+    <span class="k">fn</span> press(&amp;mut self, e: &amp;ButtonEvent) -> Outcome {
+        <span class="k">match</span> e.action.as_str() {
+            "say_hello" => {
+                <span class="c">// Shows on the button, on the PC and on phones</span>
+                self.host.set_title(&amp;e.button, format!("Hi {}", e.field("name")));
+                Ok("Said hello".into())
+            }
+            other => Err(format!("No action called {other}")),
+        }
+    }
+}
+
+export!(MyPlugin);</code></pre>
+  <h2>Events you can handle</h2>
+  <p>Only <code>start</code> and <code>press</code> are required.</p>
+  <div class="tw"><table><thead><tr><th>Event</th><th>When</th></tr></thead><tbody>
+    <tr><td><code>press</code></td><td>A button with your action was pressed. Return <code>Ok(message)</code> or <code>Err(what went wrong)</code></td></tr>
+    <tr><td><code>release</code></td><td>The button was let go</td></tr>
+    <tr><td><code>long_press</code></td><td>It was held down. By default, a normal press</td></tr>
+    <tr><td><code>shown</code> / <code>hidden</code></td><td>Its page opened or closed. Update its look in <code>shown</code></td></tr>
+    <tr><td><code>options</code></td><td>The editor wants a dynamic dropdown's choices</td></tr>
+    <tr><td><code>settings_changed</code></td><td>The user saved your settings</td></tr>
+    <tr><td><code>settings_button</code></td><td>A <code>button</code> setting was pressed</td></tr>
+    <tr><td><code>stop</code></td><td>The plugin is unloading. End your threads here</td></tr>
+  </tbody></table></div>
+  <h2>What the Host can do</h2>
+  <div class="tw"><table><thead><tr><th>Call</th><th>What it does</th></tr></thead><tbody>
+    <tr><td><code>set_state(button, n)</code></td><td>Switch a button to one of its states</td></tr>
+    <tr><td><code>set_title</code> / <code>clear_title</code></td><td>Show your own text on a button, or go back to its own</td></tr>
+    <tr><td><code>set_icon</code> / <code>clear_icon</code></td><td>Show a picture from your plugin folder on a button</td></tr>
+    <tr><td><code>toast(text)</code></td><td>A short message at the bottom of the Minniondeck window</td></tr>
+    <tr><td><code>log(text)</code></td><td>A line in Minniondeck's log file</td></tr>
+    <tr><td><code>setting</code> / <code>settings</code></td><td>Read what the user set</td></tr>
+    <tr><td><code>set_setting(key, value)</code></td><td>Save something across restarts, like a refreshed token</td></tr>
+    <tr><td><code>refresh_options(action)</code></td><td>Ask the editor to fetch a dropdown's choices again</td></tr>
+    <tr><td><code>folder()</code> / <code>id()</code></td><td>Your installed folder and your plugin id</td></tr>
+  </tbody></table></div>
+  <h2>Settings</h2>
+<pre><code><span class="k">"settings"</span>: [
+  { "key": "host", "label": "Address", "kind": "text", "def": "localhost", "required": true },
+  { "key": "port", "label": "Port", "kind": "number", "min": 1, "max": 65535, "def": 4455 },
+  { "key": "password", "label": "Password", "kind": "password" },
+  { "key": "auto", "label": "Connect at start", "kind": "switch", "def": true },
+  { "key": "quality", "label": "Quality", "kind": "select", "options": ["Low", "High"] },
+  { "key": "test", "label": "Test the connection", "kind": "button" }
+]</code></pre>
+  <p>Put this in <code>manifest.json</code> and Minniondeck shows a form for it in Settings › Plugins.</p>
+  <h2>Icons and GIFs for everyone</h2>
+  <p>Pictures listed in <code>manifest.json</code> under <code>"icons"</code> and <code>"gifs"</code> show up for every button, not only your actions, and phones get them too.</p>
+  <h2>Rules</h2>
+  <ul>
+    <li>Each plugin runs on its own thread. Do slow work, like network calls, on your own threads, and end them in <code>stop()</code>.</li>
+    <li>A panic is caught and shown as an error on the button. A crash restarts all plugins.</li>
+  </ul>
+</article>
+
+<article class="dpage" data-slug="publish-plugin" data-group="Plugins" data-title="Sign and publish a plugin" hidden>
+  <span class="label">Plugins</span>
+  <h1>Sign and publish a plugin</h1>
+  <h2>Sign it</h2>
+  <ol class="dsteps">
+    <li><div>Make your author key once: <code>Minniondeck.exe plugin key --name "Your name"</code></div></li>
+    <li><div>From then on, <code>build.ps1</code> signs every pack. Your private key stays on your PC, locked to your Windows account.</div></li>
+    <li><div>Send your <code>.mdkey</code> file to people who should trust your plugins. They add it in Settings › Plugins › Trusted authors. Add it on your own PC too.</div></li>
+  </ol>
+  <h2>Command line tools</h2>
+  <div class="tw"><table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody>
+    <tr><td><code>plugin new &lt;id&gt; [--dir]</code></td><td>A new plugin project from the template</td></tr>
+    <tr><td><code>plugin pack [&lt;folder&gt;]</code></td><td>Packs a built plugin as <code>dist\&lt;id&gt;-&lt;version&gt;.mdplugin</code></td></tr>
+    <tr><td><code>plugin install &lt;file&gt;</code></td><td>Installs it; a running Minniondeck loads it at once</td></tr>
+    <tr><td><code>plugin key [--name]</code></td><td>Makes your author key, once</td></tr>
+    <tr><td><code>profile build &lt;bundle.json&gt;</code></td><td>Seals a ready-made profile as a .mdprofile, to ship with a plugin</td></tr>
+  </tbody></table></div>
+  <h2>Put it on the marketplace</h2>
+  <ol class="dsteps">
+    <li><div>Add a folder <code>plugins/&lt;id&gt;/</code> with <code>&lt;id&gt;-&lt;version&gt;.mdplugin</code> inside it. If the plugin comes with a profile, put the <code>.mdprofile</code> file in the same folder and add a <code>profile</code> entry to the list.</div></li>
+    <li><div>Get its size and checksum: <code>Get-FileHash .\my_plugin-0.1.0.mdplugin</code> in PowerShell.</div></li>
+    <li><div>Open a pull request adding your entry to the marketplace's <code>index.json</code>, with the size and SHA-256. Minniondeck refuses a download that doesn't match them.</div></li>
+  </ol>
+  <p>No pull request? Send the plugin with <b>Submit a plugin</b> on the <a href="/marketplace/" data-view="marketplace">marketplace page</a> instead.</p>
+</article>
+
+<article class="dpage" data-slug="update-app" data-group="Updates and help" data-title="Update Minniondeck" hidden>
+  <span class="label">Updates and help</span>
+  <h1>Update Minniondeck</h1>
+  <h2>The PC app</h2>
+  <ol class="dsteps">
+    <li><div>Get the newest installer from the <a href="/download/" data-view="download">Download page</a>.</div></li>
+    <li><div>Run it over the one you have. You don't need to uninstall first.</div></li>
+    <li><div>Your profiles, buttons, pictures, phones and plugins stay. They live in your data folder, not with the app.</div></li>
+  </ol>
+  <div class="note"><p>Settings › Updates checks GitHub Releases for a new version, once a day or when you press Check for updates. Download fetches the installer and checks it against GitHub&#39;s SHA-256, and Install now closes Minniondeck and installs it. Your profiles, buttons and plugins stay.</p></div>
+  <h2>Plugins</h2>
+  <p>See <a href="/docs/install-plugins/" data-view="docs/install-plugins">Install and update plugins</a>.</p>
+  <h2>Uninstall</h2>
+  <p>Windows Settings › Apps › Minniondeck › Uninstall. Your data folder is kept unless you choose to delete it, in case you come back. To remove it by hand, delete <code>%APPDATA%\com.minnion.deck</code>.</p>
+</article>
+
+<article class="dpage" data-slug="help" data-group="Updates and help" data-title="Fix a problem" hidden>
+  <span class="label">Updates and help</span>
+  <h1>Fix a problem</h1>
+  <h2>The phone won't connect</h2>
+  <ul>
+    <li>Check the phone and the PC are on the same Wi-Fi network. Guest networks often keep devices apart.</li>
+    <li>When Windows asks whether Minniondeck may use the network, allow it on private networks.</li>
+    <li>If another app uses the port, change it in Settings › Phones, then pair again.</li>
+  </ul>
+  <h2>A plugin says Stopped</h2>
+  <ul>
+    <li>The reason is next to it in Settings › Plugins.</li>
+    <li><i>Not signed</i>: turn on Developer mode, only if you trust it, or ask its author for their key.</li>
+  </ul>
+  <h2>Install on the website didn't open the app</h2>
+  <ul>
+    <li>Minniondeck has to be installed and opened once, which sets up the link.</li>
+    <li>Or use <i>Didn't open?</i> in the dialog to download the file, then double-click it.</li>
+  </ul>
+  <h2>Still stuck?</h2>
+  <p>Open Settings › About › <b>Open logs folder</b> and attach <code>minniondeck.log</code> to a bug report on GitHub. It lists what the app did and when.</p>
+</article>
+
+    <nav class="dpager" id="d-pager" aria-label="Previous and next topic"></nav>
+  </div>
+ </div>
+</main>
+
+<main class="wrap" id="gifs-view" hidden>
+  <div class="moved frame">
+    <span class="label">Now in MinnionDeck</span>
+    <h1>The GIF maker moved into the app</h1>
+    <p>The GIF maker and Images editor now open from MinnionDeck itself and sync straight to your button. In MinnionDeck, open a button's Edit window and press <b>Edit image</b>. It opens in your browser with that button's picture, and <b>Sync to MinnionDeck</b> puts your changes on it.</p>
+    <div class="cta"><a class="btn mint" href="/download/" data-view="download">Get MinnionDeck</a><a class="btn plain" href="/docs/images/" data-view="docs/images">How it works</a></div>
+  </div>
+</main>
+
+<main class="wrap" id="images-view" hidden>
+  <div class="moved frame">
+    <span class="label">Now in MinnionDeck</span>
+    <h1>Images moved into the app</h1>
+    <p>The GIF maker and Images editor now open from MinnionDeck itself and sync straight to your button. In MinnionDeck, open a button's Edit window and press <b>Edit image</b>. It opens in your browser with that button's picture, and <b>Sync to MinnionDeck</b> puts your changes on it.</p>
+    <div class="cta"><a class="btn mint" href="/download/" data-view="download">Get MinnionDeck</a><a class="btn plain" href="/docs/images/" data-view="docs/images">How it works</a></div>
+  </div>
+</main>
+
+<main class="wrap" id="terms-view" hidden>
+  <article class="dpage legal frame" aria-labelledby="terms-title">
+    <span class="label">Legal</span>
+    <h1 id="terms-title">Terms of Service</h1>
+    <p class="lead">Last updated: 8 November 2026</p>
+    <p>These terms are an agreement between you and MinnionDeck ("MinnionDeck", "we", "us") about using the MinnionDeck website (minniondeck.github.io), the MinnionDeck desktop app for Windows, its phone page, its editor, and the official plugins and Marketplace (together, "MinnionDeck"). By using MinnionDeck you agree to these terms. If you don't agree, please don't use it.</p>
+
+    <h2>1. Who can use it</h2>
+    <p>You must be at least 13 years old to use MinnionDeck. If you are under 18, a parent or guardian should read these terms with you. You're responsible for your use of MinnionDeck on your devices.</p>
+
+    <h2>2. Free to use</h2>
+    <p>MinnionDeck is free. There are no accounts, subscriptions or paid plugins. We may change, pause or stop any part of it at any time, and we may release new versions that work differently.</p>
+
+    <h2>3. Your licence</h2>
+    <ul>
+      <li>We give you a personal, free, non-exclusive, non-transferable licence to download, install and use MinnionDeck on devices you own or control.</li>
+      <li>The source code is published on GitHub so anyone can read it and learn from it. Unless a file or repository says otherwise, it is not licensed for copying, changing, redistributing or selling MinnionDeck itself, or for publishing your own copies or forks of it.</li>
+      <li>You may make your own plugins with the MinnionDeck plugin kit and share them, including through the Marketplace (see section 6).</li>
+      <li>You may not remove notices, pass MinnionDeck off as your own, or use it to harm other people or their devices.</li>
+    </ul>
+
+    <h2>4. What you do with it</h2>
+    <p>MinnionDeck runs on your PC and does what your buttons tell it to: pressing keys, typing text, opening programs and websites, changing volume, and running plugin actions. You choose what each button does, so you are responsible for the results, including on other apps, games and services. Some games and services don't allow macros or automation; check their rules before you use MinnionDeck with them.</p>
+    <p>Buttons and profiles you import from other people can act on your PC. MinnionDeck asks once before running such a button; only allow ones you trust.</p>
+
+    <h2>5. Plugins and other services</h2>
+    <ul>
+      <li><b>Official plugins</b> (such as Discord, Spotify, Weather, Timer, System Monitor and Soundboard) are made by us. Some connect to other services; when they do, that service's own terms and privacy policy apply too, for example <a href="https://discord.com/terms">Discord's Terms</a> and <a href="https://www.spotify.com/legal/end-user-agreement/">Spotify's Terms</a>. MinnionDeck isn't affiliated with or endorsed by these companies.</li>
+      <li><b>Community plugins</b> are made by other people. We check what we can before listing them, but we don't promise they are safe, correct or kept up to date, and we aren't responsible for them. Install only plugins you trust.</li>
+      <li>Names and logos of other apps, games and companies belong to their owners and are shown only to say what a button works with.</li>
+    </ul>
+
+    <h2>6. Things you send us</h2>
+    <p>When you send a bug report or submit a plugin, you confirm you have the right to send it, and that a submitted plugin is your own work (or you have permission), contains no malware and does what it says. For a plugin you send to the Marketplace, you give us a free, worldwide licence to check it, sign it, host it and distribute it to MinnionDeck users, with your name as its creator, for as long as it is listed. You keep ownership of your plugin. We may reject, remove or stop listing any plugin at any time. You can ask us to remove your plugin by email.</p>
+
+    <h2>7. No warranty</h2>
+    <p>MinnionDeck is still being finished and comes as it is and as available, without any warranty, to the extent the law allows. We don't promise that it will be free of bugs, always available, compatible with every PC, game or app, or that it will keep your data safe from loss. Keep your own backups of anything that matters to you.</p>
+
+    <h2>8. Limits on our liability</h2>
+    <p>To the extent the law allows, MinnionDeck and the people who make it are not liable for any indirect, incidental or consequential loss, or for loss of data, profits or accounts, arising from your use of MinnionDeck, plugins, buttons you set up, or other services. Because MinnionDeck is free, our total liability to you for any claim is limited to INR 1,000. Nothing in these terms limits liability that can't be limited by law.</p>
+
+    <h2>9. Stopping</h2>
+    <p>You can stop using MinnionDeck at any time by uninstalling it (Windows Settings › Apps). If you break these terms, your licence to use MinnionDeck ends. Sections 6 to 11 still apply after that.</p>
+
+    <h2>10. Changes to these terms</h2>
+    <p>We may update these terms. The date at the top shows the latest version. If a change is important, we'll say so on this website or in the app. If you keep using MinnionDeck after a change, you accept the new terms.</p>
+
+    <h2>11. Law</h2>
+    <p>These terms are governed by the laws of India. Any dispute that can't be settled by talking to us first will be handled by the courts of India.</p>
+
+    <h2>12. Contact</h2>
+    <p>Questions about these terms: <a href="mailto:minniondeck@gmail.com">minniondeck@gmail.com</a>. See also our <a href="/privacy/" data-view="privacy">Privacy Policy</a>.</p>
+  </article>
+</main>
+
+<main class="wrap" id="privacy-view" hidden>
+  <article class="dpage legal frame" aria-labelledby="privacy-title">
+    <span class="label">Legal</span>
+    <h1 id="privacy-title">Privacy Policy</h1>
+    <p class="lead">Last updated: 8 November 2026</p>
+    <p>This policy explains what information MinnionDeck ("we", "us") handles when you use the MinnionDeck website (minniondeck.github.io), the desktop app, its phone page and editor, and the official plugins, and what we do with it. In short: there are no accounts, no cookies and no ads, your MinnionDeck data stays on your PC, and we never sell anything about you.</p>
+
+    <h2>1. The website</h2>
+    <h3>Counting visits</h3>
+    <p>To see which pages are used, the website sends a small note when you open a page or follow a download or outside link. Each note has:</p>
+    <ul>
+      <li>the page or link, the time, and the site you came from (only its name, like google.com);</li>
+      <li>your browser's language and screen width;</li>
+      <li>your country, and your browser, system and device type (like "Chrome, Windows, Desktop"), worked out from your connection and browser;</li>
+      <li>a random code that lasts only while that browser tab is open, so one visit is counted as one.</li>
+    </ul>
+    <p>We don't use cookies, don't store your IP address, and don't build profiles of people. If your browser sends <b>Do Not Track</b> or <b>Global Privacy Control</b>, nothing is counted. To limit abuse, our server keeps a one-way code made from your connection, browser and the day, and deletes it the next day.</p>
+    <h3>Bug reports</h3>
+    <p>When you send a bug report, we receive what you type in the form, the log file if you attach one (at most 2 MB), and your country, browser, system and device type. Don't put passwords or other private details in a report or log.</p>
+    <h3>Plugin submissions</h3>
+    <p>When you submit a plugin, we receive the form (including the creator name you give), the plugin file and any picture or profile you add, plus your country, browser, system and device type. If your plugin is approved, its name, description, files and creator name are published in the Marketplace.</p>
+    <h3>Where it goes</h3>
+    <p>These notes, reports and submissions pass through our small server on <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> and are stored in a private repository on <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a> that only we can open. We use them only to run and improve MinnionDeck: fixing bugs, reviewing plugins and seeing which pages people use. We keep them as long as they're useful for that.</p>
+    <h3>Other services the website uses</h3>
+    <ul>
+      <li>The website is hosted on GitHub Pages. GitHub may log technical details such as IP addresses, as its privacy statement explains.</li>
+      <li>To show the newest version, your browser asks GitHub for the latest MinnionDeck release, and downloads come from GitHub too.</li>
+      <li>Fonts are served from this website, not from a font service.</li>
+      <li>Your browser keeps a few small settings for this site (like whether the page deck is folded) in its own storage. They never leave your browser.</li>
+    </ul>
+
+    <h2>2. The desktop app and phone page</h2>
+    <ul>
+      <li>Your profiles, buttons, pictures, settings and logs are stored on your PC, in the folder you choose, encrypted with a key made for your install. We don't receive them and the app sends us no usage data.</li>
+      <li>The app contacts GitHub to check for updates and to show and download Marketplace plugins.</li>
+      <li>Phones connect to your PC directly over your own Wi-Fi, with a pairing code you confirm on the PC. Nothing goes through our servers.</li>
+      <li>The picture and GIF editor opens in your browser from your own PC (127.0.0.1). What you make there stays on your PC and in that browser.</li>
+      <li>A log file is kept on your PC to help with problems. It's only sent to us if you attach it to a bug report.</li>
+    </ul>
+
+    <h2>3. Official plugins</h2>
+    <p>Plugins run on your PC and talk to other services directly. We don't receive what passes between them.</p>
+    <ul>
+      <li><b>Discord</b> connects to the Discord app on your PC. With your permission (Discord asks you to press Authorize), it can read and change your voice settings (mute, deafen, push-to-talk, voice channel) and turn your camera and screen share on or off when you press its buttons. It uses the permissions <code>rpc</code>, <code>rpc.voice.read</code>, <code>rpc.voice.write</code>, <code>rpc.video.write</code> and <code>rpc.screenshare.write</code>. Your Discord login is exchanged with Discord directly and kept encrypted on your PC, so you only authorize once; <b>Disconnect</b> in the plugin's settings forgets it. We never see your messages, servers, friends or account details. Discord's <a href="https://discord.com/privacy">Privacy Policy</a> also applies.</li>
+      <li><b>Spotify</b> signs in to Spotify with your own Client ID to show what's playing and control playback. Your Spotify login is kept encrypted on your PC. Spotify's <a href="https://www.spotify.com/legal/privacy-policy/">Privacy Policy</a> also applies.</li>
+      <li><b>Weather</b> sends the town you pick, and its coordinates, to <a href="https://open-meteo.com/en/terms">Open-Meteo</a> to get the forecast and air quality.</li>
+      <li><b>Timer</b>, <b>System Monitor</b> and <b>Soundboard</b> work only on your PC.</li>
+      <li><b>Community plugins</b> are made by other people and may handle data differently; check what each one says before you install it.</li>
+    </ul>
+
+    <h2>4. Sharing</h2>
+    <p>We don't sell, rent or trade information about you, and we don't use it for advertising. We share it only with the services named above that run MinnionDeck for us (Cloudflare and GitHub), or if the law requires it.</p>
+
+    <h2>5. Children</h2>
+    <p>MinnionDeck is not meant for children under 13, and we don't knowingly collect information from them. If you think a child under 13 has sent us something, email us and we'll delete it.</p>
+
+    <h2>6. Your choices and rights</h2>
+    <ul>
+      <li>Turn on Do Not Track or Global Privacy Control in your browser to stop visit counting.</li>
+      <li>Disconnect a plugin in its settings, or uninstall MinnionDeck, to remove what it keeps on your PC.</li>
+      <li>Under India's Digital Personal Data Protection Act, 2023 and similar laws, you can ask us what we hold about you, ask us to correct or delete it, and raise a complaint. Since we don't keep names, emails or IP addresses for visits, tell us what you sent (for example the date and title of a bug report) so we can find it.</li>
+    </ul>
+
+    <h2>7. Security</h2>
+    <p>Data on your PC is encrypted, phones pair with a code and a certificate check, and the editor only answers your own PC. Our stored reports are in a private repository. No system is perfectly secure, so please don't send us anything you'd hate to lose.</p>
+
+    <h2>8. Changes</h2>
+    <p>We may update this policy. The date at the top shows the latest version, and important changes will be announced on this website or in the app.</p>
+
+    <h2>9. Contact</h2>
+    <p>Questions or requests about your privacy (including complaints under India's DPDP Act): <a href="mailto:minniondeck@gmail.com">minniondeck@gmail.com</a>. See also our <a href="/terms/" data-view="terms">Terms of Service</a>.</p>
+  </article>
+</main>
+
+
+<main class="wrap" id="about-view" hidden>
+  <section class="ab-hero" aria-labelledby="ab-title">
+    <div>
+      <span class="label load">About</span>
+      <h1 id="ab-title" class="load d1">A deck for your PC, free for everyone</h1>
+      <p class="lead load d2">Minniondeck turns your phone into a deck of buttons for your PC. Shortcuts, apps, media, streaming and, with plugins, much more: one press each, on a screen you already own. No pricey hardware, no account, no subscription.</p>
+    </div>
+    <div class="ab-art" aria-hidden="true">
+      <span><img class="px" src="icons/icon.png" alt=""></span><span><img class="px" src="icons/sp-now.png" alt=""></span><span><img class="px" src="icons/sp-volume.png" alt=""></span><span><img class="px" src="icons/nav-folder.png" alt=""></span>
+      <span><img class="px" src="icons/timer-countdown.png" alt=""></span><span><img class="px" src="icons/soundboard-sound.png" alt=""></span><span><img class="px" src="icons/weather-sun.png" alt=""></span><span><img class="px" src="icons/sysmon-cpu.png" alt=""></span>
+    </div>
+  </section>
+
+  <section class="notice frame" aria-labelledby="ab-note" id="ab-notice">
+    <div class="notice-tag" aria-hidden="true">!</div>
+    <div class="notice-body">
+      <span class="label">Please read</span>
+      <h2 id="ab-note">Still being finished</h2>
+      <ul>
+        <li><b>Not finished yet.</b> Some parts are marked "coming soon", and you will find bugs. Please report them: every report helps finish it.</li>
+        <li><b>Provided as it is.</b> Minniondeck comes without any warranty. Use it at your own risk, and keep backups of anything that matters to you.</li>
+        <li><b>Your changes are yours.</b> If you change the code, build your own version, or install plugins from other people, problems that come from those changes are your own responsibility, not the project's.</li>
+      </ul>
+      <div class="cta"><a class="btn mint" href="/contribute/" data-view="contribute" data-scroll="ct-bug">Report a bug</a><a class="btn plain" href="/docs/help/" data-view="docs/help">Fix a problem</a></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ab-why" class="rv">
+    <div class="head"><span class="label">What it stands for</span><h2 id="ab-why">Four promises</h2></div>
+    <div class="story">
+      <div class="frame"><h3>Free, for good</h3><p>No price, no subscription, no paid plugins and no ads. The app, the plugins and the installer cost nothing.</p></div>
+      <div class="frame"><h3>No accounts</h3><p>There's nothing to sign up for. You install it, pair your phone, and press buttons.</p></div>
+      <div class="frame"><h3>Your PC, your data</h3><p>Everything runs on your own PC and network. Your profiles, pictures and settings stay in your own data folder.</p></div>
+      <div class="frame"><h3>Source-available</h3><p>The code is on GitHub for anyone to read and learn from. The app itself is not open for forking or redistribution, and anyone can add a plugin to the marketplace.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ab-now" class="rv">
+    <div class="head"><span class="label">Where it is now</span><h2 id="ab-now">The story so far</h2></div>
+    <ol class="timeline">
+      <li><b>Minniondeck <span data-rel="v">0.1.1</span> for Windows</b><span>Profiles, pages, folders, live buttons, auto-switching, backups and a plugin system that keeps crashes away from the app.</span></li>
+      <li><b>Phones</b><span>Your deck in the phone&#39;s browser, paired with a QR code, over your own Wi-Fi. No app to install.</span></li>
+      <li><b>Official plugins</b><span>Spotify, Timer, System Monitor, Soundboard and Weather.</span></li>
+      <li><b>This website</b><span>Download, the marketplace and the docs.</span></li>
+      <li class="next"><b>Next</b><span>Community plugins, more plugins for each use, and a faster, lighter app made fully in Rust.</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="ab-cred" class="rv">
+    <div class="head"><span class="label">Credits</span><h2 id="ab-cred">Built with</h2><p>Minniondeck stands on free and open work by others. Thank you.</p></div>
+    <div class="credits">
+      <div class="frame"><span class="chip">App</span><h3>Tauri and Rust</h3><p>The desktop app and its plugin host.</p></div>
+      <div class="frame"><span class="chip">Fonts</span><h3>Pixelify Sans and IBM Plex Mono</h3><p>Under the SIL Open Font License.</p></div>
+      <div class="frame"><span class="chip">Logos</span><h3>Simple Icons</h3><p>App logos, CC0. Logos are trademarks of their owners.</p></div>
+      <div class="frame"><span class="chip">Maps</span><h3>OpenStreetMap</h3><p>Street map tiles on live map keys, © OpenStreetMap contributors.</p></div>
+    </div>
+    <p class="mk-count">Minniondeck is an independent project and is not affiliated with any company, product or software mentioned on this site. All trademarks belong to their owners.</p>
+  </section>
+
+  <section class="final frame rv" aria-labelledby="ab-help">
+    <h2 id="ab-help">Want to help?</h2>
+    <p>Report a bug, make a plugin, share a GIF, or tell us what you'd use it for. Every bit makes the deck better for everyone.</p>
+    <div class="cta" style="justify-content:center"><a class="btn mint" href="/docs/make-plugin/" data-view="docs/make-plugin">Make a plugin</a><a class="btn plain" href="/download/" data-view="download">Get MinnionDeck</a></div>
+  </section>
+</main>
+
+<main class="wrap" id="contribute-view" hidden>
+  <section class="ct-hero" aria-labelledby="ct-title">
+    <span class="label load">Contribute</span>
+    <h1 id="ct-title" class="load d1">Help improve Minniondeck</h1>
+    <p class="lead load d2">Minniondeck is free to use. You don't need to write code to help: streamers, artists, writers and translators all make it better. Pick what you're good at.</p>
+    <div class="skills load d3" role="group" aria-label="What you're good at">
+      <button type="button" data-skill="all" aria-pressed="true">Show everything</button>
+      <button type="button" data-skill="sim" aria-pressed="false">I use it a lot</button>
+      <button type="button" data-skill="rust" aria-pressed="false">I write Rust</button>
+      
+      
+      <button type="button" data-skill="art" aria-pressed="false">I draw pixel art</button>
+      <button type="button" data-skill="words" aria-pressed="false">I write well</button>
+      <button type="button" data-skill="lang" aria-pressed="false">I speak another language</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="ct-ways">
+    <div class="head"><span class="label">Ways to help</span><h2 id="ct-ways">Pick one and start</h2><p id="ct-count" aria-live="polite"></p></div>
+    <div class="ways" id="ct-cards">
+      <article class="way frame lift" data-skills="sim rust js kotlin art words lang"><div class="ic" style="background:var(--coral)"><img class="px" src="icons/lt-problem.png" alt=""></div><h3>Report a bug</h3><p>Something broke or looks wrong? A clear report is one of the most useful things you can send.</p><a class="btn plain" href="#ct-bug" data-jump="ct-bug">Write a bug report</a></article>
+      <article class="way frame lift" data-skills="sim"><div class="ic" style="background:var(--sky)"><img class="px" src="icons/lt-report.png" alt=""></div><h3>Tell us what you need</h3><p>Which buttons do you reach for when you stream, play or work? Ideas from real setups shape what gets built next.</p><span class="chip soon">GitHub Discussions soon</span></article>
+      <article class="way frame lift" data-skills="sim"><div class="ic" style="background:var(--mint)"><img class="px" src="icons/lt-check.png" alt=""></div><h3>Test new versions</h3><p>Try a new build before it's released and say what happened. Testers with different phones, PCs and setups catch the most.</p><span class="chip soon">Beta channel soon</span></article>
+      <article class="way frame lift" data-skills="rust"><div class="ic" style="background:var(--lilac)"><img class="px" src="icons/nav-folder.png" alt=""></div><h3>Make a plugin</h3><p>Add actions for an app with the Rust plugin kit. The template builds, packs and installs itself.</p><a class="btn plain" href="/docs/make-plugin/" data-view="docs/make-plugin">Plugin guide</a></article>
+      <article class="way frame lift" data-skills="rust"><div class="ic" style="background:var(--sun)"><img class="px" src="icons/lt-ok.png" alt=""></div><h3>Put a plugin on the marketplace</h3><p>Sign it, add its folder under plugins/, and add your entry to the marketplace list by pull request.</p><a class="btn plain" href="/docs/publish-plugin/" data-view="docs/publish-plugin">How to publish</a></article>
+      <article class="way frame lift" data-skills="art"><div class="ic" style="background:var(--lilac)"><img class="px" src="icons/sp-like-on.png" alt=""></div><h3>Draw icons and GIFs</h3><p>Pixel icons for plugins, GIFs for buttons, and button designs people can start from. Make them in MinnionDeck with <b>Edit image</b>.</p><a class="btn plain" href="/docs/images/" data-view="docs/images">How to make them</a></article>
+      <article class="way frame lift" data-skills="lang"><div class="ic" style="background:var(--mint)"><img class="px" src="icons/speak.png" alt=""></div><h3>Translate Minniondeck</h3><p>Hindi, German, Spanish and Japanese are already waiting in Settings. Help word the app for people who speak them, or add another.</p><span class="chip soon">Translation files soon</span></article>
+      <article class="way frame lift" data-skills="sim words art"><div class="ic" style="background:var(--coral)"><img class="px" src="icons/camera-view.png" alt=""></div><h3>Spread the word</h3><p>Show your deck in a stream, a forum post or a video. Most people find Minniondeck through someone who already uses it.</p><a class="btn plain" href="/" data-view="home">Share the home page</a></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="ct-bug-h" id="ct-bug" class="rv">
+    <div class="head"><span class="label">Report a bug</span><h2 id="ct-bug-h">Write a good bug report</h2><p>Fill this in and press Send report: it reaches the developer with your log file. Copy gives you the text instead.</p></div>
+    <div class="bugger">
+      <form class="frame bug-form" id="bug-form" novalidate>
+        <label class="fld">What went wrong, in one line<input type="text" name="title" maxlength="100" placeholder="The phone disconnects when the PC sleeps"></label>
+        <div class="two-f">
+          <label class="fld">Part<select name="area"><option>Desktop app</option><option>Phone page</option><option>A plugin</option><option>Installer</option><option>Website</option></select></label>
+          <label class="fld">Plugin, if any<select name="plugin"><option value="">None</option><option>Spotify</option><option>Timer</option><option>System Monitor</option><option>Soundboard</option><option>Weather</option><option>Another plugin</option></select></label>
+        </div>
+        <label class="fld">Steps to make it happen<textarea name="steps" rows="4" placeholder="1. Pair a phone&#10;2. Let the PC sleep&#10;3. Wake it"></textarea></label>
+        <div class="two-f">
+          <label class="fld">What you expected<textarea name="expected" rows="2"></textarea></label>
+          <label class="fld">What happened<textarea name="actual" rows="2"></textarea></label>
+        </div>
+        <div class="two-f">
+          <label class="fld">Minniondeck version<input type="text" name="version" value="0.1.1"></label>
+          <label class="fld">Windows<select name="os"><option>Windows 11</option><option>Windows 10</option></select></label>
+        </div>
+        <div class="two-f">
+          <label class="fld">Phone and browser<input type="text" name="phone" placeholder="Pixel 8, Chrome"></label>
+          <label class="fld">Other app, if any<input type="text" name="sim" placeholder="OBS Studio"></label>
+        </div>
+        <label class="fld">Log file, optional (up to 2 MB)<input type="file" name="logfile" accept=".log,.txt,.zip,text/plain"><span class="mk-count">It's <code>minniondeck.log</code>: Settings › About › Open logs folder.</span></label>
+        <label class="fld">How to reach you, optional<input type="text" name="contact" maxlength="200" placeholder="Email or Discord name, if you'd like an answer"></label>
+      </form>
+      <div class="frame bug-out">
+        <div class="bar2"><b>Your report</b><span class="grow"></span><button type="button" class="btn plain" id="bug-copy" style="font-size:15px;padding:5px 12px">Copy</button><button type="button" class="btn mint" id="bug-send" style="font-size:15px;padding:5px 12px">Send report</button></div>
+        <pre id="bug-text" aria-live="polite"></pre>
+        <p class="mk-count" id="bug-msg" aria-live="polite">Send report sends it, with the log file, straight to the Minniondeck developer. The version is in Settings › About.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ct-kind" class="rv">
+    <div class="band" style="grid-template-columns:minmax(0,1fr)">
+      <div><span class="label">Be kind</span><h2 id="ct-kind">One rule above the rest</h2>
+      <p>Treat everyone the way you'd want to be treated at your own desk. Be patient with new people, be specific in reviews, and assume good intent. Harassment of any kind isn't welcome here.</p></div>
+    </div>
+  </section>
+</main>
+
+<main class="wrap" id="tour-view" hidden>
+  <section class="tr-hero" aria-labelledby="tr-title">
+    <span class="label load">Tour</span>
+    <h1 id="tr-title" class="load d1">How Minniondeck works</h1>
+    <p class="lead load d2">A quick look around the desktop app, how your phone connects to it, and everything it can do. Click through the app window below.</p>
+  </section>
+
+  <section aria-labelledby="tr-app" class="tr-app-sec">
+    <div class="head"><span class="label">The desktop app</span><h2 id="tr-app">Five pages and the button editor</h2><p>Pick a page in the window's left rail, or Edit button to see where you make and change buttons. The numbers point at the parts explained beside it.</p></div>
+    <div class="tr-app">
+      <div class="appmock" aria-label="A picture of the Minniondeck window">
+        <div class="am-bar"><span class="am-logo"></span><b>Minniondeck</b><span class="am-crumb" id="am-crumb">My profile / Page 1</span><span class="am-win"><i>_</i><i>□</i><i>✕</i></span></div>
+        <div class="am-body">
+          <div class="am-rail" role="tablist" aria-label="App pages" id="am-rail"></div>
+          <div class="am-view" id="am-view"></div>
+        </div>
+      </div>
+      <div class="tr-notes frame" aria-live="polite">
+        <h3 id="tr-note-title"></h3>
+        <p id="tr-note-lead"></p>
+        <ol class="tr-points" id="tr-points"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tr-conn" class="rv">
+    <div class="head"><span class="label">Phones</span><h2 id="tr-conn">How your phone connects</h2><p>Your phone talks straight to Minniondeck on your PC, over your own Wi-Fi. Nothing goes through the internet or a cloud service.</p></div>
+    <div class="conn frame">
+      <div class="conn-node"><div class="conn-ic" style="background:var(--sky)" data-trg="phone"></div><b>Your phone</b><span>Shows your buttons and live screens in its browser</span></div>
+      <div class="conn-wire" aria-hidden="true"><span class="conn-tag">Wi-Fi · encrypted</span><i class="pk a"></i><i class="pk b"></i><i class="pk c"></i></div>
+      <div class="conn-node"><div class="conn-ic" style="background:var(--mint)"><img class="px" src="icons/icon.png" alt=""></div><b>Minniondeck on your PC</b><span>Runs what each button does</span></div>
+      <div class="conn-wire" aria-hidden="true"><span class="conn-tag">On the PC</span><i class="pk a"></i><i class="pk b"></i></div>
+      <div class="conn-node"><div class="conn-ic" style="background:var(--peach)" data-trg="apps"></div><b>Apps and plugins</b><span>Keys, programs, OBS, Spotify…</span></div>
+    </div>
+    <div class="flowsteps">
+      <article class="frame"><span class="fs-n">1</span><h3>You press a key</h3><p>The phone sends the press to the PC at once. It vibrates if you turned that on.</p></article>
+      <article class="frame"><span class="fs-n">2</span><h3>The PC runs it</h3><p>Minniondeck presses keys, opens a program, changes the volume, or asks a plugin to talk to another app.</p></article>
+      <article class="frame"><span class="fs-n">3</span><h3>The phone updates</h3><p>Live keys, like your CPU use or what's playing, change on the phone as things change on the PC.</p></article>
+    </div>
+
+    <h3 class="tr-sub">Pairing a phone, step by step</h3>
+    <div class="pair">
+      <div class="pair-qr frame" aria-hidden="true">
+        <div class="pq" id="tr-qr"></div>
+        <p class="mk-count">Code <b id="tr-code">482 913</b> · expires in 5 minutes</p>
+      </div>
+      <ol class="dsteps pair-steps">
+        <li><div><b>Open Phones on the PC.</b> A QR code shows while that page is open. It holds the PC's address on your network, the port (47800 unless you change it), a one-time 6-digit code, and a fingerprint of the PC's certificate.</div></li>
+        <li><div><b>Scan it with the phone.</b> Point the phone&#39;s camera at the code and open the link. The phone connects and checks the PC's certificate matches the fingerprint, so it can't be fooled by another computer.</div></li>
+        <li><div><b>The code is checked.</b> It lasts 5 minutes and stops working after 5 wrong tries. You can turn on a matching number to compare on both screens.</div></li>
+        <li><div><b>The phone gets its own key.</b> The PC keeps only a scrambled copy of it, so even the saved file can't be used to pose as your phone. Remove a phone and its key stops working at once.</div></li>
+        <li><div><b>From then on it reconnects by itself</b> whenever Minniondeck is running and the phone is on the same network, and gets your latest buttons.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="tr-make" class="rv">
+    <div class="head"><span class="label">Your first button</span><h2 id="tr-make">From empty key to working button</h2></div>
+    <div class="mksteps">
+      <article class="frame"><div class="mk-pic"><span class="mk-slot">+</span></div><h3>1. Click an empty key</h3><p>On the Deck, click any empty spot. The Edit button window opens.</p></article>
+      <article class="frame"><div class="mk-pic"><span class="mk-act" data-trg="act"></span></div><h3>2. Pick what it does</h3><p>Press keys, type text, open a program or website, change the volume, mute the mic, wait, turn the page, or a plugin's action. Add several steps for a macro.</p></article>
+      <article class="frame"><div class="mk-pic"><span class="mk-key" style="background:#191414" data-trg="look"></span></div><h3>3. Make it look right</h3><p>A colour, an icon or app logo, a picture or GIF, a press animation, and states that change its look, like Mic on and Mic muted.</p></article>
+      <article class="frame"><div class="mk-pic"><span class="mk-phone"><span class="mk-key sm" style="background:#191414" data-trg="look2"></span></span></div><h3>4. Save it</h3><p>It's on the PC and on every paired phone straight away. Click it on the PC to test it.</p></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="tr-all" class="rv">
+    <div class="head"><span class="label">Everything inside</span><h2 id="tr-all">What Minniondeck has</h2></div>
+    <div class="allfeat">
+      <div class="frame"><h3>Deck</h3><ul><li>Pages and folders, with a Back button inside folders</li><li>3 × 3, 4 × 3 or 5 × 3 grids</li><li>Square buttons: picture in the middle, name at the bottom</li><li>Move buttons in Edit layout, nudge them with the arrow keys</li></ul></div>
+      <div class="frame"><h3>Buttons</h3><ul><li>10 built-in actions, plus plugin actions</li><li>Several steps on one button, like a macro</li><li>Up to 8 looks on one button</li><li>15 press effects, GIFs and live widgets</li></ul></div>
+      <div class="frame"><h3>Looks</h3><ul><li>3400+ app and game logos, 1000+ pixel icons</li><li>Button designs made of layers</li><li>Your own pictures and GIFs with Import</li><li>Light and dark themes, three animation levels</li></ul></div>
+      <div class="frame"><h3>Profiles</h3><ul><li>A set of pages for each use</li><li>Switch by itself when an app comes to the front</li><li>Open where you left off, or on a page you pick</li><li>Share as .mdprofile files</li></ul></div>
+      <div class="frame"><h3>Phones</h3><ul><li>Pair with a QR code, as many phones as you like</li><li>Phones can follow the page open on the PC</li><li>Keep the screen awake, vibrate on press</li><li>The Phones page shows which need an update</li></ul></div>
+      <div class="frame"><h3>Plugins</h3><ul><li>Install from the marketplace in one click</li><li>Each runs apart, so a crash never takes the app down</li><li>Signed plugins, Developer mode for your own</li><li>Their own settings, kept across updates</li></ul></div>
+      <div class="frame"><h3>Safe and steady</h3><ul><li>Saves by itself, a whole file at a time</li><li>Up to 5 backups, and one before every import</li><li>Export and import all your profiles</li><li>A log for tracking down problems</li></ul></div>
+      <div class="frame"><h3>On your PC</h3><ul><li>Start with Windows, in the tray</li><li>Keep running when you close the window</li><li>Nothing goes to the cloud, no account</li><li>Updates itself from GitHub</li></ul></div>
+    </div>
+  </section>
+
+  <section class="final frame rv" aria-labelledby="tr-end">
+    <h2 id="tr-end">Ready to try it?</h2>
+    <p>Install it, pair your phone, and make your first button in a few minutes.</p>
+    <div class="cta" style="justify-content:center"><a class="btn mint" href="/download/" data-view="download">Download</a><a class="btn plain" href="/docs/" data-view="docs">Read the docs</a></div>
+  </section>
+</main>
+
+<main class="wrap" id="soon-view" hidden>
+  <section class="soonview frame" aria-labelledby="soon-title">
+    <div>
+      <span class="chip soon">Coming soon</span>
+      <h1 id="soon-title" style="margin-top:14px">Download</h1>
+      <p id="soon-intro">This page is being built.</p>
+      <ul id="soon-list"></ul>
+      <a class="btn mint" href="/" data-view="home">Back to home</a>
+    </div>
+    <div class="soonart" aria-hidden="true">
+      <span><img class="px" src="icons/sp-play.png" alt=""></span><span><img class="px" src="icons/weather-sun.png" alt=""></span><span><img class="px" src="icons/sp-now.png" alt=""></span><span><img class="px" src="icons/timer-countdown.png" alt=""></span>
+      <span><img class="px" src="icons/sysmon-cpu.png" alt=""></span><span><img class="px" src="icons/camera-view.png" alt=""></span><span><img class="px" src="icons/soundboard-sound.png" alt=""></span><span><img class="px" src="icons/nav-folder.png" alt=""></span>
+    </div>
+  </section>
+</main>
+
+<div class="mn mn-buddy" id="mn-buddy" aria-hidden="true"><span class="mn-say"></span></div>
+<footer>
+  <div class="cat" id="cat" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="f-brand"><strong><img class="px" src="icons/icon.png" alt="">Minniondeck</strong><p>A free deck for your PC, on the phone you already have.</p></div>
+    <div><h4>Product</h4><ul><li><a href="/tour/" data-view="tour">Tour</a></li><li><a href="/download/" data-view="download">Download</a></li><li><a href="/marketplace/" data-view="marketplace">Marketplace</a></li><li><a href="/docs/" data-view="docs">Docs</a></li></ul></div>
+    <div><h4>Project</h4><ul><li><a href="/about/" data-view="about">About</a></li><li><a href="/contribute/" data-view="contribute">Contribute</a></li><li><a href="https://github.com/minnnion/MinnionDeck">GitHub</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="/terms/" data-view="terms">Terms of Service</a></li><li><a href="/privacy/" data-view="privacy">Privacy Policy</a></li><li><a href="mailto:minniondeck@gmail.com">minniondeck@gmail.com</a></li></ul></div>
+    <div class="fine">
+      <p>© 2026 Minniondeck</p>
+      <p>Minniondeck is an independent project. It is not affiliated with, endorsed by or sponsored by any company, product or software mentioned on this site. All trademarks belong to their owners.</p>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
