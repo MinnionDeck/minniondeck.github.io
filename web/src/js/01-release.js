@@ -4,8 +4,8 @@
      GitHub says. If GitHub can't be reached, Download opens the latest release page instead. */
   var REL_API = "https://api.github.com/repos/minnnion/MinnionDeck/releases/latest";
   var REL_PAGE = "https://github.com/minnnion/MinnionDeck/releases/latest";
-  var REL = {v:"0.1.1", url:REL_PAGE, page:REL_PAGE, date:"2026-11-07", size:13295616,
-    sha:"9f29ff519b1322fa3f4b5143f7eef20c4905d9ee9047072897d3c45979e0a17d", notes:"", file:""};
+  var REL = {v:"0.2.3", url:"https://github.com/minnnion/MinnionDeck/releases/download/v0.2.3/Minniondeck_0.2.3_x64-setup.exe", page:"https://github.com/minnnion/MinnionDeck/releases/tag/v0.2.3", date:"2026-11-19", size:13621760,
+    sha:"5f0a5ce32606203acf4f85c584f402e6ace2cd797d34f2807126f4dcac3f8fe3", notes:"", file:"Minniondeck_0.2.3_x64-setup.exe"};
   var REL_DEFAULT_V = REL.v;
   var relHooks = [];   // other parts that show the version (the setup preview) redraw when it changes
   var relOk = function(u){ return /^https:\/\/github\.com\/minnnion\/MinnionDeck\//.test(u || ""); };
