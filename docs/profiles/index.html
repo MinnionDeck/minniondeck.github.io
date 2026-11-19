@@ -31,7 +31,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MinnionDeck","item":"https://minniondeck.github.io/"},{"@type":"ListItem","position":2,"name":"MinnionDeck Docs","item":"https://minniondeck.github.io/docs/"},{"@type":"ListItem","position":3,"name":"Profiles and auto-switching Docs","item":"https://minniondeck.github.io/docs/profiles/"}]}
 </script>
-  <script type="module" crossorigin src="./assets/index-BipasCPP.js"></script>
+  <script type="module" crossorigin src="./assets/index-o1bK-eEW.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/style-CRFIuBtK.css">
 </head>
 <body>
@@ -1128,7 +1128,7 @@ export!(MyPlugin);</code></pre>
     </ul>
 
     <h2>7. Security</h2>
-    <p>Data on your PC is encrypted, phones pair with a code and a certificate check, and the editor only answers your own PC. Our stored reports are in a private repository. No system is perfectly secure, so please don't send us anything you'd hate to lose.</p>
+    <p>Data on your PC is encrypted, phones pair with a one-time code and talk to the PC over an encrypted link, and the editor only answers your own PC. Our stored reports are in a private repository. No system is perfectly secure, so please don't send us anything you'd hate to lose.</p>
 
     <h2>8. Changes</h2>
     <p>We may update this policy. The date at the top shows the latest version, and important changes will be announced on this website or in the app.</p>
@@ -1324,8 +1324,8 @@ export!(MyPlugin);</code></pre>
         <p class="mk-count">Code <b id="tr-code">482 913</b> · expires in 5 minutes</p>
       </div>
       <ol class="dsteps pair-steps">
-        <li><div><b>Open Phones on the PC.</b> A QR code shows while that page is open. It holds the PC's address on your network, the port (47800 unless you change it), a one-time 6-digit code, and a fingerprint of the PC's certificate.</div></li>
-        <li><div><b>Scan it with the phone.</b> Point the phone&#39;s camera at the code and open the link. The phone connects and checks the PC's certificate matches the fingerprint, so it can't be fooled by another computer.</div></li>
+        <li><div><b>Open Phones on the PC.</b> A QR code shows while that page is open. It holds the PC's address on your network, the port (47800 unless you change it), a one-time 6-digit code, and a secret link key after the <code>#</code>, the part of an address a browser never sends.</div></li>
+        <li><div><b>Scan it with the phone.</b> Point the phone&#39;s camera at the code and open the link. The phone connects and encrypts everything it sends and gets with the link key, with fresh keys each time it connects, so others on the Wi-Fi can't read your buttons or replay a press. Want the browser's own HTTPS as well? Turn on <b>Secure phone link</b> in Settings › Phones.</div></li>
         <li><div><b>The code is checked.</b> It lasts 5 minutes and stops working after 5 wrong tries. You can turn on a matching number to compare on both screens.</div></li>
         <li><div><b>The phone gets its own key.</b> The PC keeps only a scrambled copy of it, so even the saved file can't be used to pose as your phone. Remove a phone and its key stops working at once.</div></li>
         <li><div><b>From then on it reconnects by itself</b> whenever Minniondeck is running and the phone is on the same network, and gets your latest buttons.</div></li>

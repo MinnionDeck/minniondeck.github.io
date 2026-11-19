@@ -84,7 +84,7 @@
     { id: "phones", name: "Phones", icon: "phone", crumb: "Phones",
       lead: "Pair phones and see which are connected. The pairing code only works while this page is open.",
       points: [["Paired phones", "Each phone and whether it's connected. Rename one, or forget it."],
-               ["Pair a new phone", "Point the phone's camera at the code, open the link and press Allow here. The deck opens in its browser, no app needed. The code carries this PC's address, a one-time code and a check for the PC's certificate."],
+               ["Pair a new phone", "Point the phone's camera at the code, open the link and press Allow here. The deck opens in its browser, no app needed. The code carries this PC's address, a one-time code and a secret key that encrypts the link."],
                ["The code", "Pairing uses a 6-digit code you confirm on the PC, and each phone gets its own key. The code is good for 5 minutes and 5 tries."]],
       // The real page also has a Preview of your deck on a phone, on its side or upright
       html: function(){
